@@ -1,0 +1,9 @@
+.app-Content {
+    background-color: orange;
+    grid-area: c;
+}
+
+.app-Content img {
+    height: 480px;
+    width: 854px;
+}

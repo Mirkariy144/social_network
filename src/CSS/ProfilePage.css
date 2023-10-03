@@ -1,0 +1,35 @@
+
+.ProfilePage {
+    display: grid;
+
+    grid-template-areas: 
+    "a n"
+    "a abm"
+    "sp sp";
+
+    grid-template-columns: 400px auto;
+    grid-template-columns: 200px auto;
+}
+
+.Ava {
+    grid-area: a;
+}
+
+.Ava img {
+    height: 200px;
+    width: 200px;
+}
+
+.Name {
+    grid-area: n;
+}
+
+.AboutMe {
+    grid-area: abm;
+}
+
+.ShitPosting {
+    grid-area: sp;
+    text-align: center;
+}
+

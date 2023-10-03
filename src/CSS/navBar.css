@@ -1,0 +1,5 @@
+.app-NavBar {
+    background-color: green;
+    grid-area: b;
+    text-align: center;
+}

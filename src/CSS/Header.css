@@ -1,0 +1,8 @@
+.app-Header {
+    background-color: red;
+    grid-area: a;
+}
+
+.app-Header img {
+    height: 50px;
+}
