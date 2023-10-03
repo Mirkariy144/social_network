@@ -1,5 +1,13 @@
-.app-NavBar {
+.appNavBar {
     background-color: green;
     grid-area: b;
     text-align: center;
+}
+
+.item {
+  color: black;
+}
+
+.active {
+  color: red;
 }

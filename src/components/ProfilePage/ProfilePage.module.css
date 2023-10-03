@@ -9,6 +9,8 @@
 
     grid-template-columns: 400px auto;
     grid-template-columns: 200px auto;
+
+    text-align: left;
 }
 
 .Ava {
@@ -28,8 +30,5 @@
     grid-area: abm;
 }
 
-.ShitPosting {
-    grid-area: sp;
-    text-align: center;
-}
+
 

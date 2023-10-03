@@ -1,9 +1,10 @@
-.app-Content {
+.appContent {
     background-color: orange;
     grid-area: c;
+    text-align: center;
 }
 
-.app-Content img {
+.appContent img {
     height: 480px;
     width: 854px;
 }
