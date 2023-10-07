@@ -1,13 +1,22 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import c from "./NameList.module.css"
 
 const NameList = () => {
   return (
     <div className={c.ChatSelector}>
-      <div className="Name">Jovani Gorgo</div>
-      <div className="Name">Kurwa</div>
-      <div className="Name">Jojo</div>
-      <div className="Name">Z-Borned</div>
+      <div className={c.Name}>
+        <NavLink to='Jojo'>Jovani_Gorgo</NavLink>
+      </div>
+      <div className={c.Name}>
+        <NavLink to='OhKurwa'>Kurwa</NavLink>
+      </div>
+      <div className={c.Name}>
+        <NavLink to='Reference'>Jojo</NavLink>
+      </div>
+      <div className={c.Name}>
+        <NavLink to='Z-Patriot'>Z-Borned</NavLink>
+      </div>
     </div>
   );
 };

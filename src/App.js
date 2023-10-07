@@ -14,8 +14,8 @@ const App = () => {
         <Header />
         <NavBar />
         <Routes>
-          <Route path='/dialogs' element={<Dialogs />} />
-          <Route path='/profile' element={<Content />} />
+          <Route path='dialogs/*' element={<Dialogs />} />
+          <Route path='profile/*' element={<Content />} />
         </Routes>
       </div>
   );

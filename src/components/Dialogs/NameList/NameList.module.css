@@ -2,3 +2,8 @@
   grid-area: nl;
   border-right: solid 3px black;
 }
+
+.Name {
+  padding: 7px 0px 7px 25px;
+  border: solid 2px orange;
+}
