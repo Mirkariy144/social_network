@@ -1,0 +1,11 @@
+.wrapper {
+  display: grid;
+  /* justify-content: center; */
+
+  grid-template-areas: 
+  "nl m";
+
+  grid-template-columns: 1fr 3fr;
+
+  background-color: blueviolet;
+}

@@ -8,6 +8,12 @@
   color: black;
 }
 
+.item link {
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none;
+}
+
 .active {
   color: red;
 }
