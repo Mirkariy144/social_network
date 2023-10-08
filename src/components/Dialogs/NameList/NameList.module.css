@@ -4,6 +4,7 @@
 }
 
 .Name {
+  margin: 1px 0px 1px;
   padding: 7px 0px 7px 25px;
   border: solid 2px orange;
 }

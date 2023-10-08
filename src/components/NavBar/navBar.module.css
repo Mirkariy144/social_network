@@ -5,15 +5,15 @@
 }
 
 .item {
-  color: black;
+  color: rgba(17, 0, 255, 0.927);
 }
 
-.item link {
+.item a {
   color: black;
   font-family: 'Times New Roman', Times, serif;
   text-decoration: none;
 }
 
-.active {
+.item :active {
   color: red;
 }

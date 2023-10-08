@@ -3,10 +3,10 @@ import NameList from "./NameList/NameList";
 import Messages from "./Messages/Messages";
 import c from "./Dialog.module.css"
 
-const Dialogs = () => {
+const Dialogs = (props) => {
   return (
     <div className={c.wrapper}>
-        <NameList />
+        <NameList Characters={props.Characters}/>
         <Messages />
     </div>
   );

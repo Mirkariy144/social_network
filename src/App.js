@@ -8,14 +8,14 @@ import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 import Dialogs from './components/Dialogs/Dialogs';
 
-const App = () => {
+const App = (props) => {
   return (
       <div className={c.appWrapper}>
         <Header />
         <NavBar />
         <Routes>
-          <Route path='dialogs/*' element={<Dialogs />} />
-          <Route path='profile/*' element={<Content />} />
+          <Route path='dialogs/*' element={<Dialogs Characters={props.State.Characters}/>} />
+          <Route path='profile/*' element={<Content Post={props.State.Post}/>} />
         </Routes>
       </div>
   );
