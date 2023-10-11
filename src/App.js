@@ -14,8 +14,8 @@ const App = (props) => {
         <Header />
         <NavBar />
         <Routes>
-          <Route path='dialogs/*' element={<Dialogs Characters={props.State.Characters}/>} />
-          <Route path='profile/*' element={<Content Post={props.State.Post}/>} />
+          <Route path='dialogs/*' element={<Dialogs Characters={props.State.Characters} Message={props.State.Message} newMessage={props.newMessage}/>} />
+          <Route path='profile/*' element={<Content Post={props.State.Post} newPost={props.newPost}/>} />
         </Routes>
       </div>
   );

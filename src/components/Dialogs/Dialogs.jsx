@@ -7,7 +7,7 @@ const Dialogs = (props) => {
   return (
     <div className={c.wrapper}>
         <NameList Characters={props.Characters}/>
-        <Messages />
+        <Messages Message={props.Message} newMessage={props.newMessage}/>
     </div>
   );
 };

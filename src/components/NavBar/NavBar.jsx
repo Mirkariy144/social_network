@@ -7,16 +7,16 @@ const NavBar = () => {
     return (
     <div className={c.appNavBar}>
       <div className={c.item}>
-        <NavLink to="profile/*">Профиль</NavLink>
+        <NavLink to="profile">Профиль</NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="news/*">Новости</NavLink>
+        <NavLink to="news">Новости</NavLink>
       </div>
       <div className={`${c.item} ${c.active}`}>
-        <NavLink to="dialogs/*">Сообщения</NavLink>
+        <NavLink to="dialogs">Сообщения</NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="friends/*">Друзья</NavLink>
+        <NavLink to="friends">Друзья</NavLink>
       </div>
     </div>
     );
