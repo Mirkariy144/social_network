@@ -7,8 +7,14 @@ const ProfilePage = (props) => {
   return (
     <div>
       <ProfileInfo />
-      <ShitPost newPost={props.newPost}/>
-      <Post Post={props.Post}/>
+      <ShitPost 
+      newPostLetter={props.Post.newPostLetter} 
+      newPost={props.newPost} 
+      newPostWrighting={props.newPostWrighting}
+      />
+      <Post 
+      Post={props.Post.Post}
+      />
     </div>
   );
 };

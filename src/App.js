@@ -14,8 +14,15 @@ const App = (props) => {
         <Header />
         <NavBar />
         <Routes>
-          <Route path='dialogs/*' element={<Dialogs Characters={props.State.Characters} Message={props.State.Message} newMessage={props.newMessage}/>} />
-          <Route path='profile/*' element={<Content Post={props.State.Post} newPost={props.newPost}/>} />
+          <Route path='dialogs/*' element={<Dialogs 
+                                            Messages={props.State.Messages} 
+                                            newMessage={props.newMessage}/>} 
+                                            />
+          <Route path='profile/*' element={<Content 
+                                            Post={props.State.ShitPosts} 
+                                            newPost={props.newPost} 
+                                            newPostWrighting={props.newPostWrighting}/>} 
+                                            />
         </Routes>
       </div>
   );
