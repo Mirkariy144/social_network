@@ -9,6 +9,7 @@ import Content from './components/Content/Content';
 import Dialogs from './components/Dialogs/Dialogs';
 
 const App = (props) => {
+  console.log(props)
   return (
       <div className={c.appWrapper}>
         <Header />
@@ -16,12 +17,13 @@ const App = (props) => {
         <Routes>
           <Route path='dialogs/*' element={<Dialogs 
                                             Messages={props.State.Messages} 
-                                            newMessage={props.newMessage}/>} 
+                                            newMessage={props.newMessage}
+                                            updateMessageText={props.updateMessageText} />}
                                             />
           <Route path='profile/*' element={<Content 
                                             Post={props.State.ShitPosts} 
                                             newPost={props.newPost} 
-                                            newPostWrighting={props.newPostWrighting}/>} 
+                                            newPostWrighting={props.newPostWrighting} />}
                                             />
         </Routes>
       </div>

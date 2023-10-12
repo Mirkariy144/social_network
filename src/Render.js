@@ -5,8 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
-export let rerenderUI = (State, newMessage, newPost, newPostWrighting) => {
-  const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+export let rerenderUI = (State, newMessage, newPost, newPostWrighting, updateMessageText) => {
+  
   root.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -14,6 +16,7 @@ export let rerenderUI = (State, newMessage, newPost, newPostWrighting) => {
              newMessage={newMessage} 
              newPost={newPost} 
              newPostWrighting={newPostWrighting}
+             updateMessageText={updateMessageText}
         />
       </BrowserRouter>
     </React.StrictMode>

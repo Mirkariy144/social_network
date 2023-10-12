@@ -4,6 +4,7 @@ import Messages from "./Messages/Messages";
 import c from "./Dialog.module.css"
 
 const Dialogs = (props) => {
+  console.log(props)
   return (
     <div className={c.wrapper}>
         <NameList 
@@ -12,6 +13,7 @@ const Dialogs = (props) => {
         <Messages 
         Message={props.Messages.Message} 
         newMessage={props.newMessage}
+        updateMessageText={props.updateMessageText}
         />
     </div>
   );

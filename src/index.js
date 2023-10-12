@@ -1,10 +1,10 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import State, { newPostWrighting } from './Redux/State';
+import State, { newPostWrighting, updateMessageText } from './Redux/State';
 import { newMessage, newPost } from './Redux/State';
 import { rerenderUI } from './Render';
 
-rerenderUI(State, newMessage, newPost, newPostWrighting);
+rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
