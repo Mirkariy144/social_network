@@ -4,13 +4,13 @@ import Messages from "./Messages/Messages";
 import c from "./Dialog.module.css"
 
 const Dialogs = (props) => {
-  console.log(props)
   return (
     <div className={c.wrapper}>
         <NameList 
         Characters={props.Messages.Characters}
         />
         <Messages 
+        updateMessageInput={props.Messages.updateMessageInput}
         Message={props.Messages.Message} 
         newMessage={props.newMessage}
         updateMessageText={props.updateMessageText}
