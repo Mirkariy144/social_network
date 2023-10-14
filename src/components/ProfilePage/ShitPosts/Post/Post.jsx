@@ -1,10 +1,13 @@
 import React from "react";
 import c from "./Post.module.css"
 
-const Post = () => {
+const Post = (props) => {
+
+  let post = props.Post.map( PostID => <div className={c.Post}>{PostID.text}</div> )
+  
   return (
     <div>
-      <div className={c.Post}>Post</div>
+      {post}
     </div>
   );
 };

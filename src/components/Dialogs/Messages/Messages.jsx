@@ -2,6 +2,7 @@ import React from "react";
 import c from "./Messages.module.css"
 
 const Messages = (props) => {
+  // console.log(props)
 
   let RenderMessage = props.Message.map( Message => <div>{Message.text}</div> );
 
@@ -11,6 +12,8 @@ const Messages = (props) => {
       // let message = messageText.current.value;
       props.newMessage();
       props.updateMessageText('KURWA');
+      let message = messageText.current.value;
+      props.newMessage(message);
   };
 
   let newMessageChange = () => {
