@@ -36,7 +36,7 @@ let State = {
 
 export let newPost = (Post) => {
   let newPostPush = {
-    text: Post
+    text: State.ShitPosts.newPostLetter
   };
 
   State.ShitPosts.Post.push(newPostPush)
@@ -48,17 +48,17 @@ export let newPostWrighting = (letter) => {
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 }
 
-export let updateMessageText = (letter) => {
-  State.Messages.updateMessageInput = letter;
-  rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
-};
-
 export let newMessage = () => {
   let newMessagePush = {
     text: State.Messages.updateMessageInput,
   };
 
   State.Messages.Message.push(newMessagePush)
+  rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
+};
+
+export let updateMessageText = (letter) => {
+  State.Messages.updateMessageInput = letter;
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 };
 

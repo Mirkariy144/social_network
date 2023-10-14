@@ -9,11 +9,8 @@ const Messages = (props) => {
   let messageText = React.createRef();
 
   let sendMessage = () => {
-      // let message = messageText.current.value;
       props.newMessage();
       props.updateMessageText('');
-      let message = messageText.current.value;
-      props.newMessage(message);
   };
 
   let newMessageChange = () => {

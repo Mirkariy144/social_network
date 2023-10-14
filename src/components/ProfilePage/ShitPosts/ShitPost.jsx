@@ -7,14 +7,17 @@ const ShitPost = (props) => {
   let newPostWright = React.createRef();
 
   let sendPost = () => {
-    let postText = newPostWright.current.value;
-    props.newPost(postText);
+    props.newPost();
+    props.newPostWrighting('')
   };
 
   let newPostChange = () => {
     let newPostWrighting = newPostWright.current.value;
     props.newPostWrighting(newPostWrighting)
   };
+  
+
+ 
   return (
     <div className={c.ShitPost}>
       <textarea ref={newPostWright} onChange={newPostChange} value={props.newPostLetter} />

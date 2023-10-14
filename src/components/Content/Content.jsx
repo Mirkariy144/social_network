@@ -7,7 +7,8 @@ const Content = (props) => {
         <div className={c.appContent}>
             <img src='https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg' />
             <ProfilePage 
-            Post={props.Post} 
+            newPostLetter={props.Post.newPostLetter}
+            Post={props.Post.Post} 
             newPost={props.newPost} 
             newPostWrighting={props.newPostWrighting}
             />

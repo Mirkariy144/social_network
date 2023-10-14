@@ -8,12 +8,12 @@ const ProfilePage = (props) => {
     <div>
       <ProfileInfo />
       <ShitPost 
-      newPostLetter={props.Post.newPostLetter} 
+      newPostLetter={props.newPostLetter} 
       newPost={props.newPost} 
       newPostWrighting={props.newPostWrighting}
       />
       <Post 
-      Post={props.Post.Post}
+      Post={props.Post}
       />
     </div>
   );
