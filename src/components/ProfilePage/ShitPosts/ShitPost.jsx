@@ -8,7 +8,7 @@ const ShitPost = (props) => {
 
   let sendPost = () => {
     props.newPost();
-    props.newPostWrighting('')
+    // props.newPostWrighting('')
   };
 
   let newPostChange = () => {

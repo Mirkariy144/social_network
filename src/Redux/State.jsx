@@ -40,6 +40,7 @@ export let newPost = (Post) => {
   };
 
   State.ShitPosts.Post.push(newPostPush)
+  State.ShitPosts.newPostLetter = ('');
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 };
 
@@ -54,6 +55,7 @@ export let newMessage = () => {
   };
 
   State.Messages.Message.push(newMessagePush)
+  State.Messages.updateMessageInput = ('');
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 };
 
