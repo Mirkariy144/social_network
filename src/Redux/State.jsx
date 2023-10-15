@@ -1,4 +1,7 @@
-import { rerenderUI } from "../Render";
+
+let rerenderUI = () => {
+  console.log(alert('state kurwa'))
+};
 
 let State = {
   Messages: {
@@ -34,7 +37,7 @@ let State = {
   },
 };
 
-export let newPost = (Post) => {
+export const newPost = (Post) => {
   let newPostPush = {
     text: State.ShitPosts.newPostLetter
   };
@@ -44,12 +47,12 @@ export let newPost = (Post) => {
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 };
 
-export let newPostWrighting = (letter) => {
+export const newPostWrighting = (letter) => {
   State.ShitPosts.newPostLetter = letter;
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 }
 
-export let newMessage = () => {
+export const newMessage = () => {
   let newMessagePush = {
     text: State.Messages.updateMessageInput,
   };
@@ -59,9 +62,13 @@ export let newMessage = () => {
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
 };
 
-export let updateMessageText = (letter) => {
+export const updateMessageText = (letter) => {
   State.Messages.updateMessageInput = letter;
   rerenderUI(State, newMessage, newPost, newPostWrighting, updateMessageText);
+};
+
+export const subscriber = (observer) => {
+  rerenderUI = observer
 };
 
 

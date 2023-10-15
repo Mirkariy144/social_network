@@ -2,7 +2,6 @@ import React from "react";
 import c from "./Messages.module.css"
 
 const Messages = (props) => {
-  console.log(props)
 
   let RenderMessage = props.Message.map( Message => <div>{Message.text}</div> );
 
@@ -10,7 +9,6 @@ const Messages = (props) => {
 
   let sendMessage = () => {
       props.newMessage();
-      // props.updateMessageText('');
   };
 
   let newMessageChange = () => {
