@@ -12,8 +12,7 @@ const Dialogs = (props) => {
         <Messages 
         updateMessageInput={props.Messages.updateMessageInput}
         Message={props.Messages.Message} 
-        newMessage={props.newMessage}
-        updateMessageText={props.updateMessageText}
+        dispatch={props.dispatch}
         />
     </div>
   );

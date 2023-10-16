@@ -10,22 +10,17 @@ import Dialogs from './components/Dialogs/Dialogs';
 
 
 const App = (props) => {
-  // console.log(props)
   return (
       <div className={c.appWrapper}>
         <Header />
         <NavBar />
         <Routes>
-          <Route path='dialogs/*' element={<Dialogs 
-                                            Messages={props.State.Messages} 
-                                            newMessage={props.newMessage}
-                                            updateMessageText={props.updateMessageText} />}
-                                            />
-          <Route path='profile/*' element={<Content 
-                                            Post={props.State.ShitPosts} 
-                                            newPost={props.newPost} 
-                                            newPostWrighting={props.newPostWrighting} />}
-                                            />
+          <Route path='dialogs/*' element={<Dialogs Messages={props.State.Messages} 
+                                                    dispatch={props.dispatch}
+                                            />}/>
+          <Route path='profile/*' element={<Content Post={props.State.ShitPosts} 
+                                                    dispatch={props.dispatch} 
+                                                    />}/>
         </Routes>
       </div>
   );

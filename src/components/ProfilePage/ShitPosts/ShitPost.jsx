@@ -2,17 +2,17 @@ import React from "react";
 import c from './ShitPost.module.css'
 
 const ShitPost = (props) => {
-  console.log(props)
-
   let newPostWright = React.createRef();
 
   let sendPost = () => {
-    props.newPost();
+    // props.newPost();
+    props.dispatch({ type: 'NEW-POST' })
   };
 
   let newPostChange = () => {
     let newPostWrighting = newPostWright.current.value;
-    props.newPostWrighting(newPostWrighting)
+    // props.newPostWrighting(newPostWrighting)
+    props.dispatch({ type: 'NEW-POST-WRIGHTING', letter: newPostWrighting })
   };
   
 

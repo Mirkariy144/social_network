@@ -9,8 +9,7 @@ const ProfilePage = (props) => {
       <ProfileInfo />
       <ShitPost 
       newPostLetter={props.newPostLetter} 
-      newPost={props.newPost} 
-      newPostWrighting={props.newPostWrighting}
+      dispatch={props.dispatch} 
       />
       <Post 
       Post={props.Post}

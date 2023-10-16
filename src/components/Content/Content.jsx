@@ -9,8 +9,7 @@ const Content = (props) => {
             <ProfilePage 
             newPostLetter={props.Post.newPostLetter}
             Post={props.Post.Post} 
-            newPost={props.newPost} 
-            newPostWrighting={props.newPostWrighting}
+            dispatch={props.dispatch} 
             />
         </div>
     );
