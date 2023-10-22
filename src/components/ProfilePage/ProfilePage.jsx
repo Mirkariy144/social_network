@@ -1,19 +1,15 @@
 import React from "react";
-import ShitPost from "./ShitPosts/ShitPost";
 import Post from "./ShitPosts/Post/Post"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import ShitPostContainer from "./ShitPosts/ShitPostContainer";
 
 const ProfilePage = (props) => {
+  console.log(props.store.getState())
   return (
     <div>
       <ProfileInfo />
-      <ShitPost 
-      newPostLetter={props.newPostLetter} 
-      dispatch={props.dispatch} 
-      />
-      <Post 
-      Post={props.Post}
-      />
+      <ShitPostContainer store={props.store} />
+      <Post Post={props.store.getState().ShitPosts.Post} />
     </div>
   );
 };

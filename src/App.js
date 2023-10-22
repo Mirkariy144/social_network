@@ -15,12 +15,8 @@ const App = (props) => {
         <Header />
         <NavBar />
         <Routes>
-          <Route path='dialogs/*' element={<Dialogs Messages={props.State.Messages} 
-                                                    dispatch={props.dispatch}
-                                          />}/>
-          <Route path='profile/*' element={<Content Post={props.State.ShitPosts} 
-                                                    dispatch={props.dispatch} 
-                                          />}/>
+          <Route path='dialogs/*' element={<Dialogs store={props.store} />}/>
+          <Route path='profile/*' element={<Content store={props.store} />}/>
         </Routes>
       </div>
   );

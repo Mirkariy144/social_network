@@ -15,9 +15,7 @@ let rerenderUI = () => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App State={store.getState()} 
-             dispatch={store.dispatch.bind(store)} 
-        />
+        <App store={store} />
       </BrowserRouter>
     </React.StrictMode>
   );

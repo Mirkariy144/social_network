@@ -1,19 +1,19 @@
 import React from "react";
 import c from './ShitPost.module.css'
-import { addNewPost, modifyPostContent } from "../../../Redux/ProfilePageReducer";
-// import { newPostActionCeator, newPostWrightingActionCreator } from "../../../Redux/ProfilePageReducer";
 
 
 const ShitPost = (props) => {
+
+  console.log(props)
   let newPostWright = React.createRef();
 
   let sendPost = () => {
-    props.dispatch(addNewPost())
+    props.addPost()
   };
 
   let newPostChange = () => {
-    let newPostWrighting = newPostWright.current.value;
-    props.dispatch(modifyPostContent(newPostWrighting))
+    let text = newPostWright.current.value;
+    props.newInfoPostChange(text);
   };
   
  
