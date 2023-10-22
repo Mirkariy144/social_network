@@ -1,3 +1,6 @@
+import MessagesReducer from "./MessagesReducer";
+import ProfilePageReducer from "./ProfilePageReducer";
+
 let store = {
   _State: {
     Messages: {
@@ -42,29 +45,9 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === 'NEW-POST') {
-      let newPostPush = {
-        text: this._State.ShitPosts.newPostLetter
-      };
-    
-      this._State.ShitPosts.Post.push(newPostPush)
-      this._State.ShitPosts.newPostLetter = ('');
-      this._callSubscriber();
-    } else if (action.type === 'NEW-POST-WRIGHTING') {
-        this._State.ShitPosts.newPostLetter = action.letter;
-        this._callSubscriber();
-    } else if (action.type === 'NEW-MESSAGE') {
-        let newMessagePush = {
-          text: this._State.Messages.updateMessageInput,
-        };
-    
-        this._State.Messages.Message.push(newMessagePush)
-        this._State.Messages.updateMessageInput = ('');
-        this._callSubscriber();
-    } else if (action.type === 'NEW-MESSAGE-TEXT') {
-        this._State.Messages.updateMessageInput = action.letter;
-        this._callSubscriber();
-    }
+    this._State.ShitPosts = ProfilePageReducer(this._State.ShitPosts, action);
+    this._State.Messages = MessagesReducer(this._State.Messages, action);
+    this._callSubscriber();
   },
 
   subscriber(observer) {
@@ -72,5 +55,6 @@ let store = {
   },
 
 };
+
 
 export default store; 

@@ -1,6 +1,6 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store from './Redux/store';
+import store from './Redux/reduxStore';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -24,9 +24,10 @@ let rerenderUI = () => {
   );
 };
 
-rerenderUI(store.getState());
+rerenderUI();
 
 store.subscriber(rerenderUI);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
