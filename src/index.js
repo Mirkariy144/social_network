@@ -12,7 +12,6 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerenderUI = () => {
-  
   root.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -26,7 +25,7 @@ let rerenderUI = () => {
 
 rerenderUI();
 
-store.subscriber(rerenderUI);
+store.subscribe(rerenderUI);
 
 
 // If you want to start measuring performance in your app, pass a function

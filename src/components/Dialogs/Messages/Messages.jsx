@@ -1,6 +1,6 @@
 import React from "react";
 import c from "./Messages.module.css"
-import { newMessageActionCreator, newMessageTextActionCreator } from "../../../Redux/MessagesReducer";
+import { addNewMessage, modifyMessageContent } from "../../../Redux/MessagesReducer";
 
 const Messages = (props) => {
 
@@ -9,13 +9,14 @@ const Messages = (props) => {
   let messageText = React.createRef();
 
   let sendMessage = () => {
-      props.dispatch(newMessageActionCreator())
+      props.dispatch(addNewMessage())
   };
 
   let newMessageChange = () => {
     let message = messageText.current.value;
-    props.dispatch(newMessageTextActionCreator(message))
+    props.dispatch(modifyMessageContent(message))
   };
+
 
   return (
     <div className={c.MessageText}>
@@ -23,7 +24,7 @@ const Messages = (props) => {
         {RenderMessage}
       </div>
       <div>
-        <textarea ref={messageText} onChange={newMessageChange} value={props.updateMessageInput} />
+        <textarea ref={messageText} onChange={newMessageChange} value={props.updateMessageInput || ''} placeholder="New message"/>
         <button onClick={sendMessage}>Send message</button>
       </div>
     </div>

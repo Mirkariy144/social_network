@@ -1,5 +1,4 @@
-const newMessageType = 'NEW-MESSAGE';
-const newMessageWrightingType = 'NEW-MESSAGE-TEXT';
+import {createSlice} from '@reduxjs/toolkit'
 
 let initialState = {
     Characters: [
@@ -15,39 +14,29 @@ let initialState = {
       { text: 'Just try to make my future' },
       { text: 'Can you help me, JS?' },
     ],
-    updateMessageInput: [
-
-    ],
+    updateMessageInput: '',
 }
 
-const MessagesReducer = (state = initialState, action) => {
-  switch (action.type){
-    case newMessageType:
+export const MessagesReducer = createSlice({
+  name: 'Messages',
+  initialState,
+  reducers: {
+    addNewMessage: (state) => {
       let newMessagePush = {
         text: state.updateMessageInput,
       };
   
       state.Message.push(newMessagePush)
       state.updateMessageInput = ('');
-      return state;
-    case newMessageWrightingType:
-      state.updateMessageInput = action.letter;
-      return state;
-    default: 
-      return state;
+    },
+      
+    modifyMessageContent: (state, action) => {
+      state.updateMessageInput = action.payload;
+    },
+    
   }
-};
+});
 
-export const newMessageActionCreator = () => {
-  return {
-    type: newMessageType
-  };
-};
+export const {addNewMessage, modifyMessageContent } = MessagesReducer.actions;
 
-export const newMessageTextActionCreator = (message) => {
-  return {
-    type: newMessageWrightingType, letter: message
-  };
-};
-
-export default MessagesReducer;
+export default MessagesReducer.reducer;

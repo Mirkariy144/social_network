@@ -1,5 +1,4 @@
-const newPostType = 'NEW-POST';
-const newPostWrightingType = 'NEW-POST-WRIGHTING';
+import {createSlice} from '@reduxjs/toolkit'
 
 let initialState = {
   Post: [
@@ -10,40 +9,29 @@ let initialState = {
     { text: 'props' },
   ],
 
-  newPostLetter: [
-
-  ],
+  newPostLetter: '',
 }
 
-const ProfilePageReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case newPostType:
+export const ProfilePageReducer = createSlice({
+  name: 'Posts',
+  initialState,
+  reducers: {
+    addNewPost: (state) => {
       let newPostPush = {
         text: state.newPostLetter
       };
       
       state.Post.push(newPostPush)
       state.newPostLetter = ('');
-      return state;
-    case newPostWrightingType:
-      state.newPostLetter = action.letter;
-      return state;
-    default: 
-      return state
-
+    },
+      
+    modifyPostContent: (state, action) => {
+      state.newPostLetter = action.payload;
+    },
+    
   }
-};
+});
 
-export const newPostActionCeator = () => {
-  return {
-    type: newPostType
-  };
-};
+export const { addNewPost, modifyPostContent } = ProfilePageReducer.actions;
 
-export const newPostWrightingActionCreator = (newPostWrighting) => {
-  return {
-    type: newPostWrightingType, letter: newPostWrighting
-  };
-};
-
-export default ProfilePageReducer;
+export default ProfilePageReducer.reducer;

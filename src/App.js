@@ -17,10 +17,10 @@ const App = (props) => {
         <Routes>
           <Route path='dialogs/*' element={<Dialogs Messages={props.State.Messages} 
                                                     dispatch={props.dispatch}
-                                            />}/>
+                                          />}/>
           <Route path='profile/*' element={<Content Post={props.State.ShitPosts} 
                                                     dispatch={props.dispatch} 
-                                                    />}/>
+                                          />}/>
         </Routes>
       </div>
   );

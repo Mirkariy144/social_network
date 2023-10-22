@@ -1,4 +1,5 @@
-
+import { configureStore } from '@reduxjs/toolkit'
+// import { createStore }  from "redux"
 import MessagesReducer from "./MessagesReducer";
 import ProfilePageReducer from "./ProfilePageReducer";
 
@@ -7,4 +8,13 @@ import ProfilePageReducer from "./ProfilePageReducer";
 //   Messages: MessagesReducer
 // });
 
-let store = configureStore();
+let store = configureStore({
+  reducer: {
+    ShitPosts: ProfilePageReducer,
+    Messages: MessagesReducer
+  }
+});
+
+// let store = createStore();
+
+export default store;
