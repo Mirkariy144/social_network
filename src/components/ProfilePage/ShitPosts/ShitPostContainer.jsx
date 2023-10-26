@@ -1,31 +1,24 @@
-import React from "react";
 import { addNewPost, modifyPostContent } from "../../../Redux/ProfilePageReducer";
 import ShitPost from "./ShitPost";
-import StoreContext from "../../../StoreContext";
+import { connect } from "react-redux";
 
-const ShitPostContainer = (props) => {
-  return (
-    <StoreContext.Consumer> 
-    {
-      (store) => {
-        
-        let sendPost = () => {
-          store.dispatch(addNewPost())
-        };
-
-        let newPostChange = (text) => {
-          store.dispatch(modifyPostContent(text))
-        };
-
-        return (
-          <ShitPost newInfoPostChange={newPostChange} 
-                    addPost={sendPost} 
-                    newPostLetter={store.getState().ShitPosts.newPostLetter} />
-        )
-      }
-    }
-    </StoreContext.Consumer>
-  );
+let mapStateToProps = (state) => {
+  return {
+    newPostLetter: state.ShitPosts.newPostLetter
+  };
 };
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addPost: () => {
+      dispatch(addNewPost())
+    },
+    newInfoPostChange: (text) => {
+      dispatch(modifyPostContent(text))
+    },
+  };
+};
+
+const ShitPostContainer = connect(mapStateToProps, mapDispatchToProps)(ShitPost);
 
 export default ShitPostContainer
