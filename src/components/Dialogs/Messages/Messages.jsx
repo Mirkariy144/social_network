@@ -3,6 +3,8 @@ import c from "./Messages.module.css"
 
 const Messages = (props) => {
 
+  console.log(props)
+
   let RenderMessage = props.Message.map( Message => <div>{Message.text}</div> );
 
   let messageText = React.createRef();

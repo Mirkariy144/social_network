@@ -4,12 +4,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ShitPostContainer from "./ShitPosts/ShitPostContainer";
 
 const ProfilePage = (props) => {
-  console.log(props.store.getState())
   return (
     <div>
       <ProfileInfo />
-      <ShitPostContainer store={props.store} />
-      <Post Post={props.store.getState().ShitPosts.Post} />
+      <ShitPostContainer />
+      <Post Post={props.Post} />
     </div>
   );
 };

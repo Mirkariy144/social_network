@@ -4,7 +4,6 @@ import c from './ShitPost.module.css'
 
 const ShitPost = (props) => {
 
-  console.log(props)
   let newPostWright = React.createRef();
 
   let sendPost = () => {

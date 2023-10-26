@@ -6,8 +6,8 @@ import MessagesContainer from "./Messages/MessagesContainer";
 const Dialogs = (props) => {
   return (
     <div className={c.wrapper}>
-        <NameList Characters={props.store.getState().Messages.Characters} />
-        <MessagesContainer store={props.store} />
+        <NameList Characters={props.Characters} />
+        <MessagesContainer />
     </div>
   );
 };
