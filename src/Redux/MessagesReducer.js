@@ -22,16 +22,24 @@ export const MessagesReducer = createSlice({
   initialState,
   reducers: {
     addNewMessage: (state) => {
+      let stateChanger = {
+        ...state,
+        Message: [...state.Message],
+      };
+
       let newMessagePush = {
-        text: state.updateMessageInput,
+        text: stateChanger.updateMessageInput,
       };
   
-      state.Message.push(newMessagePush)
-      state.updateMessageInput = ('');
+      stateChanger.Message.push(newMessagePush);
+      stateChanger.updateMessageInput = ('');
+      return stateChanger;
     },
       
     modifyMessageContent: (state, action) => {
-      state.updateMessageInput = action.payload;
+      let stateChanger = {...state};
+      stateChanger.updateMessageInput = action.payload;
+      return stateChanger;
     },
     
   }

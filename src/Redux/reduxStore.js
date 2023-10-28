@@ -15,6 +15,7 @@ let store = configureStore({
   }
 });
 
+window.store = store;
 // let store = createStore();
 
 export default store;

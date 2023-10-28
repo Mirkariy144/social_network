@@ -17,16 +17,25 @@ export const ProfilePageReducer = createSlice({
   initialState,
   reducers: {
     addNewPost: (state) => {
-      let newPostPush = {
-        text: state.newPostLetter
+      
+      let stateChanger = {
+        ...state,
+        Post: [...state.Post],
       };
       
-      state.Post.push(newPostPush)
-      state.newPostLetter = ('');
+      let newPostPush = {
+        text: stateChanger.newPostLetter
+      };
+      
+      stateChanger.Post.push(newPostPush);
+      stateChanger.newPostLetter = ('');
+      return stateChanger;
     },
       
     modifyPostContent: (state, action) => {
-      state.newPostLetter = action.payload;
+      let stateChanger = {...state};
+      stateChanger.newPostLetter = action.payload;
+      return stateChanger;
     },
     
   }
