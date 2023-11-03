@@ -4,7 +4,11 @@ import c from "./NameList.module.css"
 
 const NameList = (props) => {
 
-  let DialogsList = props.Characters.map( NameID => <div className={c.Name}><NavLink to={NameID.name}>{NameID.name}</NavLink></div>)
+  let DialogsList = props.Characters.map( ({id, name}) => (
+    <div className={c.Name} key={id} >
+      <NavLink to={name}>{name}</NavLink>
+    </div>
+  ));
 
   return (
     <div className={c.ChatSelector}>

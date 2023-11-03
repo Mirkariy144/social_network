@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
   return {
-    Message: state.Messages.Message,
+    Messages: state.Messages.Message,
     updateMessageInput: state.Messages.updateMessageInput,
   };
 };

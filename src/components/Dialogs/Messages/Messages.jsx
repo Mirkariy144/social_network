@@ -3,9 +3,7 @@ import c from "./Messages.module.css"
 
 const Messages = (props) => {
 
-  console.log(props)
-
-  let RenderMessage = props.Message.map( Message => <div>{Message.text}</div> );
+  let RenderMessage = props.Messages.map( ({id, text}) => <pre key={id}>{text}</pre> );
 
   let messageText = React.createRef();
 

@@ -1,19 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { baseState } from './data';
+
+let charactersID = 0;
+let messagesID = 0;
 
 let initialState = {
-    Characters: [
-      { name: 'Jovani Jorgo' },
-      { name: 'Veronika' },
-      { name: 'Selester' },
-      { name: 'Yoba Kot' },
-      { name: 'Kirasa' },
-      { name: 'MBT 80' },
-    ],
-    Message: [
-      { text: 'I love you' },
-      { text: 'Just try to make my future' },
-      { text: 'Can you help me, JS?' },
-    ],
+    Characters: baseState.Characters.map((item) => ({...item, id: charactersID++})),
+    Message: baseState.Message.map((item) => ({...item, id: messagesID++})),
     updateMessageInput: '',
 }
 
@@ -22,24 +15,16 @@ export const MessagesReducer = createSlice({
   initialState,
   reducers: {
     addNewMessage: (state) => {
-      let stateChanger = {
-        ...state,
-        Message: [...state.Message],
-      };
-
       let newMessagePush = {
-        text: stateChanger.updateMessageInput,
+        id: state.Message.length,
+        text: state.updateMessageInput,
       };
-  
-      stateChanger.Message.push(newMessagePush);
-      stateChanger.updateMessageInput = ('');
-      return stateChanger;
+      state.Message.push(newMessagePush);
+      state.updateMessageInput = ('');
     },
       
     modifyMessageContent: (state, action) => {
-      let stateChanger = {...state};
-      stateChanger.updateMessageInput = action.payload;
-      return stateChanger;
+      state.updateMessageInput = action.payload;
     },
     
   }

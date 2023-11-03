@@ -1,9 +1,11 @@
 import React from "react";
 import c from "./Post.module.css"
 
-const Post = (props) => {
+const Post = ({Post}) => {
 
-  let post = props.Post.map( PostID => <div className={c.Post}>{PostID.text}</div> )
+  let post = Post.map( ({id, text}) => (
+    <pre className={c.Post} key={id}>{text}</pre>
+  ));
 
   return (
     <div>

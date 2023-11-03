@@ -1,13 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { baseState } from './data';
+
+let postID = 0
 
 let initialState = {
-  Post: [
-    { text: 'Hey, bitch' },
-    { text: 'get out' },
-    { text: '.map' },
-    { text: 'kurwa' },
-    { text: 'props' },
-  ],
+  Post: baseState.Post.map((item)=> ({...item, id : postID++})),
 
   newPostLetter: '',
 }
@@ -16,26 +13,18 @@ export const ProfilePageReducer = createSlice({
   name: 'Posts',
   initialState,
   reducers: {
-    addNewPost: (state) => {
-      
-      let stateChanger = {
-        ...state,
-        Post: [...state.Post],
-      };
-      
+    addNewPost: (state) => {    
       let newPostPush = {
-        text: stateChanger.newPostLetter
+        id: state.Post.length,
+        text: state.newPostLetter
       };
       
-      stateChanger.Post.push(newPostPush);
-      stateChanger.newPostLetter = ('');
-      return stateChanger;
+      state.Post.push(newPostPush);
+      state.newPostLetter = ('');
     },
       
     modifyPostContent: (state, action) => {
-      let stateChanger = {...state};
-      stateChanger.newPostLetter = action.payload;
-      return stateChanger;
+      state.newPostLetter = action.payload;
     },
     
   }
