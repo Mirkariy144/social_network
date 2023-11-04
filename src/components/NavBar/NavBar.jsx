@@ -12,11 +12,14 @@ const NavBar = () => {
       <div className={c.item}>
         <NavLink to="news">Новости</NavLink>
       </div>
-      <div className={`${c.item} ${c.active}`}>
+      <div className={c.item}>
         <NavLink to="dialogs">Сообщения</NavLink>
       </div>
       <div className={c.item}>
         <NavLink to="friends">Друзья</NavLink>
+      </div>
+      <div className={c.item}>
+        <NavLink to="users">Пользователи</NavLink>
       </div>
     </div>
     );

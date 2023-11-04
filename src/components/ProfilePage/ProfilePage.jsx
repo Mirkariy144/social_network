@@ -4,9 +4,10 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ShitPostContainer from "./ShitPosts/ShitPostContainer";
 
 const ProfilePage = (props) => {
+  console.log(props)
   return (
     <div>
-      <ProfileInfo />
+      <ProfileInfo Users={props.Users} />
       <ShitPostContainer />
       <Post Post={props.Post} />
     </div>

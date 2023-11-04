@@ -2,21 +2,21 @@ import React from "react";
 import c from './ProfileInfo.module.css'
 
 
-const ProfileInfo = () => {
+const ProfileInfo = ({Users}) => {
     return (
         <div className={c.ProfilePage}>
             <div className={c.Ava}>
-                <img src='http://img.playground.ru/images/9/8/COTE_YOBA.jpg' />
+                <img src={Users.Avatar} />
             </div>
             <div className={c.Name}>
-                Name
+                {Users.Name}
             </div>
             <div className={c.AboutMe}>
                 About me
-                <div>Birthdate</div>
-                <div>City</div>
-                <div>Education</div>
-                <div>Web-site</div>
+                <div>{Users.City}</div>
+                <div>{Users.Birthday}</div>
+                <div>{Users.Education}</div>
+                <div>{Users.Website}</div>
             </div>
         </div>
     );

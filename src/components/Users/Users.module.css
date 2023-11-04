@@ -1,0 +1,42 @@
+.Container {
+  background-color: aquamarine;
+}
+
+.User {
+  display: grid;
+  grid-template-areas: 
+  'N C'
+  'St S';
+  grid-template-columns: 1fr 1fr;
+}
+
+.Name {
+  grid-area: N;
+}
+
+.Country {
+  grid-area: C;
+}
+
+.City {
+  grid-area: S;
+}
+
+.Status {
+  grid-area: St;
+}
+
+.item {
+  color: black;
+  text-decoration: none;
+}
+
+.item a {
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none;
+}
+
+.item :active {
+  color: red;
+}

@@ -4,7 +4,7 @@ import { baseState } from './data';
 let postID = 0
 
 let initialState = {
-  Post: baseState.Post.map((item)=> ({...item, id : postID++})),
+  Post: baseState.Post.map((item)=> ({...item, id: postID++})),
 
   newPostLetter: '',
 }

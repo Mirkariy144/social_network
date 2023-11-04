@@ -1,21 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import { createStore }  from "redux"
 import MessagesReducer from "./MessagesReducer";
 import ProfilePageReducer from "./ProfilePageReducer";
+import UsersReducer from './UsersReducer';
 
-// let reducers = combineReducers({
-//   ShitPosts: ProfilePageReducer,
-//   Messages: MessagesReducer
-// });
 
 let store = configureStore({
   reducer: {
     ShitPosts: ProfilePageReducer,
-    Messages: MessagesReducer
+    Messages: MessagesReducer,
+    Users: UsersReducer,
   }
 });
 
 window.store = store;
-// let store = createStore();
 
 export default store;
