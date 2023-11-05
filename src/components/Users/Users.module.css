@@ -2,6 +2,42 @@
   background-color: aquamarine;
 }
 
+.GridKurwa {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-areas: 
+  'Ex MI';
+  margin: 10px 5px 10px 5px;
+}
+
+.Extension {
+  grid-area: Ex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+  'A'
+  'F';
+}
+
+.MiniAvatar {
+  grid-area: A;
+  height: 54px;
+  width: 60px;
+}
+
+.Follow {
+  grid-area: F;
+  width: 60px;
+}
+
+.MainInfo {
+  grid-area: MI;
+  border: 2px solid black;
+  margin-left: 5px;
+  width: 700px;
+  height: 50px;
+}
+
 .User {
   display: grid;
   grid-template-areas: 

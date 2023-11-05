@@ -1,5 +1,5 @@
 import React from "react";
-import c from '../../ProfilePage/ProfileInfo/ProfileInfo.module.css'
+import c from './UserInfo.module.css'
 
 let UserPage = ({zog_zog}) => {
   return (

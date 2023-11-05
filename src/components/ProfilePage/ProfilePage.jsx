@@ -4,7 +4,6 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ShitPostContainer from "./ShitPosts/ShitPostContainer";
 
 const ProfilePage = (props) => {
-  console.log(props)
   return (
     <div>
       <ProfileInfo Users={props.Users} />

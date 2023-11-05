@@ -13,7 +13,7 @@ export const ProfilePageReducer = createSlice({
   name: 'Posts',
   initialState,
   reducers: {
-    addNewPost: (state) => {    
+    addNewPost: (state) => {  
       let newPostPush = {
         id: state.Post.length,
         text: state.newPostLetter
