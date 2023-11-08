@@ -1,12 +1,12 @@
 import React from "react";
 import c from './ProfileInfo.module.css'
-
+import UnfoundAva from '../../../Img/avaUnfound.jpg'
 
 const ProfileInfo = ({Users}) => {
     return (
         <div className={c.ProfilePage}>
             <div className={c.Ava}>
-                <img src={Users.Avatar} />
+                <img src={Users.Avatar?Users.Avatar:UnfoundAva} />
             </div>
             <div className={c.Name}>
                 {Users.Name}
