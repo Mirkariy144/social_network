@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import UserPage from "./UserPage";
 import { useParams } from "react-router-dom";
+import ProfileInfo from "../../ProfilePage/ProfileInfo/ProfileInfo";
 
 let UserPageContainer = () => {
   const {id} = useParams()
@@ -14,7 +15,7 @@ let UserPageContainer = () => {
       {
         zog_zog
           ? (
-            <UserPage zog_zog={zog_zog} />
+            <UserPage User={zog_zog} />
           )
           : (
             'Error 404'
