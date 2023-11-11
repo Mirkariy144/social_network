@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
-import { changeFollow, setUsers } from "../../Redux/UsersReducer";
+import { changeFollow, pages, setUsers } from "../../Redux/UsersReducer";
 import UsersClass from "./UsersClass";
 
 let mapStateToProps = (state) => {
   return {
     Users: state.Users.Users,
+    Pages: state.Users.Pages,
   };
 }
 
@@ -15,6 +16,9 @@ let mapDispatchToProps = (dispatch) => {
     },
     setUsers: (users) => {
       dispatch(setUsers(users))
+    },
+    pages: (num) => {
+      dispatch(pages(num))
     }
   }
 }

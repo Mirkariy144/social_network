@@ -18,14 +18,41 @@ class UsersClass extends React.Component {
             Status: oldUser.status,
             followed: oldUser.followed,
             Avatar: oldUser.photos.large,
+            AvatarMin: oldUser.photos.small,
             id: oldUser.id,
             Education: 'X-ray',
             Website: 'Just for me',
             Birthday: '30.06.1996',
           }
         })
+        const num = Math.ceil(responce.data.totalCount/10)
         this.props.setUsers(newUsers)
+        this.num = num
       })
+  }
+
+  num = 1
+
+  SelectPage = (page) => {
+    axios.get("https://social-network.samuraijs.com/api/1.0/users" + '?page=' + page)
+    .then(responce => {
+      const newUsers = responce.data.items.map((oldUser) => {
+        return {
+          Name: oldUser.name,
+          Country: 'Nothin',
+          City: 'Nowhere',
+          Status: oldUser.status,
+          followed: oldUser.followed,
+          Avatar: oldUser.photos.large,
+          AvatarMin: oldUser.photos.small,
+          id: oldUser.id,
+          Education: 'X-ray',
+          Website: 'Just for me',
+          Birthday: '30.06.1996',
+        }
+      })
+      this.props.setUsers(newUsers)
+    })
   }
 
   onFollowClick = (id) => {
@@ -33,12 +60,12 @@ class UsersClass extends React.Component {
   }
 
   render() {
-    const everyUser = this.props.Users.map(({Name, Country, City, Status, followed, Avatar, id}) => {
+    const everyUser = this.props.Users.map(({Name, Country, City, Status, followed, AvatarMin, id}) => {
       return (
           <div className={c.GridKurwa} key={id}>
             <div className={c.Extension} >
               <NavLink to={`/users/${id}`} >
-                <img src={Avatar?Avatar:UnfoundAva} className={c.MiniAvatar} />
+                <img src={AvatarMin?AvatarMin:UnfoundAva} className={c.MiniAvatar} />
               </NavLink>
               <Button id={id} title={followed?'Unfollow':'Follow'} onClick={() => this.onFollowClick(id)} />
             </div>
@@ -63,8 +90,29 @@ class UsersClass extends React.Component {
           </div>
       )
     });
+    const pagesNums = () => {
+      for ( let i = 1; i <= this.num; i++) {
+        if (this.props.Pages.length === 0) {
+          this.props.pages(i)
+        }
+      }
+    }
+
+    const numChecker = (num) => {
+      console.log(num)
+    }
+
+    const selectedPage = React.createRef()
+
+    const addNums = this.props.Pages.map((item) => {
+      return <option id={item} value={item} >{item}</option>
+    })
+  
     return (
-      <div className={c.Container}>
+      <div className={c.Container} >
+        <select id="select" onClick={pagesNums} ref={selectedPage} onChange={() => this.SelectPage(selectedPage.current.value)}>
+          {addNums}
+        </select>
         {everyUser}
       </div>
   )
