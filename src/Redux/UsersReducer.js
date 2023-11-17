@@ -30,10 +30,6 @@ export const UsersReducer = createSlice({
     setUsers: (state, action) => {
       state.Users = action.payload
     },
-
-    pages: (state, action) => {
-      state.Pages.push(action.payload)
-    }
   }
 });
 

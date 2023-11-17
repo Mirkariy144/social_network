@@ -7,35 +7,29 @@ import UnfoundAva from '../../Img/avaUnfound.jpg'
 
 class UsersClass extends React.Component {
 
-  componentDidMount() {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users")
-      .then(responce => {
-        const newUsers = responce.data.items.map((oldUser) => {
-          return {
-            Name: oldUser.name,
-            Country: 'Nothin',
-            City: 'Nowhere',
-            Status: oldUser.status,
-            followed: oldUser.followed,
-            Avatar: oldUser.photos.large,
-            AvatarMin: oldUser.photos.small,
-            id: oldUser.id,
-            Education: 'X-ray',
-            Website: 'Just for me',
-            Birthday: '30.06.1996',
-          }
-        })
-        const num = Math.ceil(responce.data.totalCount/10)
-        this.props.setUsers(newUsers)
-        this.num = num
-      })
+  state = {
+    totalPages: null,
+    currentPage: 1,
   }
 
-  num = 1
+  componentDidMount() {
+    this.SelectPage(this.state.currentPage)
+  }
+
+
+
 
   SelectPage = (page) => {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users" + '?page=' + page)
+    if (Number.isNaN(+page) || +page <= 0) {
+      return;
+    }
+    const url = new URL("https://social-network.samuraijs.com/api/1.0/users");
+    url.searchParams.set('page', page);
+
+    axios.get(url)
     .then(responce => {
+      this.setState({ totalPages: Math.ceil(responce.data.totalCount/10) })
+
       const newUsers = responce.data.items.map((oldUser) => {
         return {
           Name: oldUser.name,
@@ -57,6 +51,11 @@ class UsersClass extends React.Component {
 
   onFollowClick = (id) => {
     this.props.changeFollow(id)
+  }
+
+  
+  onPageChange = (value) => {
+    this.setState({ currentPage: value })
   }
 
   render() {
@@ -90,29 +89,18 @@ class UsersClass extends React.Component {
           </div>
       )
     });
-    const pagesNums = () => {
-      for ( let i = 1; i <= this.num; i++) {
-        if (this.props.Pages.length === 0) {
-          this.props.pages(i)
-        }
-      }
-    }
-
-    const numChecker = (num) => {
-      console.log(num)
-    }
-
-    const selectedPage = React.createRef()
-
-    const addNums = this.props.Pages.map((item) => {
-      return <option id={item} value={item} >{item}</option>
-    })
-  
+      
     return (
       <div className={c.Container} >
-        <select id="select" onClick={pagesNums} ref={selectedPage} onChange={() => this.SelectPage(selectedPage.current.value)}>
-          {addNums}
-        </select>
+        {this.state.totalPages && (
+          <div>Всего страниц: {this.state.totalPages}</div>
+        )}
+        <input
+          type="number"
+          value={this.state.currentPage}
+          onChange={(e) => this.onPageChange(e.target.value)}
+        />
+        <button onClick={() => this.SelectPage(this.state.currentPage)}>ЗаПрОс</button>
         {everyUser}
       </div>
   )
