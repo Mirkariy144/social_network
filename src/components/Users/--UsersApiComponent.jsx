@@ -4,12 +4,14 @@ import { NavLink } from "react-router-dom";
 import Button from "./Button";
 import axios from "axios";
 import UnfoundAva from '../../Img/avaUnfound.jpg'
+import Users from "./Users";
 
 class UsersClass extends React.Component {
 
   state = {
     totalPages: null,
     currentPage: 1,
+    PagesCount: 10,
   }
 
   componentDidMount() {
@@ -19,16 +21,17 @@ class UsersClass extends React.Component {
 
 
 
-  SelectPage = (page) => {
+  SelectPage = (page, count) => {
     if (Number.isNaN(+page) || +page <= 0) {
       return;
     }
     const url = new URL("https://social-network.samuraijs.com/api/1.0/users");
     url.searchParams.set('page', page);
+    url.searchParams.set('count', count)
 
     axios.get(url)
     .then(responce => {
-      this.setState({ totalPages: Math.ceil(responce.data.totalCount/10) })
+        this.setState({ totalPages: Math.ceil(responce.data.totalCount/count) })
 
       const newUsers = responce.data.items.map((oldUser) => {
         return {
@@ -56,6 +59,11 @@ class UsersClass extends React.Component {
   
   onPageChange = (value) => {
     this.setState({ currentPage: value })
+  }
+
+  howManyPagesFunc = (num) => {
+    this.setState({ PagesCount: num })
+    this.SelectPage(this.state.currentPage, num)
   }
 
   render() {
@@ -89,21 +97,19 @@ class UsersClass extends React.Component {
           </div>
       )
     });
+
+    console.log(this.props)
       
     return (
-      <div className={c.Container} >
-        {this.state.totalPages && (
-          <div>Всего страниц: {this.state.totalPages}</div>
-        )}
-        <input
-          type="number"
-          value={this.state.currentPage}
-          onChange={(e) => this.onPageChange(e.target.value)}
-        />
-        <button onClick={() => this.SelectPage(this.state.currentPage)}>ЗаПрОс</button>
-        {everyUser}
-      </div>
-  )
+        <Users 
+        everyUser={everyUser} 
+        totalPages={this.state.totalPages} 
+        onPageChange={this.onPageChange} 
+        howManyPagesFunc={this.howManyPagesFunc} 
+        SelectPage={this.SelectPage} 
+        currentPage={this.state.currentPage}
+        PagesCount={this.state.PagesCount}/>
+    )
   }
 
 

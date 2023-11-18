@@ -15,7 +15,10 @@ let initialState = {
       Avatar: 'https://sun6-20.userapi.com/s/v1/if1/03iNhTcpEU0rIWtAR3SYQ3fAO3ROzx43ZZ26vEcTHhexJazbty5wbFMcIZgOdvR-KjWZPo1M.jpg?size=428x580&quality=96&crop=0,0,428,580&ava=1',
     },
   ],
-  Pages: [],
+  totalPages: null,
+  currentPage: 1,
+  PagesCount: 10,
+  isFetching: false,
 }
 
 export const UsersReducer = createSlice({
@@ -30,9 +33,18 @@ export const UsersReducer = createSlice({
     setUsers: (state, action) => {
       state.Users = action.payload
     },
+    totalPagesChanger: (state, action) => {
+      state.totalPages = action.payload
+    },
+    currentPageChanger: (state, action) => {
+      state.currentPage = action.payload
+    },
+    PagesCountChanger: (state, action) => {
+      state.PagesCount = action.payload
+    },
   }
 });
 
-export const {changeFollow, setUsers, pages} = UsersReducer.actions;
+export const {changeFollow, setUsers, totalPagesChanger, currentPageChanger, PagesCountChanger} = UsersReducer.actions;
 
 export default UsersReducer.reducer;
