@@ -18,7 +18,9 @@ let initialState = {
   totalPages: null,
   currentPage: 1,
   PagesCount: 10,
-  isFetching: false,
+  isFetching: true,
+  CurrentUser: null,
+  CurrentUserID: null,
 }
 
 export const UsersReducer = createSlice({
@@ -42,9 +44,18 @@ export const UsersReducer = createSlice({
     PagesCountChanger: (state, action) => {
       state.PagesCount = action.payload
     },
+    isFetchingChanger: (state, action) => {
+      state.isFetching = action.payload
+    },
+    setCurrentUserID: (state, action) => {
+      state.CurrentUserID = action.payload
+    },
+    setCurrentUser: (state, action) => {
+      state.CurrentUser = action.payload
+    },
   }
 });
 
-export const {changeFollow, setUsers, totalPagesChanger, currentPageChanger, PagesCountChanger} = UsersReducer.actions;
+export const {changeFollow, setUsers, totalPagesChanger, currentPageChanger, PagesCountChanger, isFetchingChanger, setCurrentUser, setCurrentUserID } = UsersReducer.actions;
 
 export default UsersReducer.reducer;

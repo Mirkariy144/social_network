@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
   return {
-    Post: state.ShitPosts.Post,
+    Posts: state.ShitPosts.Posts,
     Users: state.Users.Users[0],
   }
 }

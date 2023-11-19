@@ -1,9 +1,9 @@
 import React from "react";
 import c from "./Post.module.css"
 
-const Post = ({Post}) => {
+const Post = ({Posts}) => {
 
-  let post = Post.map( ({id, text}) => (
+  let post = Posts.map( ({id, text}) => (
     <pre className={c.Post} key={id}>{text}</pre>
   ));
 

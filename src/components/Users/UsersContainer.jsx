@@ -5,13 +5,14 @@ import Button from "./Button";
 import axios from "axios";
 import UnfoundAva from '../../Img/avaUnfound.jpg'
 import Users from "./Users";
+import Loader from '../Loader/Loader'
 import { connect } from "react-redux";
-import { changeFollow, setUsers, totalPagesChanger, currentPageChanger, PagesCountChanger } from "../../Redux/UsersReducer";
+import { changeFollow, setUsers, totalPagesChanger, currentPageChanger, PagesCountChanger, isFetchingChanger, setCurrentUserID } from "../../Redux/UsersReducer";
 
 class UsersClass extends React.Component {
 
   componentDidMount() {
-    this.SelectPage(this.props.currentPage)
+    this.SelectPage(this.props.currentPage, this.props.PagesCount)
   }
 
   SelectPage = (page, count) => {
@@ -21,11 +22,12 @@ class UsersClass extends React.Component {
     const url = new URL("https://social-network.samuraijs.com/api/1.0/users");
     url.searchParams.set('page', page);
     url.searchParams.set('count', count)
-
+    this.props.isFetchingChanger(true)
+    
     axios.get(url)
     .then(responce => {
-        this.props.totalPagesChanger(Math.ceil(responce.data.totalCount/count))
-
+      this.props.totalPagesChanger(Math.ceil(responce.data.totalCount/count))
+      this.props.isFetchingChanger(false)
       const newUsers = responce.data.items.map((oldUser) => {
         return {
           Name: oldUser.name,
@@ -58,10 +60,14 @@ class UsersClass extends React.Component {
     this.SelectPage(this.props.currentPage, num)
   }
 
+  setCurrentUserID = (id) => {
+    this.props.setCurrentUserID(id)
+  }
+
   render() {
     const everyUser = this.props.Users.map(({Name, Country, City, Status, followed, AvatarMin, id}) => {
       return (
-          <div className={c.GridKurwa} key={id}>
+          <div className={c.GridKurwa} key={id} onClick={() => this.setCurrentUserID(id)}>
             <div className={c.Extension} >
               <NavLink to={`/users/${id}`} >
                 <img src={AvatarMin?AvatarMin:UnfoundAva} className={c.MiniAvatar} />
@@ -88,10 +94,10 @@ class UsersClass extends React.Component {
             </div>
           </div>
       )
-    });      
+    });     
     return (
       <>
-        {this.props.isFetching?<span class={c.loader}></span>:<Users 
+        {this.props.isFetching?<Loader />:<Users 
         everyUser={everyUser} 
         totalPages={this.props.totalPages} 
         onPageChange={this.onPageChange} 
@@ -99,14 +105,6 @@ class UsersClass extends React.Component {
         SelectPage={this.SelectPage} 
         currentPage={this.props.currentPage}
         PagesCount={this.props.PagesCount}/>}
-        {/* <Users 
-        everyUser={everyUser} 
-        totalPages={this.props.totalPages} 
-        onPageChange={this.onPageChange} 
-        howManyPagesFunc={this.howManyPagesFunc} 
-        SelectPage={this.SelectPage} 
-        currentPage={this.props.currentPage}
-        PagesCount={this.props.PagesCount}/> */}
       </>
     )
   }
@@ -124,26 +122,8 @@ let mapStateToProps = (state) => {
   };
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    changeFollow: (id) => {
-      dispatch(changeFollow(id))
-    },
-    setUsers: (users) => {
-      dispatch(setUsers(users))
-    },
-    totalPagesChanger: (totalPagesNum) => {
-      dispatch(totalPagesChanger(totalPagesNum))
-    },
-    currentPageChanger: (currentPageNum) => {
-      dispatch(currentPageChanger(currentPageNum))
-    },
-    PagesCountChanger: (PagesCountNum) => {
-      dispatch(PagesCountChanger(PagesCountNum))
-    }
-  }
-}
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClass);
+const UsersContainer = connect(mapStateToProps, 
+  { changeFollow, setUsers, totalPagesChanger, 
+    currentPageChanger, PagesCountChanger, isFetchingChanger, setCurrentUserID })(UsersClass);
 
 export default UsersContainer

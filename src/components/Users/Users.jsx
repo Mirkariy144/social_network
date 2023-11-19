@@ -1,10 +1,8 @@
 import React from "react";
 import c from './Users.module.css'
-import { NavLink } from "react-router-dom";
-import Button from "./Button";
-import UnfoundAva from '../../Img/avaUnfound.jpg'
 
 const Users = ({everyUser, totalPages, onPageChange, howManyPagesFunc, SelectPage, currentPage, PagesCount}) => {
+
   return (
     <div className={c.Container} >
     {totalPages && (

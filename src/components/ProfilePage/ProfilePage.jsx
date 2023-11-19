@@ -2,13 +2,17 @@ import React from "react";
 import Post from "./ShitPosts/Post/Post"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ShitPostContainer from "./ShitPosts/ShitPostContainer";
+import Loader from "../Loader/Loader";
 
-const ProfilePage = (props) => {
+const ProfilePage = ({Users, Posts}) => {
+  if (!Users) {
+    return <Loader />
+  }
   return (
     <div>
-      <ProfileInfo Users={props.Users} />
+      <ProfileInfo Users={Users} />
       <ShitPostContainer />
-      <Post Post={props.Post} />
+      <Post Posts={Posts} />
     </div>
   );
 };

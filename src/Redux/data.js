@@ -12,7 +12,7 @@ export const baseState = {
         { text: 'Just try to make my future' },
         { text: 'Can you help me, JS?' },
     ],
-    Post: [
+    Posts: [
         { text: 'Hey, bitch' },
         { text: 'get out' },
         { text: '.map' },

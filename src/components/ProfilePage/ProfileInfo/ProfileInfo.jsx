@@ -6,17 +6,23 @@ const ProfileInfo = ({Users}) => {
     return (
         <div className={c.ProfilePage}>
             <div className={c.Ava}>
-                <img src={Users.Avatar?Users.Avatar:UnfoundAva} />
+                <img src={Users.photos.large?Users.photos.large:UnfoundAva} />
             </div>
             <div className={c.Name}>
-                {Users.Name}
+                {Users.fullName}
             </div>
             <div className={c.AboutMe}>
-                About me
-                <div>{Users.City}</div>
-                <div>{Users.Birthday}</div>
-                <div>{Users.Education}</div>
-                <div>{Users.Website}</div>
+                {Users.aboutMe}
+                <div>{Users.contacts.facebook }</div>
+                <div>{Users.contacts.website }</div>
+                <div>{Users.contacts.vk }</div>
+                <div>{Users.contacts.twitter }</div>
+                <div>{Users.contacts.instagram }</div>
+                <div>{Users.contacts.youtube }</div>
+                <div>{Users.contacts.github }</div>
+                <div>{Users.contacts.mainLink }</div>
+                <div>{Users.lookingForAJob }</div>
+                <div>{Users.lookingForAJobDescription }</div>
             </div>
         </div>
     );
