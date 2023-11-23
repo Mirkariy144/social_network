@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProfilePage from "../../ProfilePage/ProfilePage";
-import Loader from '../../Loader/Loader'
 import c from '../../Content/Content.module.css'
 import axios from "axios";
-import { setCurrentUser, isFetchingChanger } from "../../../Redux/UsersReducer";
+import { setCurrentUser, isFetchingChanger, setCurrentUserID } from "../../../Redux/UsersReducer";
 
 class UserPageContainerClass extends React.Component {
   
@@ -14,8 +13,6 @@ class UserPageContainerClass extends React.Component {
 
   UserPageContainerProps = (id) => {
     const url = new URL("https://social-network.samuraijs.com/api/1.0/profile/" + id)
-    console.log(url)
-
     this.props.isFetchingChanger(true)
     axios.get(url)
     .then(responce => {
@@ -25,11 +22,15 @@ class UserPageContainerClass extends React.Component {
     })
   }
 
+  setCurrentUserID = (id) => {
+    this.props.setCurrentUserID(id)
+  }
+
   render() { 
     return (
       <div className={c.appContent}>
         <img src='https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg' /> 
-        <ProfilePage Users={this.props.CurrentUser} Posts={this.props.Posts} />
+        <ProfilePage Users={this.props.CurrentUser} Posts={this.props.Posts} setCurrentUserID={this.setCurrentUserID}/>
       </div>
     )
   }
@@ -43,6 +44,4 @@ let mapStateToProps = (state) => {
     isFetching: state.Users.isFetching,
 }}
 
-const UserPageContainer = connect(mapStateToProps, {setCurrentUser, isFetchingChanger})(UserPageContainerClass)
-
-export default UserPageContainer;
+export default connect(mapStateToProps, {setCurrentUser, isFetchingChanger, setCurrentUserID})(UserPageContainerClass)

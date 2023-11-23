@@ -60,14 +60,14 @@ class UsersClass extends React.Component {
     this.SelectPage(this.props.currentPage, num)
   }
 
-  setCurrentUserID = (id) => {
-    this.props.setCurrentUserID(id)
-  }
+  // setCurrentUserID = (id) => {
+  //   this.props.setCurrentUserID(id)
+  // }
 
   render() {
     const everyUser = this.props.Users.map(({Name, Country, City, Status, followed, AvatarMin, id}) => {
       return (
-          <div className={c.GridKurwa} key={id} onClick={() => this.setCurrentUserID(id)}>
+          <div className={c.GridKurwa} key={id} >
             <div className={c.Extension} >
               <NavLink to={`/users/${id}`} >
                 <img src={AvatarMin?AvatarMin:UnfoundAva} className={c.MiniAvatar} />

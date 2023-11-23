@@ -1,31 +1,30 @@
+import React, {useEffect, useState} from "react";
 import { connect, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+
 import ProfilePage from "../../ProfilePage/ProfilePage";
 import c from '../../Content/Content.module.css'
+import Loader from "../../Loader/Loader";
 
-let UserPageContainerProps = ({Posts, match}) => {
-  console.log(match)
+let UserPageContainerProps = ({Posts}) => {
   const {id} = useParams()
-  const zog_zog = useSelector((state) => state.Users.Users.find((user) => {
-    return (
-      +id === user.id
-    )
-  }))
+  const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + id)
+      .then(responce => {
+        setUser(responce.data)
+      })
+  }, [id])
+
+  if (!user) {
+    return <Loader />
+  }
   return (
-    <div>
-      {
-        zog_zog
-          ? (
-            <div className={c.appContent}>
-              <img src='https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg' /> 
-              <ProfilePage Users={zog_zog} Posts={Posts} />
-            </div>
-          )
-          : (
-            'Error 404'
-          )
-      }
+    <div className={c.appContent}>
+      <img src='https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg' /> 
+      <ProfilePage Users={user} Posts={Posts} />
     </div>
 )}
 
