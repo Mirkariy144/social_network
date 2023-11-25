@@ -1,7 +1,7 @@
 import React from "react";
 import c from './Users.module.css'
 
-const Users = ({totalPages, currentPage, everyUser, howManyPagesFunc, SelectPage}) => {
+const Users = ({setCurrentPage, currentPage, everyUser, totalPages, setPagesCount}) => {
 
   return (
     <div className={c.Container} >
@@ -11,12 +11,12 @@ const Users = ({totalPages, currentPage, everyUser, howManyPagesFunc, SelectPage
     <input
       type="number"
       value={currentPage}
-      onChange={(e) => onPageChange(e.target.value)}
+      onChange={(e) => setCurrentPage(e.target.value)}
     />
-    <div onClick={() => se(10)}><a href="#" className={c.PagesCount}>10</a></div>
-    <div onClick={() => howManyPagesFunc(20)}><a href="#" className={c.PagesCount}>20</a></div>
-    <div onClick={() => howManyPagesFunc(30)}><a href="#" className={c.PagesCount}>30</a></div>
-    <button onClick={() => SelectPage(currentPage, PagesCount)}>ЗаПрОс</button>
+    <div onClick={() => setPagesCount(10)}><a href="#" className={c.PagesCount}>10</a></div>
+    <div onClick={() => setPagesCount(20)}><a href="#" className={c.PagesCount}>20</a></div>
+    <div onClick={() => setPagesCount(30)}><a href="#" className={c.PagesCount}>30</a></div>
+    <button onClick={() => setCurrentPage(currentPage)}>ЗаПрОс</button>
     {everyUser}
   </div>
   )
