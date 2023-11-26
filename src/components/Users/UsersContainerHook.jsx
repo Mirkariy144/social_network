@@ -6,8 +6,6 @@ import axios from "axios";
 import UnfoundAva from '../../Img/avaUnfound.jpg'
 import Users from "./Users";
 import Loader from '../Loader/Loader'
-// import { connect } from "react-redux";
-// import { changeFollow, setUsers, totalPagesChanger, currentPageChanger, PagesCountChanger, isFetchingChanger, setCurrentUserID } from "../../Redux/UsersReducer";
 
 const UsersListContainer = () => {
 
@@ -79,19 +77,5 @@ const UsersListContainer = () => {
       setPagesCount={setPagesCount} />
   )
 }
-
-// let mapStateToProps = (state) => {
-//   return {
-//     Users: state.Users.Users,
-//     totalPages: state.Users.totalPages,
-//     currentPage: state.Users.currentPage,
-//     PagesCount: state.Users.PagesCount,
-//     isFetching: state.Users.isFetching,
-//   };
-// }
-
-// const UsersContainer = connect(mapStateToProps, 
-//   { changeFollow, setUsers, totalPagesChanger, 
-//     currentPageChanger, PagesCountChanger, isFetchingChanger, setCurrentUserID })(UsersListContainer);
 
 export default UsersListContainer

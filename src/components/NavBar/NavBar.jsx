@@ -1,13 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 import c from './navBar.module.css';
+import Loader from '../Loader/Loader';
 
 const NavBar = () => {
-    return (
+
+  const id = useSelector(state => state.Auth.id);
+
+  if (!id) {
+    return <Loader />;
+  }
+  return (
     <div className={c.appNavBar}>
       <div className={c.item}>
-        <NavLink to="profile">Профиль</NavLink>
+        <NavLink to={`profile/${id}`}>Профиль</NavLink>
       </div>
       <div className={c.item}>
         <NavLink to="news">Новости</NavLink>
@@ -22,7 +30,7 @@ const NavBar = () => {
         <NavLink to="users">Пользователи</NavLink>
       </div>
     </div>
-    );
-  };
+  );
+};
 
   export default NavBar;

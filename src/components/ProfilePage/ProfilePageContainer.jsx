@@ -1,13 +1,33 @@
-import ProfilePage from "./ProfilePage"
+import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import ProfilePage from "./ProfilePage"
+import Loader from "../Loader/Loader";
+
+const MyProfilePageContainer = ({Posts}) => {
+  const {id} = useParams()
+  const [user, setUsers] = useState(null)
+
+  useEffect(() => {
+    axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + id)
+      .then(responce => {
+        setUsers(responce.data)
+      })
+  }, [id])
+  if (!user) {
+    return <Loader />
+  }
+  return (
+    <ProfilePage Posts={Posts} Users={user}/>
+  )}
 
 let mapStateToProps = (state) => {
   return {
     Posts: state.ShitPosts.Posts,
-    Users: state.Users.Users[0],
   }
 }
 
-const ProfilePageContainer = connect(mapStateToProps)(ProfilePage);
+const ProfilePageContainer = connect(mapStateToProps)(MyProfilePageContainer);
 
 export default ProfilePageContainer

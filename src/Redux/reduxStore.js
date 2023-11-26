@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import MessagesReducer from "./MessagesReducer";
 import ProfilePageReducer from "./ProfilePageReducer";
-// import UsersReducer from './UsersReducer';
+import AuthReducer from './AuthReducer';
 
 
 let store = configureStore({
   reducer: {
     ShitPosts: ProfilePageReducer,
     Messages: MessagesReducer,
-    // Users: UsersReducer,
+    Auth: AuthReducer,
   }
 });
 
