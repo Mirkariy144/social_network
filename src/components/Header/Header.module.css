@@ -1,11 +1,18 @@
 .appHeader {
-    background-color: red;
-    grid-area: a;
+  background-color: red;
+  grid-area: a;
 }
 
 .appHeader img {
-    height: 50px;
+  height: 50px;
 }
 
 .login {
-    float: right;}
+  float: right;
+  color: yellowgreen;
+}
+
+.login a {
+  color: yellowgreen;
+  text-decoration: none;
+}

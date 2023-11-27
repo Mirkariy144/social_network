@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "./Header";
 import Loader from "../Loader/Loader";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setId } from "../../Redux/AuthReducer"
 
 const HeaderContainer = () => {
@@ -16,7 +16,7 @@ const HeaderContainer = () => {
 				setAuthUser(responce.data.data)
 				dispatch(setId(responce.data.data.id))
 			})
-	}, [dispatch])
+	}, [])
 
 	if (!authUser) {
 		<Loader />
