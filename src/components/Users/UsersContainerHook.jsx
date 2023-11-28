@@ -6,6 +6,7 @@ import axios from "axios";
 import UnfoundAva from '../../Img/avaUnfound.jpg'
 import Users from "./Users";
 import Loader from '../Loader/Loader'
+import { axiosFollowDelete, axiosFollowPost, axiosGetUsers } from "../../API/API";
 
 const UsersListContainer = () => {
 
@@ -13,24 +14,28 @@ const UsersListContainer = () => {
   const [totalPages, setTotalPages] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
   const [PagesCount, setPagesCount] = useState(10)
+  const [followingID, setFollowingID] = useState([])
 
   useEffect(() => {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users" + "?page=" + currentPage + "&count=" + PagesCount, { withCredentials: true })
-      .then(responce => {
-        setUsers(responce.data.items)
-        setTotalPages(Math.ceil(responce.data.totalCount / PagesCount))
-      })
+    axiosGetUsers(currentPage > 1? currentPage: 1, PagesCount).then(data => {
+      setUsers(data.items)
+      setTotalPages(Math.ceil(data.totalCount / PagesCount))
+    })
   }, [currentPage, PagesCount])
 
   const followPost = (id) => {
-    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, { withCredentials: true, headers: { "API-KEY": "628cafed-fe59-4489-aa8f-713e071ba5d4" } })
-      .then(responce => {
-        if (responce.data.resultCode === 0) {
+    followingInProgress(id)
+    axiosFollowPost(id).then(data => {
+        if (data.resultCode === 0) {
           setUsers((users1) => {
             return users1.map((user) => {
               if (user.id === id) {
+                const index = followingID.indexOf(id)
+                followingID.splice(index, 1)
                 return { ...user, followed: true }
               }
+              const index = followingID.indexOf(id)
+              followingID.splice(index, 1)
               return user
             })
           })
@@ -38,21 +43,34 @@ const UsersListContainer = () => {
       })
   }
   const followDelete = (id) => {
-    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, { withCredentials: true, headers: { "API-KEY": "628cafed-fe59-4489-aa8f-713e071ba5d4" } })
-      .then(responce => {
-        if (responce.data.resultCode === 0) {
+    followingInProgress(id)
+    axiosFollowDelete(id).then(data => {
+        if (data.resultCode === 0) {
           setUsers((users1) => {
             return users1.map((user) => {
               if (user.id === id) {
+                const index = followingID.indexOf(id)
+                followingID.splice(index, 1)
                 return { ...user, followed: false }
               }
+              const index = followingID.indexOf(id)
+              followingID.splice(index, 1)
               return user
             })
           })
         }
-      })
+     })
   }
+  console.log()
 
+  const followingInProgress = (id) => {
+    if (followingID.length === 0) {
+      setFollowingID([id])
+    } else {
+      const data = [...followingID, id]
+      setFollowingID(data)
+    }
+  }
   const everyUser = users?.map(({ name, id, uniqueUrlName, status, followed, photos: { small } }) => {
     return (
       <div className={c.GridKurwa} key={id} >
@@ -60,7 +78,7 @@ const UsersListContainer = () => {
           <NavLink to={`/users/${id}`} >
             <img src={small ? small : UnfoundAva} className={c.MiniAvatar} />
           </NavLink>
-          <Button title={followed ? 'Unfollow' : 'Follow'} onClick={() => followed ? followDelete(id) : followPost(id)} />
+          <Button followingId={followingID} id={id} title={followed ? 'Unfollow' : 'Follow'} onClick={() => followed ? followDelete(id) : followPost(id)} />
         </div>
         <div className={c.MainInfo}>
           <NavLink to={`/users/${id}`} className={c.item} >

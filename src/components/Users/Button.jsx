@@ -1,10 +1,9 @@
 import React from "react";
 import c from './Users.module.css'
 
-let Button = ({title, onClick}) => {
-
+let Button = ({title, onClick, id, followingId}) => {
   return (
-    <button className={c.Follow} onClick={onClick} >{title}</button>
+    <button disabled={id === followingId?true:false} className={c.Follow} onClick={onClick} >{title}</button>
   )
 }
 
