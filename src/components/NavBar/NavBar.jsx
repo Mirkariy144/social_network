@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { redirect } from 'react-router-dom';
 
 import c from './navBar.module.css';
 import Loader from '../Loader/Loader';
@@ -9,25 +10,22 @@ const NavBar = () => {
 
   const id = useSelector(state => state.Auth.id);
 
-  if (!id) {
-    return <Loader />;
-  }
   return (
     <div className={c.appNavBar}>
       <div className={c.item}>
-        <NavLink to={`profile/${id}`}>Профиль</NavLink>
+        <NavLink to={id?`profile/${id}`:'login'}>Профиль</NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="news">Новости</NavLink>
+        <NavLink to={id?'news':'login'}>Новости</NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="dialogs">Сообщения</NavLink>
+        <NavLink to={id?'messages':'login'}>Сообщения</NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="friends">Друзья</NavLink>
+        <NavLink to={id?'friends':'login'}>Друзья</NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="users">Пользователи</NavLink>
+        <NavLink to={id?'users':'login'}>Пользователи</NavLink>
       </div>
     </div>
   );

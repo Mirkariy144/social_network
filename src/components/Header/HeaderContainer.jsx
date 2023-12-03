@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
-import Loader from "../Loader/Loader";
-import { useDispatch } from "react-redux";
-import { setId } from "../../Redux/AuthReducer"
-import { axiosGetProfile } from "../../API/API";
+import { connect, useSelector } from "react-redux";
+import { getUserThunkCreator } from "../../Redux/AuthReducer";
+import { useNavigate } from "react-router-dom";
 
-const HeaderContainer = () => {
-	const [authUser, setAuthUser] = useState(null);
-
-	const dispatch = useDispatch()
+const HeaderContainer = ({AuthUser, getUserThunkCreator}) => {
 
 	useEffect(() => {
-		axiosGetProfile().then(data => {
-      setAuthUser(data)
-      dispatch(setId(data.id))
-    })
-	}, [dispatch])
+		getUserThunkCreator()
 
-	if (!authUser) {
-		<Loader />
-	} 
+	}, [AuthUser, getUserThunkCreator])
+ 
 	return (
-		<Header authUser={authUser} />
+		<Header authUser={AuthUser} />
 	);
 };
+
+let mapStateToProps = (state) => {
+  return {
+    AuthUser: state.Auth
+  }
+}
+
+export let HeaderConnector = connect(mapStateToProps, {getUserThunkCreator})(HeaderContainer)
 
 export default HeaderContainer

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   withCredentials: true,
-  headers: { "API-KEY": "628cafed-fe59-4489-aa8f-713e071ba5d4" },
+  headers: { "API-KEY": "387c1de8-35b7-41d3-bec8-c46c4c79259f" },
   baseURL: "https://social-network.samuraijs.com/api/1.0/"
 })
 
@@ -23,5 +23,5 @@ export const axiosGetUsers = async (currentPage, PagesCount) => {
 
 export const axiosGetProfile = async () => {
   const responce = await instance.get("auth/me");
-  return responce.data.data;
+  return responce.data;
 }

@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import c from './Users.module.css'
 import { NavLink } from "react-router-dom";
 import Button from "./Button";
-import axios from "axios";
 import UnfoundAva from '../../Img/avaUnfound.jpg'
 import Users from "./Users";
 import Loader from '../Loader/Loader'
 import { axiosFollowDelete, axiosFollowPost, axiosGetUsers } from "../../API/API";
+import { batch } from "react-redux";
 
 const UsersListContainer = () => {
 
@@ -27,17 +27,16 @@ const UsersListContainer = () => {
     followingInProgress(id)
     axiosFollowPost(id).then(data => {
         if (data.resultCode === 0) {
-          setUsers((users1) => {
-            return users1.map((user) => {
-              if (user.id === id) {
-                const index = followingID.indexOf(id)
-                followingID.splice(index, 1)
-                return { ...user, followed: true }
-              }
-              const index = followingID.indexOf(id)
-              followingID.splice(index, 1)
-              return user
+          batch(() => {
+            setUsers((users1) => {
+              return users1.map((user) => {
+                if (user.id === id) {
+                  return { ...user, followed: true }
+                }
+                return user
+              })
             })
+            setFollowingID((prevFollowingID) => prevFollowingID.filter((item) => item !== id))
           })
         }
       })
@@ -46,31 +45,27 @@ const UsersListContainer = () => {
     followingInProgress(id)
     axiosFollowDelete(id).then(data => {
         if (data.resultCode === 0) {
-          setUsers((users1) => {
-            return users1.map((user) => {
-              if (user.id === id) {
-                const index = followingID.indexOf(id)
-                followingID.splice(index, 1)
-                return { ...user, followed: false }
-              }
-              const index = followingID.indexOf(id)
-              followingID.splice(index, 1)
-              return user
+          batch(() => {
+            setUsers((users1) => {
+              return users1.map((user) => {
+                if (user.id === id) {
+                  return { ...user, followed: false }
+                }
+                return user
+              })
             })
+            setFollowingID((prevFollowingID) => prevFollowingID.filter((item) => item !== id))
           })
         }
      })
   }
-  console.log()
 
   const followingInProgress = (id) => {
-    if (followingID.length === 0) {
-      setFollowingID([id])
-    } else {
       const data = [...followingID, id]
       setFollowingID(data)
-    }
   }
+
+
   const everyUser = users?.map(({ name, id, uniqueUrlName, status, followed, photos: { small } }) => {
     return (
       <div className={c.GridKurwa} key={id} >
@@ -78,7 +73,7 @@ const UsersListContainer = () => {
           <NavLink to={`/users/${id}`} >
             <img src={small ? small : UnfoundAva} className={c.MiniAvatar} />
           </NavLink>
-          <Button followingId={followingID} id={id} title={followed ? 'Unfollow' : 'Follow'} onClick={() => followed ? followDelete(id) : followPost(id)} />
+          <Button followingId={followingID} disabled={followingInProgress} id={id} title={followed ? 'Unfollow' : 'Follow'} onClick={() => followed ? followDelete(id) : followPost(id)} />
         </div>
         <div className={c.MainInfo}>
           <NavLink to={`/users/${id}`} className={c.item} >
