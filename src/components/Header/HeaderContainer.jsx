@@ -1,27 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./Header";
-import { connect, useSelector } from "react-redux";
-import { getUserThunkCreator } from "../../Redux/AuthReducer";
-import { useNavigate } from "react-router-dom";
 
-const HeaderContainer = ({AuthUser, getUserThunkCreator}) => {
-
-	useEffect(() => {
-		getUserThunkCreator()
-
-	}, [AuthUser, getUserThunkCreator])
- 
+const HeaderContainer = ({auth}) => {
 	return (
-		<Header authUser={AuthUser} />
+		<Header auth={auth}/>
 	);
 };
 
-let mapStateToProps = (state) => {
-  return {
-    AuthUser: state.Auth
-  }
-}
-
-export let HeaderConnector = connect(mapStateToProps, {getUserThunkCreator})(HeaderContainer)
-
-export default HeaderContainer
+export default HeaderContainer;

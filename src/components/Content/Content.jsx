@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import c from './Content.module.css';
 import ProfilePageContainer from "../ProfilePage/ProfilePageContainer";
 

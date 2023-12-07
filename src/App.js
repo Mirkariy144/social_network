@@ -5,21 +5,32 @@ import Content from './components/Content/Content';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainerHook';
 import UserPageContainer from './components/Users/UserPage/UserPageContainer';
-import { HeaderConnector } from './components/Header/HeaderContainer';
-import NavBarConnect from './components/NavBar/NavBar';
 import LoginContainer from './components/Login/LoginContainer';
+import Loader from './components/Loader/Loader';
+import { useAuth } from './React/CostomHooks/CastomHooks';
+import { Layout } from './components/Layout/Layoyt';
 
 
 const App = () => {
+
+  const { loading } = useAuth();
+
+  if (loading) {
+    return <Loader/>;
+  }
+
+
+
   return (
       <div className={c.appWrapper}>
-        <HeaderConnector />
-        <NavBarConnect />
         <Routes>
-          <Route path='/dialogs/' element={<DialogsContainer />}  />
-          <Route path='/profile/:id' element={<Content />} />
-          <Route path='/users/' element={<UsersContainer />} />
-          <Route path='/users/:id' element={<UserPageContainer />} />
+          <Route path='/' element={<Layout />} >
+            <Route path='/dialogs/' element={<DialogsContainer />}  />
+            <Route path='/profile/:id' element={<Content />} />
+            <Route path='/messages/' element={<DialogsContainer />} />
+            <Route path='/users/' element={<UsersContainer />} />
+            <Route path='/users/:id' element={<UserPageContainer />} />
+          </Route>
           <Route path='/login' element={<LoginContainer />} />
         </Routes>
       </div>

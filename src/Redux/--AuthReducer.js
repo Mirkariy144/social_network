@@ -5,7 +5,7 @@ let initialState = {
   email: null,
   id: null,
   login: null,
-  isAuth: false,
+  resultCode: null,
 }
 
 export const AuthReducer = createSlice({
@@ -16,7 +16,6 @@ export const AuthReducer = createSlice({
         state.email = action.payload.email
         state.id = action.payload.id
         state.login = action.payload.login
-        state.isAuth = true
     },
   },
 });
