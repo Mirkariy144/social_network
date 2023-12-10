@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }) => {
     })
   }, [])
 
-  console.log('Kurwa')
 
   const value = {
     user,

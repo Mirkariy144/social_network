@@ -1,12 +1,14 @@
 import React from "react";
 import c from './ProfileInfo.module.css'
 import UnfoundAva from '../../../Img/avaUnfound.jpg'
+import { ProfileStatusContainer } from "./ProfileStatus/ProfileStatusContainer";
 
 const ProfileInfo = ({Users}) => {
     return (
         <div className={c.ProfilePage}>
             <div className={c.Ava}>
                 <img src={Users.photos.large?Users.photos.large:UnfoundAva} />
+                <ProfileStatusContainer />
             </div>
             <div className={c.Name}>
                 {Users.fullName}
