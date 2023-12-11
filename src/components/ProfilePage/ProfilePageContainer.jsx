@@ -7,12 +7,13 @@ import Loader from "../Loader/Loader";
 
 const MyProfilePageContainer = ({Posts}) => {
   const {id} = useParams()
-  const [user, setUsers] = useState(null)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
+    debugger
     axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + id)
       .then(responce => {
-        setUsers(responce.data)
+        setUser(responce.data)
       })
   }, [id])
   if (!user) {
