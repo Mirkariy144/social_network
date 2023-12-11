@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, createContext } from 'react';
+import React, { useState, useContext, useEffect, createContext, useCallback } from 'react';
 import { axiosGetProfile } from '../../API/API';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,23 +13,26 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  const loadUser = useCallback(async () => {
+    const data = await axiosGetProfile();
+    if (data.resultCode === 0) {
+      setUser(data.data)
+      navigate(`/profile/${data.data.id}`)
+    } else {
+      navigate('/login')
+    }
+    setLoading(false)
+  }, [])
+
   useEffect(() => {
-    debugger
-    axiosGetProfile().then(data => {
-      if (data.resultCode === 0) {
-        setUser(data.data)
-        navigate(`/profile/${data.data.id}`)
-      } else {
-        navigate('/login')
-      }
-      setLoading(false)
-    })
+    loadUser()
   }, [])
 
 
   const value = {
     user,
     loading,
+    loadUser,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

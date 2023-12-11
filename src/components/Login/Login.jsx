@@ -5,9 +5,7 @@ import { axiosLogin } from "../../API/API";
 const Login = ({ login }) => {
 
   return (
-    <div>
       <LoginForm login={login} />
-    </div>
   )
 }
 

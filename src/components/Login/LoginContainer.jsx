@@ -1,18 +1,15 @@
 import React from "react";
 import Login from "./Login";
-import { axiosGetProfile, axiosLogin } from "../../API/API";
-import { useNavigate } from "react-router-dom";
+import { axiosLogin } from "../../API/API";
 import { useAuth } from "../../React/CostomHooks/CastomHooks";
 
 const LoginContainer = () => {
-
-  const navigate = useNavigate();
+  
+  const {loadUser} = useAuth()
 
   const login = (formData) => {
     axiosLogin(formData).then(data => {
-      const id = data.data.userId
-      navigate(`/profile/${id}`)
-      window.location.reload()
+      loadUser()
     })
   }
 

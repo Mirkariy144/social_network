@@ -15,7 +15,7 @@ const LoginForm = ({ handleSubmit, login }) => {
       </div>
       <div>
         <label htmlFor="password">Пароль:</label>
-        <Field component="input" name="password" type="text" />
+        <Field component="input" name="password" type="password" />
       </div>
       <div>
         <label htmlFor="rememberMe">Запомнить меня:  </label>
