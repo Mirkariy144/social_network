@@ -33,7 +33,7 @@ export const ProfileStatusContainer = () => {
 		editMode={editMode} 
 		status={status} 
 		setEditMode={setEditMode}
-    authUserId={user?user.id:id}
+    authUserId={user.id}
     currentUserId={id}/>
 	)
 }

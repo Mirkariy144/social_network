@@ -12,6 +12,7 @@ const LoginContainer = () => {
     axiosLogin(formData).then(data => {
       const id = data.data.userId
       navigate(`/profile/${id}`)
+      window.location.reload()
     })
   }
 
