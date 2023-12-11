@@ -25,3 +25,24 @@ export const axiosGetProfile = async () => {
   const responce = await instance.get("auth/me");
   return responce.data;
 }
+
+export const axiosGetStatus = async (id) => {
+  const responce = await instance.get(`profile/status/${id}`);
+  return responce.data;
+}
+
+export const axiosPutStatus = async (status) => {
+  const responce = await instance.put(`profile/status`, { status });
+  return responce.data;
+}
+
+export const axiosLogin = async (data) => {
+  const responce = await instance.post(`auth/login`, data);
+  return responce.data;
+}
+
+export const axiosLogout = async () => {
+  const responce = await instance.delete(`auth/login`);
+  return responce.data;
+}
+

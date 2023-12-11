@@ -5,7 +5,9 @@ export const ProfileStatus = ({
 	cancelStatusChanges, 
 	editMode, 
 	status, 
-	setEditMode}) => {
+	setEditMode,
+  authUserId,
+  currentUserId}) => {
 
 	const [inputValue, setInputValue] = useState('');
 
@@ -25,11 +27,17 @@ export const ProfileStatus = ({
 		}
 	}
 
+  const onStatusClick = () => {
+    if (+currentUserId === authUserId) {
+      setEditMode(!editMode)
+    }
+  }
+
 	return (
 		<>
 			{!editMode
 				?(
-				<span onDoubleClick={() => setEditMode(true)}>
+				<span onDoubleClick={onStatusClick}>
 					{status?status:'Show your status here'}
 				</span>
 				):(

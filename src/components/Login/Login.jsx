@@ -1,12 +1,12 @@
 import React from "react";
+import LoginForm from "./LoginForm";
+import { axiosLogin } from "../../API/API";
 
-const Login = () => {
+const Login = ({ login }) => {
+
   return (
     <div>
-      <div>Login</div>
-      <input type="text" />
-      <div>Password</div>
-      <input type="text" />
+      <LoginForm login={login} />
     </div>
   )
 }

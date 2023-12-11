@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    debugger
     axiosGetProfile().then(data => {
       if (data.resultCode === 0) {
         setUser(data.data)

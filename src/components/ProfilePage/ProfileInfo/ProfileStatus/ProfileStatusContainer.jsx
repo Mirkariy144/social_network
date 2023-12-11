@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ProfileStatus } from "./ProfileStatus";
+import { axiosGetStatus, axiosPutStatus } from "../../../../API/API";
+import { useParams } from "react-router-dom";
+import { useAuth } from "../../../../React/CostomHooks/CastomHooks";
 
 export const ProfileStatusContainer = () => {
 	const [editMode, setEditMode] = useState(false)
 	const [status, setStatus] = useState('')
+  const {id} = useParams()
+  const { user } = useAuth()
+
+  useEffect(() => {
+    axiosGetStatus(id).then(data => {
+      setStatus(data?data:'')
+    })
+  }, [id])
 
 	const confirmStatusChanges = (inputValue) => {
 		setStatus(inputValue)
 		setEditMode(false)
+    axiosPutStatus(inputValue)
 	}
 
 	const cancelStatusChanges = () => {
@@ -20,6 +32,8 @@ export const ProfileStatusContainer = () => {
 		cancelStatusChanges={cancelStatusChanges}
 		editMode={editMode} 
 		status={status} 
-		setEditMode={setEditMode}/>
+		setEditMode={setEditMode}
+    authUserId={user?user.id:id}
+    currentUserId={id}/>
 	)
 }
