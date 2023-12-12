@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 
-const LoginForm = ({ handleSubmit, login }) => {
+const LoginForm = ({ handleSubmit, login, captcha, resultCode}) => {
 
   const onSubmit = (formData) => {
     login(formData)
@@ -22,6 +22,16 @@ const LoginForm = ({ handleSubmit, login }) => {
         <Field component="input" name="rememberMe" type="checkbox" />
       </div>
       <button>Login</button>
+      <div>
+        {resultCode === 1 && <span>Введён неверный логин или пароль</span>}
+        {captcha && 
+        <>
+          <span>Защита от роботов</span>
+          <img src={captcha} alt="captcha"/>
+          <Field component="input" name="captcha" type="text" />
+        </>
+        }
+      </div>
     </form>
   )
 }

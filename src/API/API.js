@@ -46,3 +46,13 @@ export const axiosLogout = async () => {
   return responce.data;
 }
 
+export const axiosCaptcha = async () => {
+  const responce = await instance.get(`security/get-captcha-url`);
+  return responce.data;
+}
+
+export const axiosPutPhoto = async (data) => {
+  const responce = await instance.put(`profile/photo`, data, {headers: {"Content-Type": "multipart/form-data"}});
+  return responce.data;
+}
+
