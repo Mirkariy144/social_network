@@ -1,7 +1,7 @@
 .appNavBar {
-    background-color: green;
-    grid-area: b;
-    text-align: center;
+  background-color: green;
+  grid-area: b;
+  text-align: center;
 }
 
 .item {

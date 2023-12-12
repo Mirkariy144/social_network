@@ -1,5 +1,5 @@
-import MessagesReducer from "./MessagesReducer";
-import ProfilePageReducer from "./ProfilePageReducer";
+import MessagesReducer from './MessagesReducer';
+import ProfilePageReducer from './ProfilePageReducer';
 
 let store = {
   _State: {
@@ -17,9 +17,7 @@ let store = {
         { text: 'Just try to make my future' },
         { text: 'Can you help me, JS?' },
       ],
-      updateMessageInput: [
-  
-      ],
+      updateMessageInput: [],
     },
     ShitPosts: {
       Post: [
@@ -29,10 +27,8 @@ let store = {
         { text: 'kurwa' },
         { text: 'props' },
       ],
-  
-      newPostLetter: [
-  
-      ],
+
+      newPostLetter: [],
     },
   },
 
@@ -41,7 +37,7 @@ let store = {
   },
 
   _callSubscriber() {
-    console.log(alert('state kurwa'))
+    console.log(alert('state kurwa'));
   },
 
   dispatch(action) {
@@ -51,10 +47,8 @@ let store = {
   },
 
   subscriber(observer) {
-    this._callSubscriber = observer
+    this._callSubscriber = observer;
   },
-
 };
 
-
-export default store; 
+export default store;

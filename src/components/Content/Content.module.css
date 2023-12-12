@@ -1,10 +1,10 @@
 .appContent {
-    background-color: orange;
-    grid-area: c;
-    text-align: center;
+  background-color: orange;
+  grid-area: c;
+  text-align: center;
 }
 
 .appContent img {
-    height: 480px;
-    width: 854px;
+  height: 480px;
+  width: 854px;
 }

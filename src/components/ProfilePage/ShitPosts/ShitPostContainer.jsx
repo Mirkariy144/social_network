@@ -1,24 +1,30 @@
-import { addNewPost, modifyPostContent } from "../../../Redux/ProfilePageReducer";
-import ShitPost from "./ShitPost";
-import { connect } from "react-redux";
+import {
+  addNewPost,
+  modifyPostContent,
+} from '../../../Redux/ProfilePageReducer';
+import ShitPost from './ShitPost';
+import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
   return {
-    newPostLetter: state.ShitPosts.newPostLetter
+    newPostLetter: state.ShitPosts.newPostLetter,
   };
 };
 
 let mapDispatchToProps = (dispatch) => {
   return {
     addPost: () => {
-      dispatch(addNewPost())
+      dispatch(addNewPost());
     },
     newInfoPostChange: (text) => {
-      dispatch(modifyPostContent(text))
+      dispatch(modifyPostContent(text));
     },
   };
 };
 
-const ShitPostContainer = connect(mapStateToProps, mapDispatchToProps)(ShitPost);
+const ShitPostContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ShitPost);
 
-export default ShitPostContainer
+export default ShitPostContainer;

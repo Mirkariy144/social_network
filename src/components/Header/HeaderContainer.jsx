@@ -1,16 +1,13 @@
-import React from "react";
-import Header from "./Header";
-import { axiosLogout } from "../../API/API";
+import React from 'react';
+import Header from './Header';
+import { axiosLogout } from '../../API/API';
 
-const HeaderContainer = ({auth}) => {
-
+const HeaderContainer = ({ auth }) => {
   const logout = () => {
-    axiosLogout()
-  }
+    axiosLogout();
+  };
 
-	return (
-		<Header auth={auth} logout={logout}/>
-	);
+  return <Header auth={auth} logout={logout} />;
 };
 
 export default HeaderContainer;

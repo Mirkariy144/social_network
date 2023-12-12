@@ -1,6 +1,9 @@
-import { addNewMessage, modifyMessageContent } from "../../../Redux/MessagesReducer";
-import Messages from "./Messages";
-import { connect } from "react-redux";
+import {
+  addNewMessage,
+  modifyMessageContent,
+} from '../../../Redux/MessagesReducer';
+import Messages from './Messages';
+import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
   return {
@@ -10,16 +13,19 @@ let mapStateToProps = (state) => {
 };
 
 let mapDispatchToProps = (dispatch) => {
-  return {  
-  sendMessage: () => {
-      dispatch(addNewMessage())
+  return {
+    sendMessage: () => {
+      dispatch(addNewMessage());
     },
     newMessageChange: (message) => {
-      dispatch(modifyMessageContent(message))
-    }
+      dispatch(modifyMessageContent(message));
+    },
   };
 };
 
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
+const MessagesContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Messages);
 
 export default MessagesContainer;

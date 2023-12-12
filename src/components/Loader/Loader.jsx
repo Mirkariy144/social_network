@@ -1,8 +1,8 @@
-import React from "react";
-import './Loader.scss'
+import React from 'react';
+import './Loader.scss';
 
 const Loader = () => {
-  return(
+  return (
     <div>
       <h1 className="intro">Meow loader</h1>
       <div className="box">
@@ -14,7 +14,7 @@ const Loader = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

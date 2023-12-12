@@ -18,4 +18,4 @@ const NavBar = ({ id }) => {
   );
 };
 
-  export default NavBar;
+export default NavBar;
