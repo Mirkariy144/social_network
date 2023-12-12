@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Post from './ShitPosts/Post/Post';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ShitPostContainer from './ShitPosts/ShitPostContainer';
@@ -8,9 +7,12 @@ import Loader from '../Loader/Loader';
 const ProfilePage = ({
   Users,
   Posts,
-  setIsModalOpen,
-  isModalOpen,
+  setIsModalAvatarOpen,
+  isModalAvatarOpen,
   putNewPhoto,
+  isModalAboutMeOpen,
+  setIsModalAboutMeOpen,
+  putInfoAboutMe,
 }) => {
   if (!Users) {
     return <Loader />;
@@ -19,9 +21,12 @@ const ProfilePage = ({
     <div>
       <ProfileInfo
         Users={Users}
-        setIsModalOpen={setIsModalOpen}
-        isModalOpen={isModalOpen}
+        setIsModalAvatarOpen={setIsModalAvatarOpen}
+        isModalAvatarOpen={isModalAvatarOpen}
         putNewPhoto={putNewPhoto}
+        setIsModalAboutMeOpen={setIsModalAboutMeOpen}
+        isModalAboutMeOpen={isModalAboutMeOpen}
+        putInfoAboutMe={putInfoAboutMe}
       />
       <ShitPostContainer />
       <Post Posts={Posts} />

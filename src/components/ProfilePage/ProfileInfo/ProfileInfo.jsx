@@ -1,53 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import c from './ProfileInfo.module.css';
 import UnfoundAva from '../../../Img/avaUnfound.jpg';
 import { ProfileStatusContainer } from './ProfileStatus/ProfileStatusContainer';
-import Modal from 'react-modal';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { AvatarModal } from './Modal/AvatarModal';
+import AboutMeModal from './Modal/AboutMeModal';
 
-const ProfileInfo = ({ Users, setIsModalOpen, isModalOpen, putNewPhoto }) => {
-  Modal.setAppElement('#root');
-
-  const [formData, setFormData] = useState('');
-
-  const openModal = () => {
-    setIsModalOpen(true);
+const ProfileInfo = ({
+  Users,
+  setIsModalAvatarOpen,
+  isModalAvatarOpen,
+  putNewPhoto,
+  isModalAboutMeOpen,
+  setIsModalAboutMeOpen,
+  putInfoAboutMe,
+}) => {
+  const openModalAvatar = () => {
+    setIsModalAvatarOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const onSubmit = () => {
-    putNewPhoto(formData);
-  };
-
-  const handleLargeFileChange = (event) => {
-    const formData = new FormData();
-    const file = event.target.files[0];
-    formData.append('image', file);
-    setFormData(formData);
+  const openModalAboutMe = () => {
+    setIsModalAboutMeOpen(true);
   };
 
   return (
     <div className={c.ProfilePage}>
       <div className={c.Ava}>
         <img src={Users.photos.large ? Users.photos.large : UnfoundAva} />
-        <button onClick={openModal}>Change ava</button>
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          contentLabel="Окошко для смены аватара"
-        >
-          <>
-            <label htmlFor="large">Большой аватар: </label>
-            <input name="large" type="file" onChange={handleLargeFileChange} />
-          </>
-          <button disabled={!formData} type="submit" onClick={onSubmit}>
-            Сохранить
-          </button>
-          <button onClick={closeModal}>Закрыть</button>
-        </Modal>
+        <button onClick={openModalAvatar}>Change ava</button>
+        <AvatarModal
+          setIsModalAvatarOpen={setIsModalAvatarOpen}
+          isModalAvatarOpen={isModalAvatarOpen}
+          putNewPhoto={putNewPhoto}
+        />
         <ProfileStatusContainer />
       </div>
       <div className={c.Name}>{Users.fullName}</div>
@@ -63,11 +47,15 @@ const ProfileInfo = ({ Users, setIsModalOpen, isModalOpen, putNewPhoto }) => {
         <div>{Users.contacts.mainLink}</div>
         <div>{Users.lookingForAJob}</div>
         <div>{Users.lookingForAJobDescription}</div>
+        <AboutMeModal
+          isModalAboutMeOpen={isModalAboutMeOpen}
+          setIsModalAboutMeOpen={setIsModalAboutMeOpen}
+          putInfoAboutMe={putInfoAboutMe}
+        />
+        <button onClick={openModalAboutMe}>Change info about me</button>
       </div>
     </div>
   );
 };
 
-export default reduxForm({
-  form: 'profile',
-})(ProfileInfo);
+export default ProfileInfo;

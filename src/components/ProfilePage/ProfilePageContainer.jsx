@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProfilePage from './ProfilePage';
 import Loader from '../Loader/Loader';
-import { axiosPutPhoto } from '../../API/API';
+import { axiosPutPhoto, axiosPutProfile } from '../../API/API';
 
 const MyProfilePageContainer = ({ Posts }) => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalAvatarOpen, setIsModalAvatarOpen] = useState(false);
+  const [isModalAboutMeOpen, setIsModalAboutMeOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -23,6 +24,10 @@ const MyProfilePageContainer = ({ Posts }) => {
     axiosPutPhoto(data);
   };
 
+  const putInfoAboutMe = (data) => {
+    axiosPutProfile(data);
+  };
+
   if (!user) {
     return <Loader />;
   }
@@ -30,9 +35,12 @@ const MyProfilePageContainer = ({ Posts }) => {
     <ProfilePage
       Posts={Posts}
       Users={user}
-      setIsModalOpen={setIsModalOpen}
-      isModalOpen={isModalOpen}
+      setIsModalAvatarOpen={setIsModalAvatarOpen}
+      isModalAvatarOpen={isModalAvatarOpen}
       putNewPhoto={putNewPhoto}
+      putInfoAboutMe={putInfoAboutMe}
+      isModalAboutMeOpen={isModalAboutMeOpen}
+      setIsModalAboutMeOpen={setIsModalAboutMeOpen}
     />
   );
 };

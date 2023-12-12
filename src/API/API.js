@@ -59,3 +59,10 @@ export const axiosPutPhoto = async (data) => {
   });
   return responce.data;
 };
+
+
+export const axiosPutProfile = async (data) => {
+  const responce = await instance.put(`profile`, data);
+  debugger
+  return responce.data;
+};
