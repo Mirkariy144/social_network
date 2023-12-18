@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import c from './Modal.module.css';
 
 export const AvatarModal = ({
   setIsModalAvatarOpen,
@@ -26,18 +27,21 @@ export const AvatarModal = ({
   };
   return (
     <Modal
+      className={c.Main}
       isOpen={isModalAvatarOpen}
       onRequestClose={closeModal}
       contentLabel="Окошко для смены аватара"
     >
-      <>
+      <div className={c.Forms}>
         <label htmlFor="large">Большой аватар: </label>
         <input name="large" type="file" onChange={handleLargeFileChange} />
-      </>
-      <button disabled={!formData} type="submit" onClick={onSubmit}>
-        Сохранить
-      </button>
-      <button onClick={closeModal}>Закрыть</button>
+        <button disabled={!formData} type="submit" onClick={onSubmit}>
+          Сохранить
+        </button>
+      </div>
+      <div className={c.Forms}>
+        <button onClick={closeModal}>Закрыть</button>
+      </div>
     </Modal>
   );
 };

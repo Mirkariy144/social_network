@@ -5,26 +5,18 @@ let postID = 0;
 
 let initialState = {
   Posts: baseState.Posts.map((item) => ({ ...item, id: postID++ })),
-
-  newPostLetter: '',
 };
 
 export const ProfilePageReducer = createSlice({
   name: 'Posts',
   initialState,
   reducers: {
-    addNewPost: (state) => {
+    addNewPost: (state, data) => {
       let newPostPush = {
         id: state.Posts.length,
-        text: state.newPostLetter,
+        text: data.payload.newPostText,
       };
-
       state.Posts.push(newPostPush);
-      state.newPostLetter = '';
-    },
-
-    modifyPostContent: (state, action) => {
-      state.newPostLetter = action.payload;
     },
   },
 });

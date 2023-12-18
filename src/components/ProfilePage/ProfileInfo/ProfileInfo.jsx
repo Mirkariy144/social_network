@@ -32,7 +32,9 @@ const ProfileInfo = ({
           isModalAvatarOpen={isModalAvatarOpen}
           putNewPhoto={putNewPhoto}
         />
-        <ProfileStatusContainer />
+        <div>
+          <ProfileStatusContainer />
+        </div>
       </div>
       <div className={c.Name}>{Users.fullName}</div>
       <div className={c.AboutMe}>

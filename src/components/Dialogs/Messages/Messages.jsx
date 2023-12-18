@@ -1,36 +1,30 @@
 import React from 'react';
 import c from './Messages.module.css';
+import { Field, reduxForm, reset } from 'redux-form';
+import { useDispatch } from 'react-redux';
 
-const Messages = (props) => {
-  let RenderMessage = props.Messages.map(({ id, text }) => (
+const Messages = ({ sendMessage, handleSubmit, Messages }) => {
+  const dispatch = useDispatch();
+
+  const onSubmit = (data) => {
+    sendMessage(data);
+    dispatch(reset('Messages'));
+  };
+  console.log();
+
+  let RenderMessage = Messages.map(({ id, text }) => (
     <pre key={id}>{text}</pre>
   ));
-
-  let messageText = React.createRef();
-
-  let sendMessage = () => {
-    props.sendMessage();
-  };
-
-  let newMessageChange = () => {
-    let message = messageText.current.value;
-    props.newMessageChange(message);
-  };
 
   return (
     <div className={c.MessageText}>
       <div>{RenderMessage}</div>
-      <div>
-        <textarea
-          ref={messageText}
-          onChange={newMessageChange}
-          value={props.updateMessageInput || ''}
-          placeholder="New message"
-        />
-        <button onClick={sendMessage}>Send message</button>
-      </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Field name="newMessage" component="textarea" type="text" />
+        <button>Отправить</button>
+      </form>
     </div>
   );
 };
 
-export default Messages;
+export default reduxForm({ form: 'Messages' })(Messages);

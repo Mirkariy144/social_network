@@ -1,7 +1,4 @@
-import {
-  addNewMessage,
-  modifyMessageContent,
-} from '../../../Redux/MessagesReducer';
+import { addNewMessage } from '../../../Redux/MessagesReducer';
 import Messages from './Messages';
 import { connect } from 'react-redux';
 
@@ -14,11 +11,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    sendMessage: () => {
-      dispatch(addNewMessage());
-    },
-    newMessageChange: (message) => {
-      dispatch(modifyMessageContent(message));
+    sendMessage: (data) => {
+      dispatch(addNewMessage(data));
     },
   };
 };

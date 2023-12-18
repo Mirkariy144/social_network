@@ -1,7 +1,4 @@
-import {
-  addNewPost,
-  modifyPostContent,
-} from '../../../Redux/ProfilePageReducer';
+import { addNewPost } from '../../../Redux/ProfilePageReducer';
 import ShitPost from './ShitPost';
 import { connect } from 'react-redux';
 
@@ -13,11 +10,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addPost: () => {
-      dispatch(addNewPost());
-    },
-    newInfoPostChange: (text) => {
-      dispatch(modifyPostContent(text));
+    addPost: (data) => {
+      dispatch(addNewPost(data));
     },
   };
 };

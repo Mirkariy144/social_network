@@ -10,24 +10,18 @@ let initialState = {
     id: charactersID++,
   })),
   Message: baseState.Message.map((item) => ({ ...item, id: messagesID++ })),
-  updateMessageInput: '',
 };
 
 export const MessagesReducer = createSlice({
   name: 'Messages',
   initialState,
   reducers: {
-    addNewMessage: (state) => {
+    addNewMessage: (state, data) => {
       let newMessagePush = {
         id: state.Message.length,
-        text: state.updateMessageInput,
+        text: data.payload.newMessage,
       };
       state.Message.push(newMessagePush);
-      state.updateMessageInput = '';
-    },
-
-    modifyMessageContent: (state, action) => {
-      state.updateMessageInput = action.payload;
     },
   },
 });

@@ -1,29 +1,25 @@
 import React from 'react';
-import c from './ShitPost.module.css';
+import { Field, reduxForm, reset } from 'redux-form';
+import { useDispatch } from 'react-redux';
 
-const ShitPost = (props) => {
-  let newPostWright = React.createRef();
-
-  let sendPost = () => {
-    props.addPost();
-  };
-
-  let newPostChange = () => {
-    let text = newPostWright.current.value;
-    props.newInfoPostChange(text);
+const ShitPost = ({ addPost, handleSubmit }) => {
+  const dispatch = useDispatch();
+  const onSubmit = (data) => {
+    addPost(data);
+    dispatch(reset('ShitPost'));
   };
 
   return (
-    <div className={c.ShitPost}>
-      <textarea
-        ref={newPostWright}
-        onChange={newPostChange}
-        value={props.newPostLetter || ''}
-        placeholder="Yours new SHITpost"
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Field
+        component="textarea"
+        name="newPostText"
+        type="text"
+        placeholder="Введите сюда ваш новый ShitPost"
       />
-      <button onClick={sendPost}>Add post</button>
-    </div>
+      <button type="submit">Отправить</button>
+    </form>
   );
 };
 
-export default ShitPost;
+export default reduxForm({ form: 'ShitPost' })(ShitPost);
