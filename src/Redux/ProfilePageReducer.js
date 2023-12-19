@@ -14,7 +14,7 @@ export const ProfilePageReducer = createSlice({
     addNewPost: (state, data) => {
       let newPostPush = {
         id: state.Posts.length,
-        text: data.payload.newPostText,
+        text: data.payload.newPost,
       };
       state.Posts.push(newPostPush);
     },

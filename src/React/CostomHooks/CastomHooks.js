@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from 'react';
 import { axiosGetProfile } from '../../API/API';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -16,14 +16,18 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation()
+
 
   const loadUser = useCallback(async () => {
     const data = await axiosGetProfile();
     if (data.resultCode === 0) {
+      if (location.pathname === '/login') {
+        navigate(`/profile/${data.data.id}`);
+      }
       setUser(data.data);
-      navigate(`/profile/${data.data.id}`);
     } else {
       navigate('/login');
     }
@@ -31,7 +35,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    loadUser();
+      loadUser();
   }, []);
 
   const value = {

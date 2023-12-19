@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import c from './App.module.css';
 import Content from './components/Content/Content';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -12,10 +12,6 @@ import { Layout } from './components/Layout/Layoyt';
 
 const App = () => {
   const { loading } = useAuth();
-
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <div className={c.appWrapper}>
