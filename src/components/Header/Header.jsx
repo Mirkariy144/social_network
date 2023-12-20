@@ -10,7 +10,7 @@ const Header = ({ user, logout }) => {
         <div className={c.login}>
           <div>{user.login}</div>
           <div>{user.email}</div>
-          <button onClick={() => logout()}>Logout</button>
+          <button onClick={logout}>Logout</button>
         </div>
       ) : (
         <div className={c.login}>

@@ -24,6 +24,7 @@ export const axiosGetUsers = async (currentPage, PagesCount) => {
 };
 
 export const axiosGetProfile = async () => {
+  console.log('getter')
   const responce = await instance.get('auth/me');
   return responce.data;
 };
@@ -62,6 +63,5 @@ export const axiosPutPhoto = async (data) => {
 
 export const axiosPutProfile = async (data) => {
   const responce = await instance.put(`profile`, data);
-  debugger;
   return responce.data;
 };

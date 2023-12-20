@@ -1,7 +1,6 @@
 import React from 'react';
 import c from './Content.module.css';
 import ProfilePageContainer from '../ProfilePage/ProfilePageContainer';
-import { useLocation, useRoutes } from 'react-router-dom';
 
 const Content = () => {
   return (

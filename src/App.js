@@ -13,6 +13,10 @@ import { Layout } from './components/Layout/Layoyt';
 const App = () => {
   const { loading } = useAuth();
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div className={c.appWrapper}>
       <Routes>

@@ -3,6 +3,7 @@ import { ProfileStatus } from './ProfileStatus';
 import { axiosGetStatus, axiosPutStatus } from '../../../../API/API';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../../../../React/CostomHooks/CastomHooks';
+import Loader from '../../../Loader/Loader';
 
 export const ProfileStatusContainer = () => {
   const [editMode, setEditMode] = useState(false);
@@ -25,6 +26,10 @@ export const ProfileStatusContainer = () => {
   const cancelStatusChanges = () => {
     setEditMode(false);
   };
+
+  if (!user) {
+    return <Loader />;
+  }
 
   return (
     <ProfileStatus

@@ -18,8 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation()
-
+  const location = useLocation();
 
   const loadUser = useCallback(async () => {
     const data = await axiosGetProfile();
@@ -32,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       navigate('/login');
     }
     setLoading(false);
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
       loadUser();
