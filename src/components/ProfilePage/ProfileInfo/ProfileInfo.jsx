@@ -13,6 +13,8 @@ const ProfileInfo = ({
   isModalAboutMeOpen,
   setIsModalAboutMeOpen,
   putInfoAboutMe,
+  authUser,
+  id
 }) => {
   const openModalAvatar = () => {
     setIsModalAvatarOpen(true);
@@ -26,7 +28,11 @@ const ProfileInfo = ({
     <div className={c.ProfilePage}>
       <div className={c.Ava}>
         <img src={Users.photos.large ? Users.photos.large : UnfoundAva} />
-        <button onClick={openModalAvatar}>Change ava</button>
+        {(!id) ? (
+            <button onClick={openModalAvatar}>Change ava</button>
+          ) : (
+            null
+          )}
         <AvatarModal
           setIsModalAvatarOpen={setIsModalAvatarOpen}
           isModalAvatarOpen={isModalAvatarOpen}
@@ -54,7 +60,11 @@ const ProfileInfo = ({
           setIsModalAboutMeOpen={setIsModalAboutMeOpen}
           putInfoAboutMe={putInfoAboutMe}
         />
+        {(!id) ? (
         <button onClick={openModalAboutMe}>Change info about me</button>
+        ) : (
+        null
+        )}
       </div>
     </div>
   );

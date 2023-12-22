@@ -24,7 +24,6 @@ export const axiosGetUsers = async (currentPage, PagesCount) => {
 };
 
 export const axiosGetProfile = async () => {
-  console.log('getter')
   const responce = await instance.get('auth/me');
   return responce.data;
 };

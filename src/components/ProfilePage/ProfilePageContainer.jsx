@@ -5,6 +5,7 @@ import axios from 'axios';
 import ProfilePage from './ProfilePage';
 import Loader from '../Loader/Loader';
 import { axiosPutPhoto, axiosPutProfile } from '../../API/API';
+import { useAuth } from '../../React/CostomHooks/CastomHooks';
 
 const MyProfilePageContainer = ({ Posts }) => {
   const { id } = useParams();

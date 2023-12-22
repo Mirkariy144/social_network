@@ -13,6 +13,8 @@ const ProfilePage = ({
   isModalAboutMeOpen,
   setIsModalAboutMeOpen,
   putInfoAboutMe,
+  authUser,
+  id,
 }) => {
   if (!Users) {
     return <Loader />;
@@ -27,6 +29,8 @@ const ProfilePage = ({
         setIsModalAboutMeOpen={setIsModalAboutMeOpen}
         isModalAboutMeOpen={isModalAboutMeOpen}
         putInfoAboutMe={putInfoAboutMe}
+        authUser={authUser}
+        id={id}
       />
       <ShitPostContainer />
       <Post Posts={Posts} />
