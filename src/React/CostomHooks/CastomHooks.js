@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   }, [location.pathname]);
 
   useEffect(() => {
-      loadUser();
+    loadUser();
   }, []);
 
   const value = {

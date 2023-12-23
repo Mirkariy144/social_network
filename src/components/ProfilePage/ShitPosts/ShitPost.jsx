@@ -11,7 +11,6 @@ const ShitPost = ({ addPost }) => {
       formik.resetForm();
     },
   });
-
   return (
     <form onSubmit={formik.handleSubmit}>
       <textarea
