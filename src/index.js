@@ -4,25 +4,25 @@ import store from './Redux/reduxStore';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {  HashRouter,BrowserRouter } from 'react-router-dom';
+import { HashRouter, BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { AuthProvider } from './React/CostomHooks/CastomHooks';
+import { AuthProvider } from './React/CustomHooks/CustomHooks';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <BrowserRouter basename={process.env.PUBLIC_URL}>
-  {/* <HashRouter> */}
+    {/* <HashRouter> */}
     <Provider store={store}>
       <AuthProvider>
         <App />
       </AuthProvider>
     </Provider>
-  {/* </HashRouter> */}
-  </BrowserRouter>
+    {/* </HashRouter> */}
+  </BrowserRouter>,
   // </React.StrictMode>,
 );
 

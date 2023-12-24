@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Login from './Login';
 import { axiosCaptcha, axiosLogin } from '../../API/API';
-import { useAuth } from '../../React/CostomHooks/CastomHooks';
+import { useAuth } from '../../React/CustomHooks/CustomHooks';
 import { useFormik } from 'formik';
 import { validateEmail } from '../../FormikUtils/FormikLoginValidation';
 

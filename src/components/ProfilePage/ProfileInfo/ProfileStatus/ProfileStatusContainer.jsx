@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProfileStatus } from './ProfileStatus';
 import { axiosGetStatus, axiosPutStatus } from '../../../../API/API';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../../../../React/CostomHooks/CastomHooks';
+import { useAuth } from '../../../../React/CustomHooks/CustomHooks';
 import Loader from '../../../Loader/Loader';
 
 export const ProfileStatusContainer = () => {

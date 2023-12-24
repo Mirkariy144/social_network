@@ -7,7 +7,7 @@ import UsersContainer from './components/Users/UsersContainerHook';
 import UserPageContainer from './components/Users/UserPage/UserPageContainer';
 import LoginContainer from './components/Login/LoginContainer';
 import Loader from './components/Loader/Loader';
-import { useAuth } from './React/CostomHooks/CastomHooks';
+import { useAuth } from './React/CustomHooks/CustomHooks';
 import { Layout } from './components/Layout/Layoyt';
 
 const App = () => {

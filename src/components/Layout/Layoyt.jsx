@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import NavBar from '../NavBar/NavBar';
-import { useAuth } from '../../React/CostomHooks/CastomHooks';
+import { useAuth } from '../../React/CustomHooks/CustomHooks';
 import { axiosLogout } from '../../API/API';
 
 export const Layout = () => {

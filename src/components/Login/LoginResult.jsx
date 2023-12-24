@@ -15,7 +15,6 @@ export const LoginResult = ({ formik, captcha, resultCode }) => {
           <input onChange={formik.handleChange} name="captcha" type="text" />
         </div>
       </div>
-
     );
   }
 };

@@ -7,60 +7,65 @@ const instance = axios.create({
 });
 
 export const axiosFollowPost = async (id) => {
-  const responce = await instance.post(`follow/${id}`);
-  return responce.data;
+  const response = await instance.post(`follow/${id}`);
+  return response.data;
 };
 
 export const axiosFollowDelete = async (id) => {
-  const responce = await instance.delete(`follow/${id}`);
-  return responce.data;
+  const response = await instance.delete(`follow/${id}`);
+  return response.data;
 };
 
 export const axiosGetUsers = async (currentPage, PagesCount) => {
-  const responce = await instance.get(
+  const response = await instance.get(
     `users?page=${currentPage}&count=${PagesCount}`,
   );
-  return responce.data;
+  return response.data;
 };
 
 export const axiosGetProfile = async () => {
-  const responce = await instance.get('auth/me');
-  return responce.data;
+  const response = await instance.get('auth/me');
+  return response.data;
+};
+
+export const axiosGetProfileById = async (id) => {
+  const response = await instance.get(`profile/${id}`);
+  return response.data;
 };
 
 export const axiosGetStatus = async (id) => {
-  const responce = await instance.get(`profile/status/${id}`);
-  return responce.data;
+  const response = await instance.get(`profile/status/${id}`);
+  return response.data;
 };
 
 export const axiosPutStatus = async (status) => {
-  const responce = await instance.put(`profile/status`, { status });
-  return responce.data;
+  const response = await instance.put(`profile/status`, { status });
+  return response.data;
 };
 
 export const axiosLogin = async (data) => {
-  const responce = await instance.post(`auth/login`, data);
-  return responce.data;
+  const response = await instance.post(`auth/login`, data);
+  return response.data;
 };
 
 export const axiosLogout = async () => {
-  const responce = await instance.delete(`auth/login`);
-  return responce.data;
+  const response = await instance.delete(`auth/login`);
+  return response.data;
 };
 
 export const axiosCaptcha = async () => {
-  const responce = await instance.get(`security/get-captcha-url`);
-  return responce.data;
+  const response = await instance.get(`security/get-captcha-url`);
+  return response.data;
 };
 
 export const axiosPutPhoto = async (data) => {
-  const responce = await instance.put(`profile/photo`, data, {
+  const response = await instance.put(`profile/photo`, data, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
-  return responce.data;
+  return response.data;
 };
 
 export const axiosPutProfile = async (data) => {
-  const responce = await instance.put(`profile`, data);
-  return responce.data;
+  const response = await instance.put(`profile`, data);
+  return response.data;
 };

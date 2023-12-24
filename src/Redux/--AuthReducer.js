@@ -20,13 +20,12 @@ export const AuthReducer = createSlice({
   },
 });
 
-export const getUserThunkCreator = (state) => {
-  return (dispatch) => {
-    axiosGetProfile().then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(AuthReducer.actions.setUserInfo(data.data));
-      }
-    });
+export const getUserThunkCreator = () => {
+  return async (dispatch) => {
+    const data = await axiosGetProfile();
+    if (data.resultCode === 0) {
+      dispatch(AuthReducer.actions.setUserInfo(data.data));
+    }
   };
 };
 

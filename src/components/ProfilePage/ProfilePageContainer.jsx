@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import ProfilePage from './ProfilePage';
 import Loader from '../Loader/Loader';
-import { axiosPutPhoto, axiosPutProfile } from '../../API/API';
-import { useAuth } from '../../React/CostomHooks/CastomHooks';
+import {
+  axiosGetProfileById,
+  axiosPutPhoto,
+  axiosPutProfile,
+} from '../../API/API';
 
 const MyProfilePageContainer = ({ Posts }) => {
   const { id } = useParams();
@@ -14,11 +16,9 @@ const MyProfilePageContainer = ({ Posts }) => {
   const [isModalAboutMeOpen, setIsModalAboutMeOpen] = useState(false);
 
   useEffect(() => {
-    axios
-      .get('https://social-network.samuraijs.com/api/1.0/profile/' + id)
-      .then((responce) => {
-        setUser(responce.data);
-      });
+    axiosGetProfileById(id).then((data) => {
+      setUser(data);
+    });
   }, [id]);
 
   const putNewPhoto = (data) => {

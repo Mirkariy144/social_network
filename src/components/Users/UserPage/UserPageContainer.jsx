@@ -6,7 +6,7 @@ import axios from 'axios';
 import ProfilePage from '../../ProfilePage/ProfilePage';
 import c from '../../Content/Content.module.css';
 import Loader from '../../Loader/Loader';
-import { useAuth } from '../../../React/CostomHooks/CastomHooks';
+import { useAuth } from '../../../React/CustomHooks/CustomHooks';
 
 let UserPageContainerProps = ({ Posts }) => {
   const { id } = useParams();
