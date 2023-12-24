@@ -3,15 +3,19 @@ import React from 'react';
 export const LoginResult = ({ formik, captcha, resultCode }) => {
   if (resultCode === 1) {
     return <span>Введён неверный логин или пароль</span>;
-  } else if (captcha) {
+  } else if (captcha || resultCode === 10) {
     return (
       <div>
-        <span>Защита от роботов</span>
-        <img src={captcha} alt="captcha" />
-        <input onChange={formik.handleChange} name="captcha" type="text" />
+        <div>
+          <span>Введён неверный логин или пароль</span>
+        </div>
+        <div>
+          <span>Защита от роботов</span>
+          <img src={captcha} alt="captcha" />
+          <input onChange={formik.handleChange} name="captcha" type="text" />
+        </div>
       </div>
+
     );
-  } else {
-    return null;
   }
 };

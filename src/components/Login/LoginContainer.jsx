@@ -9,6 +9,7 @@ const LoginContainer = () => {
   const { loadUser } = useAuth();
   const [captcha, setCaptcha] = useState('');
   const [resultCode, setResultCode] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -19,6 +20,7 @@ const LoginContainer = () => {
     },
     validate: validateEmail,
     onSubmit: (formData) => {
+      setIsSubmitting(true);
       axiosLogin(formData).then((data) => {
         if (data.resultCode === 10) {
           axiosCaptcha().then((data) => {
@@ -27,6 +29,7 @@ const LoginContainer = () => {
         }
         setResultCode(data.resultCode);
         loadUser();
+        setIsSubmitting(false);
       });
     },
   });
@@ -53,6 +56,7 @@ const LoginContainer = () => {
       captcha={captcha}
       resultCode={resultCode}
       handleBlur={handleBlur}
+      isSubmitting={isSubmitting}
     />
   );
 };

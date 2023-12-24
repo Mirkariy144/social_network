@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoginResult } from './LoginResult';
 
-const Login = ({ formik, captcha, resultCode, handleBlur }) => {
+const Login = ({ formik, captcha, resultCode, handleBlur, isSubmitting }) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>
@@ -36,7 +36,7 @@ const Login = ({ formik, captcha, resultCode, handleBlur }) => {
         />
       </div>
       <LoginResult formik={formik} resultCode={resultCode} captcha={captcha} />
-      <button disabled={formik.isSubmitting} type="submit">
+      <button disabled={isSubmitting} type="submit">
         Вход
       </button>
     </form>
