@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/960.c5066396.chunk.css","mappings":"AAAA,6BACE,WAAY,CACZ,gBACF","sources":["components/Dialogs/Messages/Messages.module.css"],"sourcesContent":[".MessageText {\n  grid-area: m;\n  margin-left: 10px;\n}\n"],"names":[],"sourceRoot":""}
