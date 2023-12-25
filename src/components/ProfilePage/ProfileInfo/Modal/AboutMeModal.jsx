@@ -8,14 +8,20 @@ const AboutMeModal = ({
   setIsModalAboutMeOpen,
   putInfoAboutMe,
   handleSubmit,
+  Users,
 }) => {
   Modal.setAppElement('#root');
+
+  const [user, setUser] = React.useState(Users);
+
+  console.log(user);
 
   const closeModal = () => {
     setIsModalAboutMeOpen(false);
   };
 
   const onSubmit = (data) => {
+    debugger;
     putInfoAboutMe(data);
   };
 
