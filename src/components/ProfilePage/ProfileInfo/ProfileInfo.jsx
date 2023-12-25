@@ -66,7 +66,7 @@ const ProfileInfo = ({
           isModalAboutMeOpen={isModalAboutMeOpen}
           setIsModalAboutMeOpen={setIsModalAboutMeOpen}
           putInfoAboutMe={putInfoAboutMe}
-          Users={Users}
+          initialValues={Users}
         />
         {!id ? (
           <button onClick={openModalAboutMe}>Change info about me</button>

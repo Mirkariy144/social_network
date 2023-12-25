@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+Привет мой читающий друг. Эта маленькая инструкция расскажет тебе о некоторых возможностях учебного проекта.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ты смотриш учебный проект начинающего разработчика.
+Не обманывайся названием сошиал нетворк
+Этот проект научил меня многому, а я поучу чутка им пользоваться^-^
 
-## Available Scripts
+Твой первый шаг заключается в том, чтобы зарегистрироваться в api по прямой ссылке
+https://social-network.samuraijs.com
 
-In the project directory, you can run:
+Тут всё как обычно, Sign up
+Далее вводим почту и желаемый пароль
+Подтверждаем регистрацию через ссылку в письме, которое приходит к тебе на почту.
 
-### `npm start`
+Далее ты заходишь на GitHub-pages
+https://mirkariy144.github.io/social_network/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+И там ты попадёшь на страницу логинизации. Не пытайся перейти по урлам с неё куда либо, не выйдет. Так что просто вводим почту и пароль от аккаунта с samuraijs.com и мы посмотрим, глубока ли кроличья нора. Но есть прикол, попробуй раз десять ввести неверный логин или пароль, и тебе выпадет капча^-^
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Когда всё это будет сделано, тебе откроется твой профиль, пока очень пустой.
+Ты можешь его заполнить новым содержимым, и немного рассказать о себе, но будь осторожен, это может увидеть ещё неопределённая кучка новых джунов. А модальное окно с графами откроется по нажатии кнопки с title "Change info about me", вот тут то ты всё и заполнишь. Главное помнить пару правил.
+Поля "Имя", "Смотрю предложения о работе" и "О себе" обязательны для заполнения
+А всё что находится под надписью "Контакты" заполняется в целом единообразно
+https://{твоя_ссылка}.com || .ru
+Как всё заполнил, нажми "сохранить", и всё что ты написал, полетит прямо на сервер, а по нажатии на кнопку закрыть, ты сразу же увидишь как изменился твой профиль
 
-### `npm test`
+Что дальше по функцилоналу? А давай поменяем аву
+Нажми на кнопку Change ava
+Найди любую картинку в формате .jpg .jpeg и загрузи её прямо с компа, но не забудь её "сохранить". И по нажатии на закрыть, сразу же увидишь новую аву^-^
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+А видишь ту надпись под кнопкой Change ava? Типа Show your status here
+Она кликабельна, по заветам Гаса жостаём из арсенала dubleClick и тыкаем прямо по надписи, и вот ты уже пишешь свой статус.
+После того как написал статус, нажми на клавишу "Enter", или просто тыкни вне поля "input" и статус сразу же улетит на сервер. А вот нажатие на "Esc" откатит все изменения.
 
-### `npm run build`
+Что ещё можно поделать в профиле? Написать пару ShiotPostов. Не переживай, в localhostе ни кто не прочтёт твой "крик"(Они никуда не улетают, серьёзно)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Далее в навбаре идут "Сообщения".
+Ну тут в целом ничего интересного, так же понаписать всякой хрени, не забудь только нажать клавишу f5 чтобы затёрся локальный стейт;)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Ну и последний пункт в "NavBar" у нас Пользователи
+Это самые реальные пользователи, тут можно найти даже себя.
+Тут ты увидишь по дефолту запрос на 10 последних зареганных пользователей, количество страниц с другими 10ю пользователей и строчку "input" в которой можно менять число и будут подгружаться другие юзеры. Сразу под "input" 3 числа. 10 дефолтных для загрузки пользователей можно поменять на 20 или 30, а можно и на 10 потом вернуться. Заметь, что число страниц меняектся вместе с числом выводимых пользователей на одной странице.
+Ну а кнопочка запрос тут уже и не нужна. Просто пережиток прошлого
+Можно зафоловить пару человеков, и нажать f5, чтобы удостовериться, что я не схалтурил, и как и прежде информация улетает на сервер.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+А меня среди пользователей ты найдёшь под idшником 30319 и 30549
 
-### `npm run eject`
+Ну и под конец можно нажать кнопочку "Logout" находящуюся в правой стороне "Header"
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ну и коли нажал на Logout, ну давай, попробуй ввести другой урл, например
+https://mirkariy144.github.io/social_network/#/users/30319
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+P.S. Не смотрите на <HashRoter> Только с ним на gh-pages ты сможешь обновлять страницу
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+P.P.S. Техническая документация касаемая кода, подъедет позже. В ней я расскажу о технологиях которые я тут применил.

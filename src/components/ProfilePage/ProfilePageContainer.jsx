@@ -19,7 +19,7 @@ const MyProfilePageContainer = ({ Posts }) => {
     axiosGetProfileById(id).then((data) => {
       setUser(data);
     });
-  }, [id]);
+  }, [id, isModalAboutMeOpen, isModalAvatarOpen]);
 
   const putNewPhoto = (data) => {
     axiosPutPhoto(data);

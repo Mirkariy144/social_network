@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm, normalize } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import Modal from 'react-modal';
 import c from './Modal.module.css';
 
@@ -8,20 +8,14 @@ const AboutMeModal = ({
   setIsModalAboutMeOpen,
   putInfoAboutMe,
   handleSubmit,
-  Users,
 }) => {
   Modal.setAppElement('#root');
-
-  const [user, setUser] = React.useState(Users);
-
-  console.log(user);
 
   const closeModal = () => {
     setIsModalAboutMeOpen(false);
   };
 
   const onSubmit = (data) => {
-    debugger;
     putInfoAboutMe(data);
   };
 
