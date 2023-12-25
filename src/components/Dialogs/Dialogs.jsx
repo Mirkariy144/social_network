@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
-import NameList from './NameList/NameList';
+import React, { Suspense, lazy, useEffect } from 'react';
+// import NameList from './NameList/NameList';
 import c from './Dialog.module.css';
-import MessagesContainer from './Messages/MessagesContainer';
-import { useSelector } from 'react-redux';
-import { redirect, useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
+// import MessagesContainer from './Messages/MessagesContainer';
+
+const NameList = lazy(() => import('./NameList/NameList'));
+const MessagesContainer = lazy(() => import('./Messages/MessagesContainer'));
 
 const Dialogs = (props) => {
   return (
     <div className={c.wrapper}>
-      <NameList Characters={props.Characters} />
-      <MessagesContainer />
+      <Suspense fallback={<Loader />}>
+        <NameList Characters={props.Characters} />
+        <MessagesContainer />
+      </Suspense>
     </div>
   );
 };

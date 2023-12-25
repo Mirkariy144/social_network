@@ -96,9 +96,6 @@ class UsersClass extends React.Component {
         );
       },
     );
-
-    console.log(this.props);
-
     return (
       <Users
         everyUser={everyUser}

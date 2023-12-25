@@ -10,7 +10,6 @@ const Messages = ({ sendMessage, handleSubmit, Messages }) => {
     sendMessage(data);
     dispatch(reset('Messages'));
   };
-  console.log();
 
   let RenderMessage = Messages.map(({ id, text }) => (
     <pre key={id}>{text}</pre>

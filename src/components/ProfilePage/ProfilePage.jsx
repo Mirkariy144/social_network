@@ -21,6 +21,7 @@ const ProfilePage = ({
   }
   return (
     <div>
+      <img src="https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg" />
       <ProfileInfo
         Users={Users}
         setIsModalAvatarOpen={setIsModalAvatarOpen}

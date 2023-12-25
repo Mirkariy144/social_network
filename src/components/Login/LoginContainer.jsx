@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Login from './Login';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
+// import Login from './Login';
 import { axiosCaptcha, axiosLogin } from '../../API/API';
 import { useAuth } from '../../React/CustomHooks/CustomHooks';
 import { useFormik } from 'formik';
 import { validateEmail } from '../../FormikUtils/FormikLoginValidation';
+import Loader from '../Loader/Loader';
+
+const Login = lazy(() => import('./Login'));
 
 const LoginContainer = () => {
   const { loadUser } = useAuth();
@@ -51,13 +54,15 @@ const LoginContainer = () => {
   // };
 
   return (
-    <Login
-      formik={formik}
-      captcha={captcha}
-      resultCode={resultCode}
-      handleBlur={handleBlur}
-      isSubmitting={isSubmitting}
-    />
+    <Suspense fallback={<Loader />}>
+      <Login
+        formik={formik}
+        captcha={captcha}
+        resultCode={resultCode}
+        handleBlur={handleBlur}
+        isSubmitting={isSubmitting}
+      />
+    </Suspense>
   );
 };
 

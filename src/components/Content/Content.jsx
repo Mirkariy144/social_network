@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import c from './Content.module.css';
-import ProfilePageContainer from '../ProfilePage/ProfilePageContainer';
+import Loader from '../Loader/Loader';
+// import ProfilePageContainer from '../ProfilePage/ProfilePageContainer';
+
+const ProfilePageContainer = lazy(
+  () => import('../ProfilePage/ProfilePageContainer'),
+);
 
 const Content = () => {
   return (
     <div className={c.appContent}>
-      <img src="https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg" />
-      <ProfilePageContainer />
+      <Suspense fallback={<Loader />}>
+        <ProfilePageContainer />
+      </Suspense>
     </div>
   );
 };

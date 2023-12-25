@@ -33,16 +33,18 @@ const MyProfilePageContainer = ({ Posts }) => {
     return <Loader />;
   }
   return (
-    <ProfilePage
-      Posts={Posts}
-      Users={user}
-      setIsModalAvatarOpen={setIsModalAvatarOpen}
-      isModalAvatarOpen={isModalAvatarOpen}
-      putNewPhoto={putNewPhoto}
-      putInfoAboutMe={putInfoAboutMe}
-      isModalAboutMeOpen={isModalAboutMeOpen}
-      setIsModalAboutMeOpen={setIsModalAboutMeOpen}
-    />
+    <div>
+      <ProfilePage
+        Posts={Posts}
+        Users={user}
+        setIsModalAvatarOpen={setIsModalAvatarOpen}
+        isModalAvatarOpen={isModalAvatarOpen}
+        putNewPhoto={putNewPhoto}
+        putInfoAboutMe={putInfoAboutMe}
+        isModalAboutMeOpen={isModalAboutMeOpen}
+        setIsModalAboutMeOpen={setIsModalAboutMeOpen}
+      />
+    </div>
   );
 };
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import c from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import Button from './Button';
 import UnfoundAva from '../../Img/avaUnfound.jpg';
-import Users from './Users';
+// import Users from './Users';
 import Loader from '../Loader/Loader';
 import {
   axiosFollowDelete,
@@ -11,6 +11,8 @@ import {
   axiosGetUsers,
 } from '../../API/API';
 import { batch } from 'react-redux';
+
+const Users = lazy(() => import('./Users'));
 
 const UsersListContainer = () => {
   const [users, setUsers] = useState(null);
@@ -109,14 +111,16 @@ const UsersListContainer = () => {
     return <Loader />;
   }
   return (
-    <Users
-      setCurrentPage={setCurrentPage}
-      currentPage={currentPage}
-      everyUser={everyUser}
-      totalPages={totalPages}
-      PagesCount={PagesCount}
-      setPagesCount={setPagesCount}
-    />
+    <Suspense fallback={<Loader />}>
+      <Users
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        everyUser={everyUser}
+        totalPages={totalPages}
+        PagesCount={PagesCount}
+        setPagesCount={setPagesCount}
+      />
+    </Suspense>
   );
 };
 

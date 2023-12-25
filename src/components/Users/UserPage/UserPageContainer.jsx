@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import ProfilePage from '../../ProfilePage/ProfilePage';
+// import ProfilePage from '../../ProfilePage/ProfilePage';
 import c from '../../Content/Content.module.css';
 import Loader from '../../Loader/Loader';
 import { useAuth } from '../../../React/CustomHooks/CustomHooks';
+
+const ProfilePage = lazy(() => import('../../ProfilePage/ProfilePage'));
 
 let UserPageContainerProps = ({ Posts }) => {
   const { id } = useParams();
@@ -26,8 +28,9 @@ let UserPageContainerProps = ({ Posts }) => {
   }
   return (
     <div className={c.appContent}>
-      <img src="https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg" />
-      <ProfilePage Users={curUser} Posts={Posts} authUser={user} id={id} />
+      <Suspense fallback={<Loader />}>
+        <ProfilePage Users={curUser} Posts={Posts} authUser={user} id={id} />
+      </Suspense>
     </div>
   );
 };
