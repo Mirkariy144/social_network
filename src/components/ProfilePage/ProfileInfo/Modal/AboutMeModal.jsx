@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, normalize } from 'redux-form';
 import Modal from 'react-modal';
 import c from './Modal.module.css';
 
@@ -53,75 +53,35 @@ const AboutMeModal = ({
           <label htmlFor="contacts">Контакты: </label>
           <div className={c.Forms}>
             <label htmlFor="contacts.facebook">Facebook: </label>
-            <Field
-              name="contacts.facebook"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.facebook" component="input" type="text" />
           </div>
           <div className={c.Forms}>
             <label htmlFor="contacts.github">Github: </label>
-            <Field
-              name="contacts.github"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.github" component="input" type="text" />
           </div>
           <div className={c.Forms}>
             <label htmlFor="contacts.instagram">Instagram: </label>
-            <Field
-              name="contacts.instagram"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.instagram" component="input" type="text" />
           </div>
           <div className={c.Forms}>
             <label htmlFor="contacts.mainLink">MainLink: </label>
-            <Field
-              name="contacts.mainLink"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.mainLink" component="input" type="text" />
           </div>
           <div className={c.Forms}>
             <label htmlFor="contacts.twitter">Twitter: </label>
-            <Field
-              name="contacts.twitter"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.twitter" component="input" type="text" />
           </div>
           <div className={c.Forms}>
             <label htmlFor="contacts.vk">VK: </label>
-            <Field
-              name="contacts.vk"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.vk" component="input" type="text" />
           </div>
           <div className={c.Forms}>
             <label htmlFor="contacts.website">Website: </label>
-            <Field
-              name="contacts.website"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.website" component="input" type="text" />
           </div>
           <div className={c.Forms}>
             <label htmlFor="contacts.youtube">Youtube: </label>
-            <Field
-              name="contacts.youtube"
-              component="input"
-              type="text"
-              value={null}
-            />
+            <Field name="contacts.youtube" component="input" type="text" />
           </div>
         </div>
         <div className={c.Forms}>

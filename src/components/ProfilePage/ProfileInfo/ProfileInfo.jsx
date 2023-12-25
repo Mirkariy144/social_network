@@ -13,9 +13,10 @@ const ProfileInfo = ({
   isModalAboutMeOpen,
   setIsModalAboutMeOpen,
   putInfoAboutMe,
-  authUser,
   id,
 }) => {
+  const UC = Users.contacts;
+
   const openModalAvatar = () => {
     setIsModalAvatarOpen(true);
   };
@@ -40,21 +41,32 @@ const ProfileInfo = ({
       </div>
       <div className={c.Name}>{Users.fullName}</div>
       <div className={c.AboutMe}>
-        {Users.aboutMe}
+        <h3>{Users.aboutMe ? 'О себе: ' : null}</h3>
+        <div>{Users.aboutMe}</div>
+        <h4>{UC.facebook ? 'Facebook: ' : null}</h4>
         <div>{Users.contacts.facebook}</div>
+        <h4>{UC.website ? 'Website: ' : null}</h4>
         <div>{Users.contacts.website}</div>
+        <h4>{UC.vk ? 'VK: ' : null}</h4>
         <div>{Users.contacts.vk}</div>
+        <h4>{UC.twitter ? 'Twitter: ' : null}</h4>
         <div>{Users.contacts.twitter}</div>
+        <h4>{UC.instagram ? 'Instagram: ' : null}</h4>
         <div>{Users.contacts.instagram}</div>
+        <h4>{UC.youtube ? 'Youtube: ' : null}</h4>
         <div>{Users.contacts.youtube}</div>
+        <h4>{UC.github ? 'Github: ' : null}</h4>
         <div>{Users.contacts.github}</div>
+        <h4>{UC.mainLink ? 'Main link: ' : null}</h4>
         <div>{Users.contacts.mainLink}</div>
+        <h4>{Users.lookingForAJob ? 'Ищю работу: ' : null}</h4>
         <div>{Users.lookingForAJob}</div>
         <div>{Users.lookingForAJobDescription}</div>
         <AboutMeModal
           isModalAboutMeOpen={isModalAboutMeOpen}
           setIsModalAboutMeOpen={setIsModalAboutMeOpen}
           putInfoAboutMe={putInfoAboutMe}
+          Users={Users}
         />
         {!id ? (
           <button onClick={openModalAboutMe}>Change info about me</button>
