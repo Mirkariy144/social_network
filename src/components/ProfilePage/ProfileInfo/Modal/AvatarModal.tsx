@@ -2,14 +2,20 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import c from './Modal.module.css';
 
-export const AvatarModal = ({
+interface AvatarModalProps {
+  setIsModalAvatarOpen: (data: boolean) => void;
+  isModalAvatarOpen: boolean;
+  putNewPhoto: (data: any) => void;
+}
+
+export const AvatarModal: React.FC<AvatarModalProps> = ({
   setIsModalAvatarOpen,
   isModalAvatarOpen,
   putNewPhoto,
 }) => {
   Modal.setAppElement('#root');
 
-  const [formData, setFormData] = useState('');
+  const [formData, setFormData] = useState<FormData>(new FormData());
 
   const closeModal = () => {
     setIsModalAvatarOpen(false);
@@ -19,7 +25,7 @@ export const AvatarModal = ({
     putNewPhoto(formData);
   };
 
-  const handleLargeFileChange = (event) => {
+  const handleLargeFileChange = (event: any) => {
     const formData = new FormData();
     const file = event.target.files[0];
     formData.append('image', file);

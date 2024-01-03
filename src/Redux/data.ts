@@ -1,4 +1,18 @@
-export const baseState = {
+export const baseState: {
+  Characters: { name: string }[];
+  Message: { text: string }[];
+  Posts: { text: string }[];
+  Users: {
+    followed: boolean;
+    Name: string;
+    Country: string;
+    City: string;
+    Status: string;
+    Birthday: string;
+    Education: string;
+    Website: string;
+    Avatar: string;
+  }[];} = {
   Characters: [
     { name: 'Jovani Jorgo' },
     { name: 'Veronika' },

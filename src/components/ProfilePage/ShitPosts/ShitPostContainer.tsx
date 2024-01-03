@@ -2,15 +2,15 @@ import { addNewPost } from '../../../Redux/ProfilePageReducer';
 import ShitPost from './ShitPost';
 import { connect } from 'react-redux';
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: { ShitPosts: { newPostLetter: string } }) => {
   return {
     newPostLetter: state.ShitPosts.newPostLetter,
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch: any) => {
   return {
-    addPost: (data) => {
+    addPost: (data: {newPost: string}) => {
       dispatch(addNewPost(data));
     },
   };

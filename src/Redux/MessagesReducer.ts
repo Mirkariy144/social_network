@@ -1,10 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { baseState } from './data';
 
-let charactersID = 0;
-let messagesID = 0;
+interface MessagesReduserState {
+  Characters: {
+    id: number;
+    name: string;
+  }[];
+  Message: {
+    id: number;
+    text: string;
+  }[];
+}
 
-let initialState = {
+let charactersID: number = 0;
+let messagesID: number = 0;
+
+let initialState: MessagesReduserState = {
   Characters: baseState.Characters.map((item) => ({
     ...item,
     id: charactersID++,
@@ -16,7 +27,7 @@ export const MessagesReducer = createSlice({
   name: 'Messages',
   initialState,
   reducers: {
-    addNewMessage: (state, data) => {
+    addNewMessage: (state: { Message: { id: number }[]}, data: { payload: { newMessage: string }}) => {
       let newMessagePush = {
         id: state.Message.length,
         text: data.payload.newMessage,
@@ -26,6 +37,6 @@ export const MessagesReducer = createSlice({
   },
 });
 
-export const { addNewMessage, modifyMessageContent } = MessagesReducer.actions;
+export const { addNewMessage } = MessagesReducer.actions;
 
 export default MessagesReducer.reducer;

@@ -8,24 +8,29 @@ import {
   axiosPutPhoto,
   axiosPutProfile,
 } from '../../API/API';
+import { AppStateType } from '../../Redux/reduxStore';
+import { PostsType, UserInfoType } from './../../Types/GlobalInterface';
 
-const MyProfilePageContainer = ({ Posts }) => {
+const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
   const { id } = useParams();
-  const [user, setUser] = useState(null);
-  const [isModalAvatarOpen, setIsModalAvatarOpen] = useState(false);
-  const [isModalAboutMeOpen, setIsModalAboutMeOpen] = useState(false);
+  const [user, setUser] = useState<UserInfoType | null>(null);
+  const [isModalAvatarOpen, setIsModalAvatarOpen] = useState<boolean>(false);
+  const [isModalAboutMeOpen, setIsModalAboutMeOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!id) {
+    return;
+  }
     axiosGetProfileById(id).then((data) => {
       setUser(data);
     });
   }, [id, isModalAboutMeOpen, isModalAvatarOpen]);
 
-  const putNewPhoto = (data) => {
+  const putNewPhoto = (data: FormData) => {
     axiosPutPhoto(data);
   };
 
-  const putInfoAboutMe = (data) => {
+  const putInfoAboutMe = (data: FormData) => {
     axiosPutProfile(data);
   };
 
@@ -43,12 +48,13 @@ const MyProfilePageContainer = ({ Posts }) => {
         putInfoAboutMe={putInfoAboutMe}
         isModalAboutMeOpen={isModalAboutMeOpen}
         setIsModalAboutMeOpen={setIsModalAboutMeOpen}
+        id={id?id:''}
       />
     </div>
   );
 };
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
   return {
     Posts: state.ShitPosts.Posts,
   };

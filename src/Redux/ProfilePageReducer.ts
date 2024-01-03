@@ -1,9 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { baseState } from './data';
 
-let postID = 0;
+interface ProfilePageState {
+  Posts: {
+    id: number;
+    text: string;
+  }[];
+}
 
-let initialState = {
+let postID: number = 0;
+
+let initialState: ProfilePageState = {
   Posts: baseState.Posts.map((item) => ({ ...item, id: postID++ })),
 };
 
@@ -11,7 +18,7 @@ export const ProfilePageReducer = createSlice({
   name: 'Posts',
   initialState,
   reducers: {
-    addNewPost: (state, data) => {
+    addNewPost: (state: { Posts: { id: number }[]}, data: { payload: { newPost: string }}) => {
       let newPostPush = {
         id: state.Posts.length,
         text: data.payload.newPost,
@@ -21,6 +28,6 @@ export const ProfilePageReducer = createSlice({
   },
 });
 
-export const { addNewPost, modifyPostContent } = ProfilePageReducer.actions;
+export const { addNewPost } = ProfilePageReducer.actions;
 
 export default ProfilePageReducer.reducer;

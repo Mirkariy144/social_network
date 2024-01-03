@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-export const ProfileStatus = ({
+interface ProfileStatusProps {
+  confirmStatusChanges: (inputValue: string) => void;
+  cancelStatusChanges: () => void;
+  editMode: boolean;
+  status: string;
+  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
+  authUserId: number;
+  currentUserId: string;
+}
+
+export const ProfileStatus: React.FC<ProfileStatusProps> = ({
   confirmStatusChanges,
   cancelStatusChanges,
   editMode,
@@ -19,7 +29,7 @@ export const ProfileStatus = ({
     }
   }, [editMode, status]);
 
-  const eventListener = (e) => {
+  const eventListener = (e: any) => {
     if (e.key === 'Enter') {
       confirmStatusChanges(inputValue);
     } else if (e.key === 'Escape') {

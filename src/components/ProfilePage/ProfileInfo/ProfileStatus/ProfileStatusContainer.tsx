@@ -12,12 +12,14 @@ export const ProfileStatusContainer = () => {
   const { user } = useAuth();
 
   useEffect(() => {
+    if (!id) {
+      return;}
     axiosGetStatus(id).then((data) => {
       setStatus(data ? data : '');
     });
   }, [id]);
 
-  const confirmStatusChanges = (inputValue) => {
+  const confirmStatusChanges = (inputValue: string) => {
     setStatus(inputValue);
     setEditMode(false);
     axiosPutStatus(inputValue);
@@ -39,7 +41,7 @@ export const ProfileStatusContainer = () => {
       status={status}
       setEditMode={setEditMode}
       authUserId={user.id}
-      currentUserId={id}
+      currentUserId={id?id:''}
     />
   );
 };

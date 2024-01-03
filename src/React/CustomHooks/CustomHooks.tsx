@@ -8,13 +8,33 @@ import React, {
 import { axiosGetProfile } from '../../API/API';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const AuthContext = createContext();
+interface AuthUser {
+  id: number;
+  email: string;
+  login: string;
+}
+
+interface AuthContextProps {
+  user: AuthUser | null;
+  loading: boolean;
+  loadUser: () => Promise<void>;
+}
+
+interface AuthProviderProps {
+  children: React.ReactNode;
+}
+
+const AuthContext = createContext<AuthContextProps | null>(null);
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 };
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

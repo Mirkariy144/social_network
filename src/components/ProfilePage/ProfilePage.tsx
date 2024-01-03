@@ -3,6 +3,8 @@ import Post from './ShitPosts/Post/Post';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ShitPostContainer from './ShitPosts/ShitPostContainer';
 import Loader from '../Loader/Loader';
+import { UserInfoType } from '../../Types/GlobalInterface';
+import { PostsType } from './../../Types/GlobalInterface';
 
 const ProfilePage = ({
   Users,
@@ -13,9 +15,17 @@ const ProfilePage = ({
   isModalAboutMeOpen,
   setIsModalAboutMeOpen,
   putInfoAboutMe,
-  authUser,
   id,
-}) => {
+} : {
+Users: UserInfoType;
+Posts: PostsType;
+setIsModalAvatarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+isModalAvatarOpen: boolean;
+putNewPhoto: (data: FormData) => void;
+isModalAboutMeOpen: boolean;
+setIsModalAboutMeOpen: React.Dispatch<React.SetStateAction<boolean>>;
+putInfoAboutMe: (data: FormData) => void;
+id: string;}) => {
   if (!Users) {
     return <Loader />;
   }
@@ -30,7 +40,6 @@ const ProfilePage = ({
         setIsModalAboutMeOpen={setIsModalAboutMeOpen}
         isModalAboutMeOpen={isModalAboutMeOpen}
         putInfoAboutMe={putInfoAboutMe}
-        authUser={authUser}
         id={id}
       />
       <ShitPostContainer />

@@ -1,7 +1,11 @@
 import React from 'react';
 import { useFormik } from 'formik';
 
-const ShitPost = ({ addPost }) => {
+interface ShitPostProps {
+  addPost: (data: { newPost: string }) => void;
+}
+
+const ShitPost: React.FC<ShitPostProps> = ({ addPost }) => {
   const formik = useFormik({
     initialValues: {
       newPost: '',
@@ -16,7 +20,6 @@ const ShitPost = ({ addPost }) => {
       <textarea
         id="newPost"
         name="newPost"
-        type="text"
         onChange={formik.handleChange}
         value={formik.values.newPost}
         placeholder="Добавьте свой новый ShitPost;)"

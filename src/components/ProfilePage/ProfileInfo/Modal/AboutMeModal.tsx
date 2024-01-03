@@ -1,21 +1,27 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import Modal from 'react-modal';
 import c from './Modal.module.css';
+
+interface AboutMeModalProps {
+  isModalAboutMeOpen: boolean;
+  setIsModalAboutMeOpen: (data: boolean) => void;
+  putInfoAboutMe: (data: any) => void;
+}
 
 const AboutMeModal = ({
   isModalAboutMeOpen,
   setIsModalAboutMeOpen,
   putInfoAboutMe,
   handleSubmit,
-}) => {
+}: InjectedFormProps<{}, AboutMeModalProps> & AboutMeModalProps) => {
   Modal.setAppElement('#root');
 
   const closeModal = () => {
     setIsModalAboutMeOpen(false);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     putInfoAboutMe(data);
   };
 
@@ -95,6 +101,6 @@ const AboutMeModal = ({
   );
 };
 
-export default reduxForm({
+export default reduxForm<{}, AboutMeModalProps>({
   form: 'aboutMe',
 })(AboutMeModal);
