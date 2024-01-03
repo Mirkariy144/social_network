@@ -12,6 +12,9 @@ let store = configureStore({
   },
   middleware: [thunk],
 });
+
+
+window.store = store;
 export type StoreType = typeof store;
 export type AppStateType = ReturnType<StoreType['getState']>;
 export default store;

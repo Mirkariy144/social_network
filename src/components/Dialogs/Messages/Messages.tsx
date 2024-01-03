@@ -1,12 +1,21 @@
 import React from 'react';
 import c from './Messages.module.css';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, InjectedFormProps, reduxForm, reset, FormSubmitHandler } from 'redux-form';
 import { useDispatch } from 'react-redux';
 
-const Messages = ({ sendMessage, handleSubmit, Messages }) => {
+interface MessagesProps {
+  sendMessage: (data: { newMessage: string }) => void;
+  Messages: { id: number; text: string }[];
+}
+
+interface kurwaMessages {
+  newMessage: string
+}
+
+const Messages = ({ sendMessage, handleSubmit, Messages } : InjectedFormProps<kurwaMessages, MessagesProps> & MessagesProps) => {
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
+  const onSubmit: FormSubmitHandler<kurwaMessages, MessagesProps> = (data) => {
     sendMessage(data);
     dispatch(reset('Messages'));
   };
@@ -26,4 +35,4 @@ const Messages = ({ sendMessage, handleSubmit, Messages }) => {
   );
 };
 
-export default reduxForm({ form: 'Messages' })(Messages);
+export default reduxForm<kurwaMessages, MessagesProps>({ form: 'Messages' })(Messages);

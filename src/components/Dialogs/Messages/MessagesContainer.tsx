@@ -1,17 +1,17 @@
 import { addNewMessage } from '../../../Redux/MessagesReducer';
+import { AppStateType } from '../../../Redux/reduxStore';
 import Messages from './Messages';
 import { connect } from 'react-redux';
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
   return {
     Messages: state.Messages.Message,
-    updateMessageInput: state.Messages.updateMessageInput,
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch: any) => {
   return {
-    sendMessage: (data) => {
+    sendMessage: (data: { newMessage: string }) => {
       dispatch(addNewMessage(data));
     },
   };

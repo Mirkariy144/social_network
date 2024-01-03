@@ -29,7 +29,7 @@ export const ProfileStatus: React.FC<ProfileStatusProps> = ({
     }
   }, [editMode, status]);
 
-  const eventListener = (e: any) => {
+  const eventListener = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       confirmStatusChanges(inputValue);
     } else if (e.key === 'Escape') {

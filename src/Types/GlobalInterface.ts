@@ -22,9 +22,11 @@ export interface UserContactsType {
   mainLink: string;
 }
 
-export interface PostsType extends Array<{id: number; text: string}> {
-
-}
+export interface PostType {
+		id: number;
+		text: string;
+	}
+ export type PostsType = PostType[]
 
 export interface MessagesType {
 	id: number;
