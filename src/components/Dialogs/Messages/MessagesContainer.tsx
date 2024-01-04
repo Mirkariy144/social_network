@@ -1,5 +1,5 @@
-import { addNewMessage } from '../../../Redux/MessagesReducer';
-import { AppStateType } from '../../../Redux/reduxStore';
+import { addNewMessage } from '../../../redux/MessagesReducer';
+import { AppStateType } from '../../../redux/reduxStore';
 import Messages from './Messages';
 import { connect } from 'react-redux';
 

@@ -8,9 +8,9 @@ import {
   axiosPutPhoto,
   axiosPutProfile,
 } from '../../API/API';
-import { AppStateType } from '../../Redux/reduxStore';
-import { PostsType, UserInfoType } from './../../Types/GlobalInterface';
-import { useAuth } from '../../React/CustomHooks/CustomHooks';
+import { AppStateType } from '../../redux/reduxStore';
+import { PostsType, UserInfoType } from '../../types/globalInterface';
+import { useAuth } from '../../react/customHooks/CustomHooks';
 
 const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
   const { id } = useParams();
@@ -21,7 +21,7 @@ const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
 
   useEffect(() => {
     if (!id) {
-    return;
+      return;
   }
     axiosGetProfileById(id).then((data) => {
       setUserf(data);

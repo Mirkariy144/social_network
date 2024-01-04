@@ -1,11 +1,11 @@
 import React from 'react';
 import c from './ProfileInfo.module.css';
-import UnfoundAva from '../../../Img/avaUnfound.jpg';
+import UnfoundAva from '../../../img/avaUnfound.jpg';
 import { ProfileStatusContainer } from './ProfileStatus/ProfileStatusContainer';
 import { AvatarModal } from './Modal/AvatarModal';
 import AboutMeModal from './Modal/AboutMeModal';
-import { UserInfoType } from '../../../Types/GlobalInterface';
-import { AuthUser } from '../../../React/CustomHooks/CustomHooks';
+import { UserInfoType } from '../../../types/globalInterface';
+import { AuthUser } from '../../../react/customHooks/CustomHooks';
 
 interface ProfileInfoProps {
   Users: UserInfoType

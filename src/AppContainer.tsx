@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { AuthProvider } from './React/CustomHooks/CustomHooks';
-import store from './Redux/reduxStore';
+import { AuthProvider } from './react/customHooks/CustomHooks';
+import store from './redux/reduxStore';
 import App from './App';
 
 const AppContainer = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import c from './navBar.module.css';
 
-const NavBar = ({ id }: { id?: number | null }) => {
+const NavBar = ({ id }: { id: number }) => {
   return (
     <div className={c.appNavBar}>
       <div className={c.item}>

@@ -1,8 +1,8 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { axiosCaptcha, axiosLogin } from '../../API/API';
-import { useAuth } from '../../React/CustomHooks/CustomHooks';
+import { useAuth } from '../../react/customHooks/CustomHooks';
 import { useFormik } from 'formik';
-import { validateEmail } from '../../FormikUtils/FormikLoginValidation';
+import { validateEmail } from '../../formikUtils/formikLoginValidation';
 import Loader from '../Loader/Loader';
 
 const Login = lazy(() => import('./Login'));

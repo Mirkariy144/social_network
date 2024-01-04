@@ -1,4 +1,4 @@
-import { addNewPost } from '../../../Redux/ProfilePageReducer';
+import { addNewPost } from '../../../redux/ProfilePageReducer';
 import ShitPost from './ShitPost';
 import { connect } from 'react-redux';
 

@@ -2,7 +2,7 @@ import React, { Suspense, lazy, useEffect, useState } from 'react';
 import c from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import Button from './Button';
-import UnfoundAva from '../../Img/avaUnfound.jpg';
+import UnfoundAva from '../../img/avaUnfound.jpg';
 import Loader from '../Loader/Loader';
 import {
   axiosFollowDelete,
@@ -10,11 +10,11 @@ import {
   axiosGetUsers,
 } from '../../API/API';
 import { batch } from 'react-redux';
-import { UserType } from '../../Types/GlobalInterface';
+import { UserType } from '../../types/globalInterface';
 
 const Users = lazy(() => import('./Users'));
 
-const UsersListContainer = () => {
+const UsersContainer = () => {
   const [users, setUsers] = useState<UserType[]>();
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -128,4 +128,4 @@ const UsersListContainer = () => {
   );
 };
 
-export default UsersListContainer;
+export default UsersContainer;

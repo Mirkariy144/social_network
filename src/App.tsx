@@ -3,11 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import c from './App.module.css';
 import Loader from './components/Loader/Loader';
 import { Layout } from './components/Layout/Layoyt';
-import { useAuth } from './React/CustomHooks/CustomHooks';
+import { useAuth } from './react/customHooks/CustomHooks';
 import Content from './components/Content/Content';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UserPageContainer from './components/Users/UserPage/UserPageContainer';
-import UsersListContainer from './components/Users/UsersContainerHook';
+import UsersListContainer from './components/Users/UsersContainer';
 import LoginContainer from './components/Login/LoginContainer';
 
 
@@ -17,6 +17,8 @@ const App = () => {
   if (loading) {
     return <Loader />;
   }
+
+  console.log('kurwa')
 
   return (
           <div className={c.appWrapper}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import c from './Post.module.css';
-import { PostsType } from '../../../../Types/GlobalInterface';
+import { PostsType } from '../../../../types/globalInterface';
 
 
 

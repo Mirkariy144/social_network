@@ -1,4 +1,4 @@
-import { AppStateType } from '../../Redux/reduxStore';
+import { AppStateType } from '../../redux/reduxStore';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 
