@@ -19,6 +19,7 @@
 - [redux-form](https://redux-form.com/8.3.0/docs/gettingstarted.md/)
 - [react_Modal](https://github.com/reactjs/react-modal)
 - [axios](https://axios-http.com)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## Использование
 
