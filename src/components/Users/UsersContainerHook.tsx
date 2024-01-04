@@ -3,7 +3,6 @@ import c from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import Button from './Button';
 import UnfoundAva from '../../Img/avaUnfound.jpg';
-// import Users from './Users';
 import Loader from '../Loader/Loader';
 import {
   axiosFollowDelete,
@@ -11,15 +10,16 @@ import {
   axiosGetUsers,
 } from '../../API/API';
 import { batch } from 'react-redux';
+import { UserType } from '../../Types/GlobalInterface';
 
 const Users = lazy(() => import('./Users'));
 
 const UsersListContainer = () => {
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState<UserType[]>();
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [PagesCount, setPagesCount] = useState(10);
-  const [followingID, setFollowingID] = useState([]);
+  const [followingID, setFollowingID] = useState<number[]>([]);
 
   useEffect(() => {
     axiosGetUsers(currentPage > 1 ? currentPage : 1, PagesCount).then(
@@ -30,13 +30,16 @@ const UsersListContainer = () => {
     );
   }, [currentPage, PagesCount]);
 
-  const followPost = (id) => {
+  const followPost = (id: number) => {
     followingInProgress(id);
     axiosFollowPost(id).then((data) => {
       if (data.resultCode === 0) {
         batch(() => {
           setUsers((users1) => {
-            return users1.map((user) => {
+            if (!users1) {
+              return;
+            }
+            return users1.map((user: {id: number, name: string, status: string | null, photos: { small: string | null, large: string | null}, followed: boolean}) => {
               if (user.id === id) {
                 return { ...user, followed: true };
               }
@@ -50,13 +53,16 @@ const UsersListContainer = () => {
       }
     });
   };
-  const followDelete = (id) => {
+  const followDelete = (id: number) => {
     followingInProgress(id);
     axiosFollowDelete(id).then((data) => {
       if (data.resultCode === 0) {
         batch(() => {
           setUsers((users1) => {
-            return users1.map((user) => {
+            if (!users1) {
+              return;
+            }
+            return users1.map((user: {id: number, name: string, status: string | null, photos: { small: string | null, large: string | null}, followed: boolean}) => {
               if (user.id === id) {
                 return { ...user, followed: false };
               }
@@ -71,13 +77,13 @@ const UsersListContainer = () => {
     });
   };
 
-  const followingInProgress = (id) => {
+  const followingInProgress = (id: number) => {
     const data = [...followingID, id];
     setFollowingID(data);
   };
 
-  const everyUser = users?.map(
-    ({ name, id, uniqueUrlName, status, followed, photos: { small } }) => {
+  const everyUser = users?users.map(
+    ({ name, id, status, followed, photos: { small } }) => {
       return (
         <div className={c.GridKurwa} key={id}>
           <div className={c.Extension}>
@@ -86,7 +92,6 @@ const UsersListContainer = () => {
             </NavLink>
             <Button
               followingId={followingID}
-              disabled={followingInProgress}
               id={id}
               title={followed ? 'Unfollow' : 'Follow'}
               onClick={() => (followed ? followDelete(id) : followPost(id))}
@@ -97,7 +102,7 @@ const UsersListContainer = () => {
               <div className={c.User}>
                 <div className={c.Name}>{name}</div>
                 <div className={c.Country}>{status}</div>
-                <div className={c.City}>{uniqueUrlName}</div>
+                <div className={c.City}>kurwa city</div>
                 <div className={c.Status}>kurwa</div>
               </div>
             </NavLink>
@@ -105,7 +110,7 @@ const UsersListContainer = () => {
         </div>
       );
     },
-  );
+  ) : null;
 
   if (!users) {
     return <Loader />;
@@ -117,7 +122,6 @@ const UsersListContainer = () => {
         currentPage={currentPage}
         everyUser={everyUser}
         totalPages={totalPages}
-        PagesCount={PagesCount}
         setPagesCount={setPagesCount}
       />
     </Suspense>

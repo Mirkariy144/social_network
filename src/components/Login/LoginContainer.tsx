@@ -1,5 +1,4 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
-// import Login from './Login';
 import { axiosCaptcha, axiosLogin } from '../../API/API';
 import { useAuth } from '../../React/CustomHooks/CustomHooks';
 import { useFormik } from 'formik';
@@ -37,7 +36,7 @@ const LoginContainer = () => {
     },
   });
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: React.FocusEvent<any, Element>) => {
     formik.setFieldTouched(e.target.name, true);
   };
 

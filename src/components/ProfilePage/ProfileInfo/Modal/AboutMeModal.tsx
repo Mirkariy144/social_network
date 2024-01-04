@@ -4,9 +4,9 @@ import Modal from 'react-modal';
 import c from './Modal.module.css';
 
 interface AboutMeModalProps {
-  isModalAboutMeOpen: boolean;
-  setIsModalAboutMeOpen: (data: boolean) => void;
-  putInfoAboutMe: (data: any) => void;
+  isModalAboutMeOpen?: boolean;
+  setIsModalAboutMeOpen?: (data: boolean) => void;
+  putInfoAboutMe?: (data: any) => void;
 }
 
 const AboutMeModal = ({
@@ -18,12 +18,22 @@ const AboutMeModal = ({
   Modal.setAppElement('#root');
 
   const closeModal = () => {
+    if (!setIsModalAboutMeOpen) {
+      return;
+    }
     setIsModalAboutMeOpen(false);
   };
 
   const onSubmit = (data: any) => {
+    if (!putInfoAboutMe) {
+      return;
+    }
     putInfoAboutMe(data);
   };
+
+  if (!isModalAboutMeOpen) {
+    return null;
+  }
 
   return (
     <Modal

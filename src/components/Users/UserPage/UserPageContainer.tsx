@@ -2,16 +2,15 @@ import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
-// import ProfilePage from '../../ProfilePage/ProfilePage';
 import c from '../../Content/Content.module.css';
 import Loader from '../../Loader/Loader';
 import { useAuth } from '../../../React/CustomHooks/CustomHooks';
+import { AppStateType } from '../../../Redux/reduxStore';
 
 const ProfilePage = lazy(() => import('../../ProfilePage/ProfilePage'));
 
-let UserPageContainerProps = ({ Posts }) => {
-  const { id } = useParams();
+let UserPageContainerProps = ({ Posts }: any) => {
+  const { id } = useParams<string>();
   const [curUser, setCurUser] = useState(null);
   const { user } = useAuth();
 
@@ -23,19 +22,21 @@ let UserPageContainerProps = ({ Posts }) => {
       });
   }, [id]);
 
+  if (!id) return null
+
   if (!curUser || !user) {
     return <Loader />;
   }
   return (
     <div className={c.appContent}>
       <Suspense fallback={<Loader />}>
-        <ProfilePage Users={curUser} Posts={Posts} authUser={user} id={id} />
+        <ProfilePage Users={curUser} Posts={Posts} id={id} AuthUser={user}/>
       </Suspense>
     </div>
   );
 };
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
   return {
     Posts: state.ShitPosts.Posts,
   };

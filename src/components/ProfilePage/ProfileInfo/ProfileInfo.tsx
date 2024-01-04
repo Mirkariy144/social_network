@@ -5,16 +5,18 @@ import { ProfileStatusContainer } from './ProfileStatus/ProfileStatusContainer';
 import { AvatarModal } from './Modal/AvatarModal';
 import AboutMeModal from './Modal/AboutMeModal';
 import { UserInfoType } from '../../../Types/GlobalInterface';
+import { AuthUser } from '../../../React/CustomHooks/CustomHooks';
 
 interface ProfileInfoProps {
   Users: UserInfoType
-  setIsModalAvatarOpen: React.Dispatch<React.SetStateAction<boolean>>
-  isModalAvatarOpen: boolean
-  putNewPhoto: (data: FormData) => void
-  isModalAboutMeOpen: boolean
-  setIsModalAboutMeOpen: React.Dispatch<React.SetStateAction<boolean>>
-  putInfoAboutMe: (data: FormData) => void
-  id: string | null
+  setIsModalAvatarOpen?: React.Dispatch<React.SetStateAction<boolean>>
+  isModalAvatarOpen?: boolean
+  putNewPhoto?: (data: FormData) => void
+  isModalAboutMeOpen?: boolean
+  setIsModalAboutMeOpen?: React.Dispatch<React.SetStateAction<boolean>>
+  putInfoAboutMe?: (data: FormData) => void
+  id: string
+  AuthUser: AuthUser
 }
 
 const ProfileInfo: React.FC<ProfileInfoProps> = ({
@@ -26,14 +28,17 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
   setIsModalAboutMeOpen,
   putInfoAboutMe,
   id,
+  AuthUser
 }) => {
   const UC = Users?.contacts;
 
   const openModalAvatar = () => {
+    if (!setIsModalAvatarOpen) return;
     setIsModalAvatarOpen(true);
   };
 
   const openModalAboutMe = () => {
+    if (!setIsModalAboutMeOpen) return;
     setIsModalAboutMeOpen(true);
   };
 
@@ -41,12 +46,17 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
     <div className={c.ProfilePage}>
       <div className={c.Ava}>
         <img src={Users?.photos?.large ? Users?.photos.large : UnfoundAva} />
-        {id ? <button onClick={openModalAvatar}>Change ava</button> : null}
-        <AvatarModal
-          setIsModalAvatarOpen={setIsModalAvatarOpen}
-          isModalAvatarOpen={isModalAvatarOpen}
-          putNewPhoto={putNewPhoto}
-        />
+        {+id === AuthUser.id ? (
+        <>
+          <AvatarModal
+            setIsModalAvatarOpen={setIsModalAvatarOpen}
+            isModalAvatarOpen={isModalAvatarOpen}
+            putNewPhoto={putNewPhoto}
+          />
+          <button onClick={openModalAvatar}>Change ava</button>
+        </>
+        ) : null}
+
         <div>
           <ProfileStatusContainer />
         </div>
@@ -74,14 +84,17 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
         <h4>{Users?.lookingForAJob ? 'Ищю работу: ' : null}</h4>
         <div>{Users?.lookingForAJob}</div>
         <div>{Users?.lookingForAJobDescription}</div>
-        <AboutMeModal
-          isModalAboutMeOpen={isModalAboutMeOpen}
-          setIsModalAboutMeOpen={setIsModalAboutMeOpen}
-          putInfoAboutMe={putInfoAboutMe}
-          initialValues={Users}
-        />
-        {id ? (
-          <button onClick={openModalAboutMe}>Change info about me</button>
+
+        {+id === AuthUser.id ? (
+          <>
+            <AboutMeModal
+              isModalAboutMeOpen={isModalAboutMeOpen}
+              setIsModalAboutMeOpen={setIsModalAboutMeOpen}
+              putInfoAboutMe={putInfoAboutMe}
+              initialValues={Users}
+            />
+            <button onClick={openModalAboutMe}>Change info about me</button>
+          </>
         ) : null}
       </div>
     </div>

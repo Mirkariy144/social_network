@@ -5,6 +5,7 @@ import ShitPostContainer from './ShitPosts/ShitPostContainer';
 import Loader from '../Loader/Loader';
 import { UserInfoType } from '../../Types/GlobalInterface';
 import { PostsType } from './../../Types/GlobalInterface';
+import { AuthUser } from '../../React/CustomHooks/CustomHooks';
 
 const ProfilePage = ({
   Users,
@@ -16,16 +17,19 @@ const ProfilePage = ({
   setIsModalAboutMeOpen,
   putInfoAboutMe,
   id,
+  AuthUser
 } : {
-Users: UserInfoType;
+Users: UserInfoType | null;
 Posts: PostsType;
-setIsModalAvatarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-isModalAvatarOpen: boolean;
-putNewPhoto: (data: FormData) => void;
-isModalAboutMeOpen: boolean;
-setIsModalAboutMeOpen: React.Dispatch<React.SetStateAction<boolean>>;
-putInfoAboutMe: (data: FormData) => void;
-id: string;}) => {
+setIsModalAvatarOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+isModalAvatarOpen?: boolean;
+putNewPhoto?: (data: FormData) => void;
+isModalAboutMeOpen?: boolean;
+setIsModalAboutMeOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+putInfoAboutMe?: (data: FormData) => void;
+id: string;
+AuthUser: AuthUser
+}) => {
   if (!Users) {
     return <Loader />;
   }
@@ -41,6 +45,7 @@ id: string;}) => {
         isModalAboutMeOpen={isModalAboutMeOpen}
         putInfoAboutMe={putInfoAboutMe}
         id={id}
+        AuthUser={AuthUser}
       />
       <ShitPostContainer />
       <Post Posts={Posts} />

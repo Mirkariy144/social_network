@@ -1,6 +1,16 @@
 import React from 'react';
 
-export const LoginResult = ({ formik, captcha, resultCode }) => {
+export const LoginResult = (
+  { 
+    formik, 
+    captcha, 
+    resultCode 
+  } : {
+    formik: any,
+    captcha: string,
+    resultCode: number | null,
+  }
+    ) => {
   if (resultCode === 1) {
     return <span>Введён неверный логин или пароль</span>;
   } else if (captcha || resultCode === 10) {
@@ -17,4 +27,5 @@ export const LoginResult = ({ formik, captcha, resultCode }) => {
       </div>
     );
   }
+  return null;
 };

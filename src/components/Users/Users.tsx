@@ -7,14 +7,21 @@ const Users = ({
   everyUser,
   totalPages,
   setPagesCount,
+} : {
+  setCurrentPage: (data: number) => void,
+  currentPage: number,
+  everyUser: JSX.Element[] | null,
+  totalPages: number,
+  setPagesCount: (data: number) => void
 }) => {
+
   return (
     <div className={c.Container}>
       {totalPages && <div>Всего страниц: {totalPages}</div>}
       <input
         type="number"
         value={currentPage}
-        onChange={(e) => setCurrentPage(e.target.value)}
+        onChange={(e) => setCurrentPage(+e.target.value)}
       />
       <div onClick={() => setPagesCount(10)}>
         <a href="#" className={c.PagesCount}>

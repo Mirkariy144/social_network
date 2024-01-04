@@ -22,6 +22,17 @@ export interface UserContactsType {
   mainLink: string;
 }
 
+export interface UserType {
+	name: string,
+	id: number,
+	status: string | null,
+	photos: {
+		small: string | null,
+		large: string | null
+	},
+	 followed: boolean
+}
+
 export interface PostType {
 		id: number;
 		text: string;

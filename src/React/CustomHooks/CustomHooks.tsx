@@ -8,7 +8,7 @@ import React, {
 import { axiosGetProfile } from '../../API/API';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-interface AuthUser {
+export interface AuthUser {
   id: number;
   email: string;
   login: string;

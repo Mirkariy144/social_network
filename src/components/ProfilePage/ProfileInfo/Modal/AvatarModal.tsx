@@ -3,9 +3,9 @@ import Modal from 'react-modal';
 import c from './Modal.module.css';
 
 interface AvatarModalProps {
-  setIsModalAvatarOpen: (data: boolean) => void;
-  isModalAvatarOpen: boolean;
-  putNewPhoto: (data: any) => void;
+  setIsModalAvatarOpen?: (data: boolean) => void;
+  isModalAvatarOpen?: boolean;
+  putNewPhoto?: (data: any) => void;
 }
 
 export const AvatarModal: React.FC<AvatarModalProps> = ({
@@ -18,10 +18,16 @@ export const AvatarModal: React.FC<AvatarModalProps> = ({
   const [formData, setFormData] = useState<FormData>(new FormData());
 
   const closeModal = () => {
+    if (!setIsModalAvatarOpen) {
+      return;
+    }
     setIsModalAvatarOpen(false);
   };
 
   const onSubmit = () => {
+    if (!putNewPhoto) {
+      return;
+    }
     putNewPhoto(formData);
   };
 
@@ -31,6 +37,11 @@ export const AvatarModal: React.FC<AvatarModalProps> = ({
     formData.append('image', file);
     setFormData(formData);
   };
+
+  if (!isModalAvatarOpen) {
+    return null;
+  }
+
   return (
     <Modal
       className={c.Main}

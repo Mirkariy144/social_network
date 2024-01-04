@@ -1,7 +1,20 @@
 import React from 'react';
 import { LoginResult } from './LoginResult';
 
-const Login = ({ formik, captcha, resultCode, handleBlur, isSubmitting }) => {
+const Login = (
+  {
+    formik,
+    captcha,
+    resultCode,
+    handleBlur,
+    isSubmitting 
+  } : { 
+    formik: any,
+    captcha: string,
+    resultCode: number | null,
+    handleBlur: (e: React.FocusEvent<any, Element>) => void,
+    isSubmitting: boolean
+  }) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>

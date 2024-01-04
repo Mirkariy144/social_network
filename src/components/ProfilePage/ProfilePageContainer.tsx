@@ -10,10 +10,12 @@ import {
 } from '../../API/API';
 import { AppStateType } from '../../Redux/reduxStore';
 import { PostsType, UserInfoType } from './../../Types/GlobalInterface';
+import { useAuth } from '../../React/CustomHooks/CustomHooks';
 
 const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
   const { id } = useParams();
-  const [user, setUser] = useState<UserInfoType | null>(null);
+  const { user } = useAuth();
+  const [userf, setUserf] = useState<UserInfoType | null>(null);
   const [isModalAvatarOpen, setIsModalAvatarOpen] = useState<boolean>(false);
   const [isModalAboutMeOpen, setIsModalAboutMeOpen] = useState<boolean>(false);
 
@@ -22,7 +24,7 @@ const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
     return;
   }
     axiosGetProfileById(id).then((data) => {
-      setUser(data);
+      setUserf(data);
     });
   }, [id, isModalAboutMeOpen, isModalAvatarOpen]);
 
@@ -41,7 +43,7 @@ const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
     <div>
       <ProfilePage
         Posts={Posts}
-        Users={user}
+        Users={userf}
         setIsModalAvatarOpen={setIsModalAvatarOpen}
         isModalAvatarOpen={isModalAvatarOpen}
         putNewPhoto={putNewPhoto}
@@ -49,6 +51,7 @@ const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
         isModalAboutMeOpen={isModalAboutMeOpen}
         setIsModalAboutMeOpen={setIsModalAboutMeOpen}
         id={id?id:''}
+        AuthUser={user}
       />
     </div>
   );
