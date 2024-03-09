@@ -10,7 +10,6 @@ import UserPageContainer from './components/Users/UserPage/UserPageContainer';
 import UsersListContainer from './components/Users/UsersContainer';
 import LoginContainer from './components/Login/LoginContainer';
 
-
 const App = () => {
   const { loading } = useAuth();
 
@@ -18,20 +17,20 @@ const App = () => {
     return <Loader />;
   }
 
-  console.log('kurwa')
+  console.log('kurwa');
 
   return (
-          <div className={c.appWrapper}>
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route path="/profile/:id" element={<Content />} />
-                  <Route path="/messages/" element={<DialogsContainer />} />
-                  <Route path="/users/" element={<UsersListContainer />} />
-                  <Route path="/users/:id" element={<UserPageContainer />} />
-                </Route>
-                <Route path="/login" element={<LoginContainer />} />
-              </Routes>
-          </div>
+    <div className={c.appWrapper}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/profile/:id" element={<Content />} />
+          <Route path="/messages/" element={<DialogsContainer />} />
+          <Route path="/users/" element={<UsersListContainer />} />
+          <Route path="/users/:id" element={<UserPageContainer />} />
+        </Route>
+        <Route path="/login" element={<LoginContainer />} />
+      </Routes>
+    </div>
   );
 };
 
