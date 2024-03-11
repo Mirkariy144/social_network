@@ -1,5 +1,6 @@
 import React from 'react';
 import c from './Users.module.css';
+import { Box, Grid } from '@mui/material';
 
 const Users = ({
   setCurrentPage,
@@ -7,14 +8,13 @@ const Users = ({
   everyUser,
   totalPages,
   setPagesCount,
-} : {
-  setCurrentPage: (data: number) => void,
-  currentPage: number,
-  everyUser: JSX.Element[] | null,
-  totalPages: number,
-  setPagesCount: (data: number) => void
+}: {
+  setCurrentPage: (data: number) => void;
+  currentPage: number;
+  everyUser: JSX.Element[] | null;
+  totalPages: number;
+  setPagesCount: (data: number) => void;
 }) => {
-
   return (
     <div className={c.Container}>
       {totalPages && <div>Всего страниц: {totalPages}</div>}
@@ -39,7 +39,11 @@ const Users = ({
         </a>
       </div>
       <button onClick={() => setCurrentPage(currentPage)}>ЗаПрОс</button>
-      {everyUser}
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          {everyUser}
+        </Grid>
+      </Box>
     </div>
   );
 };

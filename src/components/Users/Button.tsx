@@ -1,25 +1,25 @@
 import React from 'react';
 import c from './Users.module.css';
+import { Button } from '@mui/material';
 
-let Button = (
-  { title, 
-    onClick, 
-    id, 
-    followingId 
-  } : 
-  {title: string,
-  onClick: () => void,
-  id: number,
-  followingId: number[]}) => {
+export let ButtonFolow = ({
+  title,
+  onClick,
+  id,
+  followingId,
+}: {
+  title: string;
+  onClick: () => void;
+  id: number;
+  followingId: number[];
+}) => {
   return (
-    <button
+    <Button
       disabled={followingId?.some((item) => item === id)}
       className={c.Follow}
       onClick={onClick}
     >
       {title}
-    </button>
+    </Button>
   );
 };
-
-export default Button;
