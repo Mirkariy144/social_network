@@ -18,6 +18,7 @@ export let ButtonFolow = ({
       disabled={followingId?.some((item) => item === id)}
       className={c.Follow}
       onClick={onClick}
+      size="medium"
     >
       {title}
     </Button>

@@ -11,17 +11,14 @@ import {
 import { batch } from 'react-redux';
 import { UserType } from '../../types/globalInterface';
 import {
-  Box,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   Grid,
-  Paper,
   Typography,
 } from '@mui/material';
 import { ButtonFolow } from './Button';
-import styled from '@emotion/styled';
 
 const Users = lazy(() => import('./Users'));
 
@@ -29,7 +26,7 @@ const UsersContainer = () => {
   const [users, setUsers] = useState<UserType[]>();
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [PagesCount, setPagesCount] = useState(10);
+  const [PagesCount, setPagesCount] = useState(30);
   const [followingID, setFollowingID] = useState<number[]>([]);
 
   useEffect(() => {
@@ -143,15 +140,22 @@ const UsersContainer = () => {
   //   : null;
 
   const everyUser = users
-    ? users.map(({ name, id, status, followed, photos: { small } }) => {
+    ? users.map(({ name, id, status, followed, photos: { large } }) => {
         return (
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: 240 }}>
+          <Grid
+            item
+            xs={4}
+            alignItems={'center'}
+            display={'flex'}
+            key={id}
+            sx={{ justifyContent: 'center', paddingTop: '0px' }}
+          >
+            <Card sx={{ width: 240 }}>
               <NavLink to={`/users/${id}`} className={c.item}>
                 <CardMedia
                   sx={{ height: 140 }}
-                  image={small ? small : UnfoundAva}
-                  title={small ? 'user photo' : 'no photo'}
+                  image={large ? large : UnfoundAva}
+                  title={large ? 'user photo' : 'no photo'}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="p">
@@ -160,7 +164,7 @@ const UsersContainer = () => {
                   <Typography variant="body2">{status}</Typography>
                 </CardContent>
               </NavLink>
-              <CardActions>
+              <CardActions sx={{ justifyContent: 'center' }}>
                 <ButtonFolow
                   followingId={followingID}
                   id={id}
@@ -181,10 +185,8 @@ const UsersContainer = () => {
     <Suspense fallback={<Loader />}>
       <Users
         setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
         everyUser={everyUser}
         totalPages={totalPages}
-        setPagesCount={setPagesCount}
       />
     </Suspense>
   );

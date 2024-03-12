@@ -16,7 +16,10 @@ export const axiosFollowDelete = async (id: number) => {
   return response.data;
 };
 
-export const axiosGetUsers = async (currentPage: number, PagesCount: number) => {
+export const axiosGetUsers = async (
+  currentPage: number,
+  PagesCount: number,
+) => {
   const response = await instance.get(
     `users?page=${currentPage}&count=${PagesCount}`,
   );

@@ -1,49 +1,50 @@
 import React from 'react';
 import c from './Users.module.css';
-import { Box, Grid } from '@mui/material';
+import { Box, CssBaseline, Grid, Pagination, Stack } from '@mui/material';
 
 const Users = ({
   setCurrentPage,
-  currentPage,
   everyUser,
   totalPages,
-  setPagesCount,
 }: {
   setCurrentPage: (data: number) => void;
-  currentPage: number;
   everyUser: JSX.Element[] | null;
   totalPages: number;
-  setPagesCount: (data: number) => void;
 }) => {
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setCurrentPage(value);
+  };
   return (
     <div className={c.Container}>
-      {totalPages && <div>Всего страниц: {totalPages}</div>}
-      <input
-        type="number"
-        value={currentPage}
-        onChange={(e) => setCurrentPage(+e.target.value)}
-      />
-      <div onClick={() => setPagesCount(10)}>
-        <a href="#" className={c.PagesCount}>
-          10
-        </a>
-      </div>
-      <div onClick={() => setPagesCount(20)}>
-        <a href="#" className={c.PagesCount}>
-          20
-        </a>
-      </div>
-      <div onClick={() => setPagesCount(30)}>
-        <a href="#" className={c.PagesCount}>
-          30
-        </a>
-      </div>
-      <button onClick={() => setCurrentPage(currentPage)}>ЗаПрОс</button>
+      <Stack spacing={2} alignItems="center" paddingTop={'10px'}>
+        <Pagination
+          count={totalPages}
+          onChange={handleChange}
+          color="secondary"
+          showLastButton
+          showFirstButton
+          sx={{ '& .MuiPaginationItem-root': { color: 'white' } }}
+        />
+      </Stack>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} width={'100%'} margin={'0 auto'}>
           {everyUser}
         </Grid>
       </Box>
+      <Stack
+        spacing={2}
+        alignItems="center"
+        paddingBottom={'10px'}
+        paddingTop={'10px'}
+      >
+        <Pagination
+          count={totalPages}
+          onChange={handleChange}
+          showLastButton
+          showFirstButton
+          sx={{ '& .MuiPaginationItem-root': { color: 'white' } }}
+        />
+      </Stack>
     </div>
   );
 };
