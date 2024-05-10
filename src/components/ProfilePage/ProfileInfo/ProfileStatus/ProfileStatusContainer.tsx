@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProfileStatus } from './ProfileStatus';
 import { axiosGetStatus, axiosPutStatus } from '../../../../API/API';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../../../../react/customHooks/CustomHooks';
+import { useAuth } from '../../../../React/customHooks/CustomHooks';
 import Loader from '../../../Loader/Loader';
 
 export const ProfileStatusContainer = () => {
@@ -13,7 +13,8 @@ export const ProfileStatusContainer = () => {
 
   useEffect(() => {
     if (!id) {
-      return;}
+      return;
+    }
     axiosGetStatus(id).then((data) => {
       setStatus(data ? data : '');
     });
@@ -41,7 +42,7 @@ export const ProfileStatusContainer = () => {
       status={status}
       setEditMode={setEditMode}
       authUserId={user.id}
-      currentUserId={id?id:''}
+      currentUserId={id ? id : ''}
     />
   );
 };

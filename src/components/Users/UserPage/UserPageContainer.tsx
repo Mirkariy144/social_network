@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import c from '../../Content/Content.module.css';
 import Loader from '../../Loader/Loader';
-import { useAuth } from '../../../react/customHooks/CustomHooks';
+import { useAuth } from '../../../React/customHooks/CustomHooks';
 import { AppStateType } from '../../../redux/reduxStore';
 
 const ProfilePage = lazy(() => import('../../ProfilePage/ProfilePage'));
@@ -22,7 +22,7 @@ let UserPageContainerProps = ({ Posts }: any) => {
       });
   }, [id]);
 
-  if (!id) return null
+  if (!id) return null;
 
   if (!curUser || !user) {
     return <Loader />;
@@ -30,7 +30,7 @@ let UserPageContainerProps = ({ Posts }: any) => {
   return (
     <div className={c.appContent}>
       <Suspense fallback={<Loader />}>
-        <ProfilePage Users={curUser} Posts={Posts} id={id} AuthUser={user}/>
+        <ProfilePage Users={curUser} Posts={Posts} id={id} AuthUser={user} />
       </Suspense>
     </div>
   );

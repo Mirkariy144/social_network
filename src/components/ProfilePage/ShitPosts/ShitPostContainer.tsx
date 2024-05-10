@@ -10,7 +10,7 @@ let mapStateToProps = (state: { ShitPosts: { newPostLetter: string } }) => {
 
 let mapDispatchToProps = (dispatch: any) => {
   return {
-    addPost: (data: {newPost: string}) => {
+    addPost: (data: { newPost: string }) => {
       dispatch(addNewPost(data));
     },
   };

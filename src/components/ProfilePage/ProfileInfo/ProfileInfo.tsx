@@ -5,7 +5,7 @@ import { ProfileStatusContainer } from './ProfileStatus/ProfileStatusContainer';
 import { AvatarModal } from './Modal/AvatarModal';
 import AboutMeModal from './Modal/AboutMeModal';
 import { UserInfoType } from '../../../types/globalInterface';
-import { AuthUser } from '../../../react/customHooks/CustomHooks';
+import { AuthUser } from '../../../React/customHooks/CustomHooks';
 import { Card, CardMedia, Paper } from '@mui/material';
 import background_item from '../../../img/background_item.jpg';
 

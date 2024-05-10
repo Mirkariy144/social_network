@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { axiosCaptcha, axiosLogin } from '../../API/API';
-import { useAuth } from '../../react/customHooks/CustomHooks';
+import { useAuth } from '../../React/customHooks/CustomHooks';
 import { useFormik } from 'formik';
 import { validateEmail } from '../../formikUtils/formikLoginValidation';
 import Loader from '../Loader/Loader';

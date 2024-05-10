@@ -2,8 +2,6 @@ import { AppStateType } from '../../redux/reduxStore';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 
-
-
 let mapStateToProps = (state: AppStateType) => {
   return {
     Characters: state.Messages.Characters,

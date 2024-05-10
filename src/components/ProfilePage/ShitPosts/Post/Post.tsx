@@ -2,9 +2,7 @@ import React from 'react';
 import c from './Post.module.css';
 import { PostsType } from '../../../../types/globalInterface';
 
-
-
-const Post = React.memo(({ Posts } : {Posts: PostsType}) => {
+const Post = React.memo(({ Posts }: { Posts: PostsType }) => {
   let post = Posts.map(({ id, text }) => (
     <pre className={c.Post} key={id}>
       {text}

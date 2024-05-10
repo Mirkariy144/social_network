@@ -10,7 +10,7 @@ import {
 } from '../../API/API';
 import { AppStateType } from '../../redux/reduxStore';
 import { PostsType, UserInfoType } from '../../types/globalInterface';
-import { useAuth } from '../../react/customHooks/CustomHooks';
+import { useAuth } from '../../React/customHooks/CustomHooks';
 
 const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
   const { id } = useParams();
@@ -22,7 +22,7 @@ const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
   useEffect(() => {
     if (!id) {
       return;
-  }
+    }
     axiosGetProfileById(id).then((data) => {
       setUserf(data);
     });
@@ -50,7 +50,7 @@ const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
         putInfoAboutMe={putInfoAboutMe}
         isModalAboutMeOpen={isModalAboutMeOpen}
         setIsModalAboutMeOpen={setIsModalAboutMeOpen}
-        id={id?id:''}
+        id={id ? id : ''}
         AuthUser={user}
       />
     </div>

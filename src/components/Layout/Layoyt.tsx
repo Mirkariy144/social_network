@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import NavBar from '../NavBar/NavBar';
-import { useAuth } from '../../react/customHooks/CustomHooks';
+import { useAuth } from '../../React/customHooks/CustomHooks';
 import { axiosLogout } from '../../API/API';
 import Loader from '../Loader/Loader';
 
@@ -23,9 +23,7 @@ export const Layout = () => {
   return (
     <>
       <Header user={user} logout={logout} />
-      {user?.id && (
-        <NavBar id={user?.id} />
-      )}
+      {user?.id && <NavBar id={user?.id} />}
       <Outlet />
     </>
   );
