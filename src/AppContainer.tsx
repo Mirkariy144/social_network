@@ -7,13 +7,15 @@ import App from './App';
 
 const AppContainer = () => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    // <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Provider store={store}>
         <AuthProvider>
           <App />
         </AuthProvider>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
+    // </BrowserRouter>
   );
 };
 

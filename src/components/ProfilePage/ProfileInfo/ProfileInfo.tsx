@@ -6,8 +6,6 @@ import { AvatarModal } from './Modal/AvatarModal';
 import AboutMeModal from './Modal/AboutMeModal';
 import { UserInfoType } from '../../../types/globalInterface';
 import { AuthUser } from '../../../react/customHooks/CustomHooks';
-import { Card, CardMedia, Paper } from '@mui/material';
-import background_item from '../../../img/background_item.jpg';
 
 interface ProfileInfoProps {
   Users: UserInfoType;
@@ -46,13 +44,6 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
 
   return (
     <div className={c.ProfilePage}>
-      <Card sx={{ width: 960, height: 540 }}>
-        <CardMedia
-          sx={{ width: 960, height: 540 }}
-          src="/../"
-          title="green iguana"
-        />
-      </Card>
       <div className={c.Ava}>
         <img src={Users?.photos?.large ? Users?.photos.large : UnfoundAva} />
         {+id === AuthUser.id ? (
@@ -70,29 +61,50 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
           <ProfileStatusContainer />
         </div>
       </div>
-      <div className={c.Name}>{Users?.fullName}</div>
+      {/* <div className={c.Name}>{Users?.fullName}</div> */}
       <div className={c.AboutMe}>
-        <h3>{Users?.aboutMe ? 'О себе: ' : null}</h3>
-        <div>{Users?.aboutMe}</div>
-        <h4>{UC?.facebook ? 'Facebook: ' : null}</h4>
-        <div>{Users?.contacts.facebook}</div>
-        <h4>{UC?.website ? 'Website: ' : null}</h4>
-        <div>{Users?.contacts.website}</div>
-        <h4>{UC?.vk ? 'VK: ' : null}</h4>
-        <div>{Users?.contacts.vk}</div>
-        <h4>{UC?.twitter ? 'Twitter: ' : null}</h4>
-        <div>{Users?.contacts.twitter}</div>
-        <h4>{UC?.instagram ? 'Instagram: ' : null}</h4>
-        <div>{Users?.contacts.instagram}</div>
-        <h4>{UC?.youtube ? 'Youtube: ' : null}</h4>
-        <div>{Users?.contacts.youtube}</div>
-        <h4>{UC?.github ? 'Github: ' : null}</h4>
-        <div>{Users?.contacts.github}</div>
-        <h4>{UC?.mainLink ? 'Main link: ' : null}</h4>
-        <div>{Users?.contacts.mainLink}</div>
-        <h4>{Users?.lookingForAJob ? 'Ищю работу: ' : null}</h4>
-        <div>{Users?.lookingForAJob}</div>
-        <div>{Users?.lookingForAJobDescription}</div>
+        <h1>{Users?.fullName}</h1>
+        <div className={c.InfoItem}>
+          <h4>{Users?.aboutMe ? 'О себе: ' : null}</h4>
+          <div>{Users?.aboutMe}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.facebook ? 'Facebook: ' : null}</h4>
+          <div>{Users?.contacts.facebook}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.website ? 'Website: ' : null}</h4>
+          <div>{Users?.contacts.website}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.vk ? 'VK: ' : null}</h4>
+          <div>{Users?.contacts.vk}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.twitter ? 'Twitter: ' : null}</h4>
+          <div>{Users?.contacts.twitter}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.instagram ? 'Instagram: ' : null}</h4>
+          <div>{Users?.contacts.instagram}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.youtube ? 'Youtube: ' : null}</h4>
+          <div>{Users?.contacts.youtube}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.github ? 'Github: ' : null}</h4>
+          <div>{Users?.contacts.github}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{UC?.mainLink ? 'Main link: ' : null}</h4>
+          <div>{Users?.contacts.mainLink}</div>
+        </div>
+        <div className={c.InfoItem}>
+          <h4>{Users?.lookingForAJob ? 'Ищю работу: ' : null}</h4>
+          <div>{Users?.lookingForAJob}</div>
+          <div>{Users?.lookingForAJobDescription}</div>
+        </div>
 
         {+id === AuthUser.id ? (
           <>
