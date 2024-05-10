@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import c from '../../Content/Content.module.css';
 import Loader from '../../Loader/Loader';
-import { useAuth } from '../../../React/customHooks/CustomHooks';
+import { useAuth } from '../../../react/customHooks/CustomHooks';
 import { AppStateType } from '../../../redux/reduxStore';
 
 const ProfilePage = lazy(() => import('../../ProfilePage/ProfilePage'));

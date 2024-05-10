@@ -10,7 +10,7 @@ import {
 } from '../../API/API';
 import { AppStateType } from '../../redux/reduxStore';
 import { PostsType, UserInfoType } from '../../types/globalInterface';
-import { useAuth } from '../../React/customHooks/CustomHooks';
+import { useAuth } from '../../react/customHooks/CustomHooks';
 
 const MyProfilePageContainer = ({ Posts }: { Posts: PostsType }) => {
   const { id } = useParams();

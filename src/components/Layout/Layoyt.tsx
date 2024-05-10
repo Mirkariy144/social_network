@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import NavBar from '../NavBar/NavBar';
-import { useAuth } from '../../React/customHooks/CustomHooks';
+import { useAuth } from '../../react/customHooks/CustomHooks';
 import { axiosLogout } from '../../API/API';
 import Loader from '../Loader/Loader';
 

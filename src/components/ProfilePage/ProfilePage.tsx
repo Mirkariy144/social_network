@@ -5,7 +5,7 @@ import ShitPostContainer from './ShitPosts/ShitPostContainer';
 import Loader from '../Loader/Loader';
 import { UserInfoType } from '../../types/globalInterface';
 import { PostsType } from '../../types/globalInterface';
-import { AuthUser } from '../../React/customHooks/CustomHooks';
+import { AuthUser } from '../../react/customHooks/CustomHooks';
 
 const ProfilePage = ({
   Users,
