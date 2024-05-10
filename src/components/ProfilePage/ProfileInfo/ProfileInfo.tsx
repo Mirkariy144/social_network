@@ -6,17 +6,19 @@ import { AvatarModal } from './Modal/AvatarModal';
 import AboutMeModal from './Modal/AboutMeModal';
 import { UserInfoType } from '../../../types/globalInterface';
 import { AuthUser } from '../../../react/customHooks/CustomHooks';
+import { Card, CardMedia, Paper } from '@mui/material';
+import background_item from '../../../img/background_item.jpg';
 
 interface ProfileInfoProps {
-  Users: UserInfoType
-  setIsModalAvatarOpen?: React.Dispatch<React.SetStateAction<boolean>>
-  isModalAvatarOpen?: boolean
-  putNewPhoto?: (data: FormData) => void
-  isModalAboutMeOpen?: boolean
-  setIsModalAboutMeOpen?: React.Dispatch<React.SetStateAction<boolean>>
-  putInfoAboutMe?: (data: FormData) => void
-  id: string
-  AuthUser: AuthUser
+  Users: UserInfoType;
+  setIsModalAvatarOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalAvatarOpen?: boolean;
+  putNewPhoto?: (data: FormData) => void;
+  isModalAboutMeOpen?: boolean;
+  setIsModalAboutMeOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  putInfoAboutMe?: (data: FormData) => void;
+  id: string;
+  AuthUser: AuthUser;
 }
 
 const ProfileInfo: React.FC<ProfileInfoProps> = ({
@@ -28,7 +30,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
   setIsModalAboutMeOpen,
   putInfoAboutMe,
   id,
-  AuthUser
+  AuthUser,
 }) => {
   const UC = Users?.contacts;
 
@@ -44,17 +46,24 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
 
   return (
     <div className={c.ProfilePage}>
+      <Card sx={{ width: 960, height: 540 }}>
+        <CardMedia
+          sx={{ width: 960, height: 540 }}
+          src="/../"
+          title="green iguana"
+        />
+      </Card>
       <div className={c.Ava}>
         <img src={Users?.photos?.large ? Users?.photos.large : UnfoundAva} />
         {+id === AuthUser.id ? (
-        <>
-          <AvatarModal
-            setIsModalAvatarOpen={setIsModalAvatarOpen}
-            isModalAvatarOpen={isModalAvatarOpen}
-            putNewPhoto={putNewPhoto}
-          />
-          <button onClick={openModalAvatar}>Change ava</button>
-        </>
+          <>
+            <AvatarModal
+              setIsModalAvatarOpen={setIsModalAvatarOpen}
+              isModalAvatarOpen={isModalAvatarOpen}
+              putNewPhoto={putNewPhoto}
+            />
+            <button onClick={openModalAvatar}>Change ava</button>
+          </>
         ) : null}
 
         <div>

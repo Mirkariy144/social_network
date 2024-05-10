@@ -36,7 +36,7 @@ const Header: React.FC<User> = ({ user, logout }) => {
   };
 
   return (
-    <AppBar position="static" sx={{ gridArea: 'a' }}>
+    <AppBar position="sticky" sx={{ gridArea: 'a' }}>
       <Container maxWidth="xl">
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <AccountBox sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

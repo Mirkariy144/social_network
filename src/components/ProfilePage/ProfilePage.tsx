@@ -17,25 +17,24 @@ const ProfilePage = ({
   setIsModalAboutMeOpen,
   putInfoAboutMe,
   id,
-  AuthUser
-} : {
-Users: UserInfoType | null;
-Posts: PostsType;
-setIsModalAvatarOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-isModalAvatarOpen?: boolean;
-putNewPhoto?: (data: FormData) => void;
-isModalAboutMeOpen?: boolean;
-setIsModalAboutMeOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-putInfoAboutMe?: (data: FormData) => void;
-id: string;
-AuthUser: AuthUser
+  AuthUser,
+}: {
+  Users: UserInfoType | null;
+  Posts: PostsType;
+  setIsModalAvatarOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalAvatarOpen?: boolean;
+  putNewPhoto?: (data: FormData) => void;
+  isModalAboutMeOpen?: boolean;
+  setIsModalAboutMeOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  putInfoAboutMe?: (data: FormData) => void;
+  id: string;
+  AuthUser: AuthUser;
 }) => {
   if (!Users) {
     return <Loader />;
   }
   return (
     <div>
-      <img src="https://klike.net/uploads/posts/2022-10/1666767724_3-30.jpg" />
       <ProfileInfo
         Users={Users}
         setIsModalAvatarOpen={setIsModalAvatarOpen}

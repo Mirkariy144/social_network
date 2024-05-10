@@ -14,7 +14,7 @@ import { AccountBox, Forum, People } from '@mui/icons-material';
 
 const NavBar = ({ id }: { id: number }) => {
   return (
-    <Box sx={{ gridArea: 'b' }}>
+    <Box sx={{ gridArea: 'b', position: 'sticky' }}>
       <Drawer
         variant="permanent"
         sx={{
