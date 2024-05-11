@@ -17,8 +17,6 @@ const App = () => {
     return <Loader />;
   }
 
-  console.log('kurwa');
-
   return (
     <div className={c.appWrapper}>
       <Routes>

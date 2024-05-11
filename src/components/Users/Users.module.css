@@ -1,6 +1,6 @@
-/* .Container {
-  background-color: rgb(87, 91, 95);
-} */
+.Container {
+  background-color: grey;
+}
 
 .GridKurwa {
   display: grid;

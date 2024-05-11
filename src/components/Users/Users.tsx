@@ -23,7 +23,7 @@ const Users = ({
           color="secondary"
           showLastButton
           showFirstButton
-          sx={{ '& .MuiPaginationItem-root': { color: 'white' } }}
+          sx={{ '& .MuiPaginationItem-root': { color: 'black' } }}
         />
       </Stack>
       <Box sx={{ flexGrow: 1 }}>
@@ -42,7 +42,7 @@ const Users = ({
           onChange={handleChange}
           showLastButton
           showFirstButton
-          sx={{ '& .MuiPaginationItem-root': { color: 'white' } }}
+          sx={{ '& .MuiPaginationItem-root': { color: 'black' } }}
         />
       </Stack>
     </div>
